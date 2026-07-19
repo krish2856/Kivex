@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kivex Technology | Web Design, Development & CRM Automation</title>
+    <meta name="description"
+        content="Kivex Technology — website design, web development, servers, automation & Shopify builds. Building digital solutions for a better tomorrow.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="cursor-ring" id="cursorRing"></div>
+    <div class="cursor-dot" id="cursorDot"></div>
+
+    <header>
+        <div class="wrap">
+            <a href="#top" class="logo-mark">KIVEX<span>Technology</span></a>
+            <div class="nav-links" id="navLinks">
+                <nav class="main-nav">
+                    <a href="#services">Services</a>
+                    <a href="#automation">Automation</a>
+                    <a href="#work">Work</a>
+                    <a href="#about">About</a>
+                    <a href="#contact" class="btn" style="padding:10px 20px;">Start a Project</a>
+                </nav>
+            </div>
+            <button class="nav-toggle" id="navToggle"
+                aria-label="Toggle menu"><span></span><span></span><span></span></button>
+        </div>
+    </header>
+
+    <main id="top">
+
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-glow" id="heroGlow"></div>
+            <div class="wrap">
+                <div class="eyebrow">Building digital solutions for a better tomorrow</div>
+                <h1 class="hero-word" id="heroWord" aria-label="KIVEX"></h1>
+                <div class="hero-tech">Technology</div>
+                <div class="hero-grid">
+                    <div>
+                        <p class="hero-sub">We design, build, and automate the systems your business runs on — websites,
+                            web apps, servers, and the CRM automation that keeps leads from slipping through.</p>
+                        <div class="hero-ctas">
+                            <a href="#contact" class="btn">Start a project <span class="arrow">→</span></a>
+                            <a href="#work" class="btn ghost">See our work <span class="arrow">→</span></a>
+                        </div>
+                    </div>
+                    <div class="terminal" id="terminal">
+                        <div class="terminal-bar"><span></span><span></span><span></span></div>
+                        <div id="terminalLines"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="ticker" aria-hidden="true">
+            <div class="ticker-track" id="tickerTrack"></div>
+        </div>
+
+        <!-- SERVICES -->
+        <section id="services">
+            <div class="wrap">
+                <div class="section-head reveal-diag">
+                    <h2>Everything your business needs online, under one roof.</h2>
+                    <p>/services — five things we do, no subcontracting, no handoffs between agencies.</p>
+                </div>
+                <div class="svc-list">
+                    <div class="svc-row reveal-left" style="--d:0s">
+                        <div class="svc-path">/web-design</div>
+                        <div class="svc-name">Website Design</div>
+                        <div class="svc-desc">Interfaces built around how your customers think, not how your org chart
+                            looks.</div>
+                        <div class="svc-arrow">→</div>
+                    </div>
+                    <div class="svc-row reveal-right" style="--d:.06s">
+                        <div class="svc-path">/development</div>
+                        <div class="svc-name">Web Development</div>
+                        <div class="svc-desc">Fast, maintainable builds — from marketing sites to full web applications,
+                            made to scale.</div>
+                        <div class="svc-arrow">→</div>
+                    </div>
+                    <div class="svc-row reveal-left" style="--d:.12s">
+                        <div class="svc-path">/automation</div>
+                        <div class="svc-name">Automation &amp; CRM</div>
+                        <div class="svc-desc">We wire up your CRM so every lead gets followed up automatically, every
+                            time.</div>
+                        <div class="svc-arrow">→</div>
+                    </div>
+                    <div class="svc-row reveal-right" style="--d:.18s">
+                        <div class="svc-path">/servers</div>
+                        <div class="svc-name">Servers &amp; Hosting</div>
+                        <div class="svc-desc">Provisioning, deployment, monitoring — your infrastructure, kept running
+                            quietly.</div>
+                        <div class="svc-arrow">→</div>
+                    </div>
+                    <div class="svc-row reveal-left" style="--d:.24s">
+                        <div class="svc-path">/shopify</div>
+                        <div class="svc-name">Shopify Stores</div>
+                        <div class="svc-desc">Storefronts built to convert — custom sections, themes, and checkout tuned
+                            for real customers.</div>
+                        <div class="svc-arrow">→</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHY -->
+        <section class="dark tight" id="about">
+            <div class="wrap">
+                <div class="section-head reveal-diag">
+                    <h2>One team. Design, dev, servers, and automation — no handoffs.</h2>
+                </div>
+                <div class="why-grid">
+                    <div class="why-item reveal-diag" style="--d:0s">
+                        <span class="why-tag">In-house</span>
+                        <h3>We design it and we build it. The people who design your site are the ones who ship it.</h3>
+                    </div>
+                    <div class="why-item reveal-diag" style="--d:.1s">
+                        <span class="why-tag">Full-stack</span>
+                        <h3>Frontend, backend, server, CRM — one point of contact for the whole stack.</h3>
+                    </div>
+                    <div class="why-item reveal-diag" style="--d:.2s">
+                        <span class="why-tag">No fluff</span>
+                        <h3>No agency-speak, no bloated retainers. Clear scope, working software, on time.</h3>
+                    </div>
+                </div>
+                <div class="stats-grid" style="margin-top:56px;">
+                    <div class="stat reveal-left" style="--d:0s">
+                        <div class="stat-num" data-count="40" data-suffix="+">0</div>
+                        <div class="stat-label">Projects shipped</div>
+                    </div>
+                    <div class="stat reveal-right" style="--d:.08s">
+                        <div class="stat-num" data-count="15" data-suffix="+">0</div>
+                        <div class="stat-label">Automations running</div>
+                    </div>
+                    <div class="stat reveal-left" style="--d:.16s">
+                        <div class="stat-num" data-count="99.9" data-suffix="%">0</div>
+                        <div class="stat-label">Server uptime</div>
+                    </div>
+                    <div class="stat reveal-right" style="--d:.24s">
+                        <div class="stat-num" data-count="24" data-suffix="/7">0</div>
+                        <div class="stat-label">Support &amp; monitoring</div>
+                    </div>
+                </div>
+                <p class="work-note" style="color:var(--gray-400); margin-top:20px;">Placeholder figures — swap in your
+                    real numbers.</p>
+            </div>
+        </section>
+
+        <!-- AUTOMATION -->
+        <section id="automation">
+            <div class="wrap">
+                <div class="auto-grid">
+                    <div class="auto-copy reveal-left">
+                        <div class="eyebrow">/automation</div>
+                        <h2 style="font-size:clamp(26px,4vw,38px); margin-top:16px;">Your leads shouldn't wait on a
+                            human to follow up.</h2>
+                        <p>We connect your website, CRM, and calendar so every enquiry is captured, qualified, and
+                            followed up automatically — while your team focuses on the actual work.</p>
+                        <ul class="auto-list">
+                            <li>Missed-call text-back, so no enquiry goes silent</li>
+                            <li>Automatic lead routing to the right person, instantly</li>
+                            <li>Review requests sent after every completed job</li>
+                            <li>Appointment reminders that cut no-shows</li>
+                        </ul>
+                        <a href="#contact" class="btn ghost">Automate my business <span class="arrow">→</span></a>
+                    </div>
+                    <div class="reveal-right">
+                        <svg class="flow" viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg"
+                            aria-label="Automation flow: capture, qualify, automate, nurture, convert">
+                            <line class="line" x1="230" y1="34" x2="230" y2="76" />
+                            <line class="line" x1="230" y1="116" x2="230" y2="158" />
+                            <line class="line" x1="230" y1="198" x2="230" y2="240" />
+                            <line class="line" x1="230" y1="280" x2="230" y2="286" />
+                            <rect class="node" x="130" y="6" width="200" height="52" rx="2" />
+                            <text x="230" y="37" text-anchor="middle">01 — Capture lead</text>
+                            <rect class="node" x="130" y="88" width="200" height="52" rx="2" />
+                            <text x="230" y="119" text-anchor="middle">02 — Qualify &amp; tag</text>
+                            <rect class="node" x="130" y="170" width="200" height="52" rx="2" />
+                            <text x="230" y="201" text-anchor="middle">03 — Automate follow-up</text>
+                            <rect class="node" x="130" y="252" width="200" height="52" rx="2" />
+                            <text x="230" y="283" text-anchor="middle">04 — Convert to client</text>
+                            <circle class="pulse" cx="230" cy="76" r="3" />
+                            <circle class="pulse" cx="230" cy="158" r="3" />
+                            <circle class="pulse" cx="230" cy="240" r="3" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WORK -->
+        <section class="tight" id="work" style="background:var(--off-white);">
+            <div class="wrap">
+                <div class="section-head reveal-diag">
+                    <h2>Selected work.</h2>
+                    <p>/work — a few of the builds we've shipped. Swap in your own case studies here.</p>
+                </div>
+                <div class="work-grid">
+                    <a class="work-card reveal-diag" style="--d:0s" href="https://aastharealty.in" target="_blank"
+                        rel="noopener">
+                        <div class="work-thumb"><span>Aastha Realty</span></div>
+                        <div class="work-meta"><span class="tag">Real estate • Live project</span><span
+                                class="visit">Visit site →</span></div>
+                        <h3>Aastha Realty — property &amp; investment platform</h3>
+                        <p>Real estate site covering residential and commercial listings across Ahmedabad, GIFT City,
+                            Dholera SIR and Dubai, with an investment-process explainer and WhatsApp-based enquiries.
+                            <strong>aastharealty.in</strong>
+                        </p>
+                    </a>
+                    <a class="work-card reveal-diag-rev" style="--d:.08s" href="https://rcargo.vercel.app"
+                        target="_blank" rel="noopener">
+                        <div class="work-thumb"><span>Rcargo</span></div>
+                        <div class="work-meta"><span class="tag">Logistics / parcel booking • Live project</span><span
+                                class="visit">Visit site →</span></div>
+                        <h3>Rcargo — cargo booking &amp; agent portal</h3>
+                        <p>Server-backed parcel booking system with branch and admin login, cargo booking, LR
+                            generation, automatic tariff/GST calculation, and consignment tracking.
+                            <strong>rcargo.vercel.app</strong>
+                        </p>
+                    </a>
+                </div>
+                <p class="work-note">Two real, live projects. Add more case studies here as you ship them.</p>
+            </div>
+        </section>
+
+        <!-- CLIENT REVIEWS -->
+        <section class="dark tight" id="reviews">
+            <div class="wrap">
+                <div class="section-head reveal-diag">
+                    <h2>What clients say.</h2>
+                    <p>/reviews — first slide is a real video review, drop your file in. The rest are placeholder
+                        quotes.</p>
+                </div>
+
+                <div class="tcarousel reveal-left">
+                    <div class="tcarousel-track" id="tTrack">
+
+                        <div class="tslide">
+                            <div class="tcard tcard-video">
+                                <div class="video-wrap">
+                                    <video id="clientVideo" controls playsinline preload="none"
+                                        poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 360'%3E%3Crect width='640' height='360' fill='%23141414'/%3E%3Ccircle cx='320' cy='168' r='38' fill='none' stroke='%23ffffff' stroke-width='2'/%3E%3Cpath d='M308 150 L342 168 L308 186 Z' fill='%23ffffff'/%3E%3Ctext x='320' y='250' fill='%239a9a9a' font-family='monospace' font-size='14' text-anchor='middle'%3EClient video review%3C/text%3E%3C/svg%3E">
+                                        <source src="assets/client-review-1.mp4" type="video/mp4">
+                                        Your browser doesn't support embedded video.
+                                    </video>
+                                </div>
+                                <div class="tfoot">
+                                    <div class="tavatar">V</div>
+                                    <div>
+                                        <div class="tname">Video review</div>
+                                        <div class="trole">Client name &amp; project — add details here</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section class="dark" id="contact">
+            <div class="wrap contact-grid">
+                <div class="contact-copy reveal-left">
+                    <div class="eyebrow">/contact</div>
+                    <h2>Let's build something.</h2>
+                    <p>Tell us what you're working on — send it straight to our WhatsApp and we'll reply as soon as we
+                        can.</p>
+                    <ul class="contact-info">
+                        <li><span>Email</span>kivextechnology@gmail.com</li>
+                        <li><span>WhatsApp</span>+91 70418 88899</li>
+                        <li><span>Location</span>India</li>
+                    </ul>
+                </div>
+                <form class="reveal-right" id="contactForm">
+                    <div class="field">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="field">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="field">
+                        <label for="project">Project type</label>
+                        <select id="project" name="project">
+                            <option>Website design</option>
+                            <option>Web development</option>
+                            <option>Automation / CRM</option>
+                            <option>Servers &amp; hosting</option>
+                            <option>Shopify store</option>
+                            <option>Something else</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label for="message">Project details</label>
+                        <textarea id="message" name="message" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send via WhatsApp <span class="arrow">→</span></button>
+                    <div class="form-status" id="formStatus"></div>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="wrap">
+            <div class="foot-top">
+                <div class="foot-word">KIVEX</div>
+                <div class="foot-cols">
+                    <div class="foot-col">
+                        <h4>Site</h4>
+                        <a href="#services">Services</a>
+                        <a href="#automation">Automation</a>
+                        <a href="#work">Work</a>
+                        <a href="#contact">Contact</a>
+                    </div>
+                    <div class="foot-col">
+                        <h4>Services</h4>
+                        <a href="#services">Website Design</a>
+                        <a href="#services">Web Development</a>
+                        <a href="#services">Servers &amp; Hosting</a>
+                        <a href="#services">Shopify Stores</a>
+                    </div>
+                </div>
+            </div>
+            <div class="foot-bottom">
+                <span>© <span id="year"></span> Kivex Technology. Building digital solutions for a better
+                    tomorrow.</span>
+                <span>hello@kivextechnology.com</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
