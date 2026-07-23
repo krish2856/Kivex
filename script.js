@@ -407,11 +407,13 @@
             }
         });
 
-        // Attach click triggers to Service Cards in #services
-        document.querySelectorAll('.svc-row[data-service-id]').forEach(card => {
-            card.addEventListener('click', () => {
-                const serviceId = card.dataset.serviceId;
-                openServiceOverlay(serviceId);
+        // Attach click triggers to Service Cards in #services and Footer Service Links
+        document.querySelectorAll('[data-service-id]').forEach(elem => {
+            elem.addEventListener('click', (e) => {
+                const serviceId = elem.dataset.serviceId;
+                if (serviceId) {
+                    openServiceOverlay(serviceId);
+                }
             });
         });
 

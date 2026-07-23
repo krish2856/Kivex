@@ -852,8 +852,15 @@
         .foot-col a {
             display: block;
             font-size: 14px;
-            color: var(--white);
+            color: var(--gray-400);
             padding: 4px 0;
+            cursor: pointer;
+            transition: color .2s ease, transform .2s ease;
+        }
+
+        .foot-col a:hover {
+            color: var(--white);
+            transform: translateX(4px);
         }
 
         .foot-bottom {
