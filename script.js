@@ -109,42 +109,48 @@
         let tIndex = 0;
         let tTimer;
 
-        tSlides.forEach((_, i) => {
-            const d = document.createElement('button');
-            d.className = 'tdot' + (i === 0 ? ' active' : '');
-            d.setAttribute('aria-label', 'Go to review ' + (i + 1));
-            d.addEventListener('click', () => { goTo(i); resetAutoplay(); });
-            tDotsWrap.appendChild(d);
-        });
-        const tDots = document.querySelectorAll('.tdot');
+        if (tTrack && tSlides.length > 0) {
+            if (tDotsWrap) {
+                tSlides.forEach((_, i) => {
+                    const d = document.createElement('button');
+                    d.className = 'tdot' + (i === 0 ? ' active' : '');
+                    d.setAttribute('aria-label', 'Go to review ' + (i + 1));
+                    d.addEventListener('click', () => { goTo(i); resetAutoplay(); });
+                    tDotsWrap.appendChild(d);
+                });
+            }
+            const tDots = document.querySelectorAll('.tdot');
 
-        function goTo(i) {
-            tIndex = (i + tSlides.length) % tSlides.length;
-            tTrack.style.transform = `translateX(-${tIndex * 100}%)`;
-            tDots.forEach((d, di) => d.classList.toggle('active', di === tIndex));
+            function goTo(i) {
+                tIndex = (i + tSlides.length) % tSlides.length;
+                if (tTrack) tTrack.style.transform = `translateX(-${tIndex * 100}%)`;
+                tDots.forEach((d, di) => d.classList.toggle('active', di === tIndex));
+            }
+            function autoAdvance() { goTo(tIndex + 1); }
+            function resetAutoplay() {
+                clearInterval(tTimer);
+                if (!reduced) tTimer = setInterval(autoAdvance, 5500);
+            }
+            if (tPrev) tPrev.addEventListener('click', () => { goTo(tIndex - 1); resetAutoplay(); });
+            if (tNext) tNext.addEventListener('click', () => { goTo(tIndex + 1); resetAutoplay(); });
+            const tCarousel = document.querySelector('.tcarousel');
+            if (tCarousel) {
+                tCarousel.addEventListener('mouseenter', () => clearInterval(tTimer));
+                tCarousel.addEventListener('mouseleave', resetAutoplay);
+            }
+
+            // touch swipe
+            let tStartX = 0;
+            tTrack.addEventListener('touchstart', (e) => { tStartX = e.touches[0].clientX; }, { passive: true });
+            tTrack.addEventListener('touchend', (e) => {
+                const dx = e.changedTouches[0].clientX - tStartX;
+                if (dx > 40) { goTo(tIndex - 1); resetAutoplay(); }
+                else if (dx < -40) { goTo(tIndex + 1); resetAutoplay(); }
+            }, { passive: true });
+
+            goTo(0);
+            resetAutoplay();
         }
-        function autoAdvance() { goTo(tIndex + 1); }
-        function resetAutoplay() {
-            clearInterval(tTimer);
-            if (!reduced) tTimer = setInterval(autoAdvance, 5500);
-        }
-        tPrev.addEventListener('click', () => { goTo(tIndex - 1); resetAutoplay(); });
-        tNext.addEventListener('click', () => { goTo(tIndex + 1); resetAutoplay(); });
-        const tCarousel = document.querySelector('.tcarousel');
-        tCarousel.addEventListener('mouseenter', () => clearInterval(tTimer));
-        tCarousel.addEventListener('mouseleave', resetAutoplay);
-
-        // touch swipe
-        let tStartX = 0;
-        tTrack.addEventListener('touchstart', (e) => { tStartX = e.touches[0].clientX; }, { passive: true });
-        tTrack.addEventListener('touchend', (e) => {
-            const dx = e.changedTouches[0].clientX - tStartX;
-            if (dx > 40) { goTo(tIndex - 1); resetAutoplay(); }
-            else if (dx < -40) { goTo(tIndex + 1); resetAutoplay(); }
-        }, { passive: true });
-
-        goTo(0);
-        resetAutoplay();
 
         // pause autoplay while the client video review is playing
         const clientVideo = document.getElementById('clientVideo');
@@ -220,3 +226,202 @@
             status.textContent = 'Opening WhatsApp…';
             window.open(waLink, '_blank');
         });
+
+        /* =========================================================
+           SERVICE DETAILS FULL-SCREEN OVERLAY & LIGHTBOX LOGIC
+           ========================================================= */
+        const serviceOverlay = document.getElementById('serviceOverlay');
+        const overlayBackdrop = document.getElementById('overlayBackdrop');
+        const overlayClose = document.getElementById('overlayClose');
+
+        const imageLightbox = document.getElementById('imageLightbox');
+        const lightboxOverlay = document.getElementById('lightboxOverlay');
+        const lightboxClose = document.getElementById('lightboxClose');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxCaption = document.getElementById('lightboxCaption');
+
+        let activeService = null;
+        let activeGalleryImages = [];
+        let currentImageIdx = 0;
+
+        // Open Service Overlay
+        function openServiceOverlay(serviceId) {
+            if (typeof servicesData === 'undefined' || !servicesData[serviceId]) {
+                console.warn('Service data not found for:', serviceId);
+                return;
+            }
+            activeService = servicesData[serviceId];
+            activeGalleryImages = [activeService.heroImage, ...(activeService.galleryImages || [])];
+            currentImageIdx = 0;
+
+            // Header Copy
+            document.getElementById('soEyebrow').textContent = activeService.path || '/' + serviceId;
+            document.getElementById('soTitle').textContent = activeService.title;
+            document.getElementById('soTagline').textContent = activeService.tagline;
+            document.getElementById('soOverview').textContent = activeService.overview;
+
+            // Main Hero Image & Thumbnails
+            updateOverlayGallery();
+
+            // Section 2: Features Grid
+            const featuresGrid = document.getElementById('soFeaturesGrid');
+            featuresGrid.innerHTML = (activeService.features || []).map(f => `
+                <div class="so-feature-card">
+                    <span class="so-feature-icon">${f.icon}</span>
+                    <h4>${f.title}</h4>
+                    <p>${f.desc}</p>
+                </div>
+            `).join('');
+
+            // Section 3: Process Timeline
+            const processTimeline = document.getElementById('soProcessTimeline');
+            processTimeline.innerHTML = (activeService.process || []).map(p => `
+                <div class="so-process-step">
+                    <span class="so-step-badge">STEP ${p.step}</span>
+                    <h4>${p.title}</h4>
+                    <p>${p.desc}</p>
+                </div>
+            `).join('');
+
+
+
+            // Section 5: Tech Badges
+            const techBadges = document.getElementById('soTechBadges');
+            techBadges.innerHTML = (activeService.technologies || []).map(tech => `
+                <span class="so-tech-badge">${tech}</span>
+            `).join('');
+
+            // Section 6: FAQs
+            const faqList = document.getElementById('soFaqList');
+            faqList.innerHTML = (activeService.faqs || []).map((faq, index) => `
+                <div class="so-faq-item ${index === 0 ? 'active' : ''}">
+                    <button class="so-faq-question">
+                        <span>${faq.q}</span>
+                        <span class="so-faq-icon">+</span>
+                    </button>
+                    <div class="so-faq-answer">${faq.a}</div>
+                </div>
+            `).join('');
+
+            // Accordion click handlers
+            faqList.querySelectorAll('.so-faq-question').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const item = btn.closest('.so-faq-item');
+                    item.classList.toggle('active');
+                });
+            });
+
+            // Show Overlay
+            serviceOverlay.classList.add('open');
+            serviceOverlay.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('overlay-open');
+        }
+
+        // Gallery Slider Updates
+        function updateOverlayGallery() {
+            const heroImg = document.getElementById('soHeroImg');
+            if (activeGalleryImages.length > 0) {
+                heroImg.src = activeGalleryImages[currentImageIdx];
+            }
+
+            const track = document.getElementById('soThumbTrack');
+            track.innerHTML = activeGalleryImages.map((img, idx) => `
+                <div class="so-thumb-item ${idx === currentImageIdx ? 'active' : ''}" data-index="${idx}">
+                    <img src="${img}" alt="Thumbnail ${idx + 1}">
+                </div>
+            `).join('');
+
+            track.querySelectorAll('.so-thumb-item').forEach(thumb => {
+                thumb.addEventListener('click', () => {
+                    currentImageIdx = parseInt(thumb.dataset.index);
+                    updateOverlayGallery();
+                });
+            });
+        }
+
+        // Thumb Prev / Next
+        const thumbPrev = document.getElementById('soThumbPrev');
+        const thumbNext = document.getElementById('soThumbNext');
+        if (thumbPrev) {
+            thumbPrev.addEventListener('click', () => {
+                if (activeGalleryImages.length === 0) return;
+                currentImageIdx = (currentImageIdx - 1 + activeGalleryImages.length) % activeGalleryImages.length;
+                updateOverlayGallery();
+            });
+        }
+        if (thumbNext) {
+            thumbNext.addEventListener('click', () => {
+                if (activeGalleryImages.length === 0) return;
+                currentImageIdx = (currentImageIdx + 1) % activeGalleryImages.length;
+                updateOverlayGallery();
+            });
+        }
+
+        // Enlarge Main Image
+        const enlargeMainBtn = document.getElementById('soEnlargeMain');
+        if (enlargeMainBtn) {
+            enlargeMainBtn.addEventListener('click', () => {
+                if (activeGalleryImages[currentImageIdx]) {
+                    openLightbox(activeGalleryImages[currentImageIdx], activeService ? activeService.title : '');
+                }
+            });
+        }
+
+        // Close Service Overlay
+        function closeServiceOverlay() {
+            if (!serviceOverlay) return;
+            serviceOverlay.classList.remove('open');
+            serviceOverlay.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('overlay-open');
+        }
+
+        if (overlayClose) overlayClose.addEventListener('click', closeServiceOverlay);
+        if (overlayBackdrop) overlayBackdrop.addEventListener('click', closeServiceOverlay);
+
+        // Lightbox Functions
+        function openLightbox(imgSrc, caption = '') {
+            if (!imageLightbox) return;
+            lightboxImg.src = imgSrc;
+            lightboxCaption.textContent = caption;
+            imageLightbox.classList.add('open');
+            imageLightbox.setAttribute('aria-hidden', 'false');
+        }
+
+        function closeLightbox() {
+            if (!imageLightbox) return;
+            imageLightbox.classList.remove('open');
+            imageLightbox.setAttribute('aria-hidden', 'true');
+        }
+
+        if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+        if (lightboxOverlay) lightboxOverlay.addEventListener('click', closeLightbox);
+
+        // Global ESC Key Close Handler
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                if (imageLightbox && imageLightbox.classList.contains('open')) {
+                    closeLightbox();
+                } else if (serviceOverlay && serviceOverlay.classList.contains('open')) {
+                    closeServiceOverlay();
+                }
+            }
+        });
+
+        // Attach click triggers to Service Cards in #services
+        document.querySelectorAll('.svc-row[data-service-id]').forEach(card => {
+            card.addEventListener('click', () => {
+                const serviceId = card.dataset.serviceId;
+                openServiceOverlay(serviceId);
+            });
+        });
+
+        // CTA Links in Overlay: Smooth Scroll to #contact & Close Overlay
+        ['soCtaPrimary', 'soCtaSecondary', 'soFinalCta'].forEach(id => {
+            const btn = document.getElementById(id);
+            if (btn) {
+                btn.addEventListener('click', (e) => {
+                    closeServiceOverlay();
+                });
+            }
+        });
+
