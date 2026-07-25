@@ -362,7 +362,7 @@ window.addEventListener('load', () => {
             setTimeout(() => {
                 preloader.style.display = 'none';
             }, 600);
-        }, 500);
+        }, 2500);
     }
 });
 

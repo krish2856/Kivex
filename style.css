@@ -2180,7 +2180,7 @@ body.overlay-open {
     height: 100%;
     width: 0%;
     background: var(--primary);
-    animation: loaderProgress 2s cubic-bezier(0.8, 0, 0.2, 1) forwards;
+    animation: loaderProgress 3s cubic-bezier(0.8, 0, 0.2, 1) forwards;
 }
 
 @keyframes loaderPulse {
