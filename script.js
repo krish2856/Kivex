@@ -352,3 +352,17 @@ document.querySelectorAll('.foot-svc-link').forEach(elem => {
     });
 });
 
+// Preloader
+window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader');
+    if (preloader && preloader.style.display !== 'none') {
+        sessionStorage.setItem('kivex_visited', 'true');
+        setTimeout(() => {
+            preloader.classList.add('preloader-hidden');
+            setTimeout(() => {
+                preloader.style.display = 'none';
+            }, 600);
+        }, 500);
+    }
+});
+

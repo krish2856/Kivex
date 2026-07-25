@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KIVEX Technology — Gen Z Digital Tech Sale | Up to 50% OFF</title>
+    <meta name="description"
+        content="KIVEX Technology: Next-Gen Digital Solutions. Save up to 50% OFF on Web Development, AI & Automation, Branding, Digital Marketing, and Cloud Infrastructure." />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet" />
+
+    <style>
+        /* RESET & CORE BASE */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #f5efe5;
+            font-family: 'Inter', sans-serif;
+            color: #0a0a0a;
+            line-height: 1.5;
+            padding: 20px 10px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* MAIN CONTAINER - Ultra Boxy Hard Borders */
+        .wrap {
+            max-width: 660px;
+            margin: 0 auto;
+            background: #fff;
+            border: 1px solid #dfd7c9;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+        }
+
+        /* COMMON UTILITIES */
+        .b-bold {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .bx-shadow {
+            border: 1px solid #dfd7c9;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+        }
+
+        .bg-yellow {
+            background: #e8b62a;
+            color: #0a0a0a;
+        }
+
+        .bg-blue {
+            background: #2d5fc7;
+            color: #fff;
+        }
+
+        /* 1. TOP TICKER */
+        .ticker {
+            background: #2d5fc7;
+            color: #fff;
+            padding: 10px 16px;
+            border-bottom: 1px solid #dfd7c9;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .ticker-title {
+            font-size: 12px;
+            letter-spacing: 0.8px;
+        }
+
+        .badge {
+            font-size: 10px;
+            padding: 3px 8px;
+            border: 1px solid #dfd7c9;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+        }
+
+        /* 2. HEADER */
+        .header {
+            background: #f5efe5;
+            padding: 18px 24px;
+            border-bottom: 1px solid #dfd7c9;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo-k {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #dfd7c9;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+            font-size: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .brand-title {
+            font-size: 22px;
+            color: #0a0a0a;
+            line-height: 1;
+        }
+
+        .brand-sub {
+            font-size: 9px;
+            color: #2d5fc7;
+            letter-spacing: 1.2px;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav a {
+            font-size: 12px;
+            color: #0a0a0a;
+            text-decoration: none;
+        }
+
+        .btn-nav {
+            font-size: 11px;
+            padding: 7px 12px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        /* 3. HERO AD */
+        .hero {
+            background: #fdfbf7;
+            padding: 40px 24px;
+            border-bottom: 1px solid #dfd7c9;
+        }
+
+        .stamp {
+            display: inline-block;
+            font-size: 11px;
+            padding: 4px 10px;
+            border: 1px solid #dfd7c9;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+            margin-bottom: 16px;
+        }
+
+        .hero h1 {
+            font-size: 34px;
+            line-height: 1.15;
+            letter-spacing: -0.8px;
+            margin-bottom: 14px;
+        }
+
+        .hl-blue {
+            background: #2d5fc7;
+            color: #fff;
+            padding: 0 6px;
+        }
+
+        .hl-yellow {
+            background: #e8b62a;
+            color: #0a0a0a;
+            padding: 0 6px;
+            border: 1px solid #dfd7c9;
+        }
+
+        .hero p {
+            font-size: 14px;
+            color: #444;
+            margin-bottom: 22px;
+            font-weight: 600;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            font-size: 13px;
+            padding: 13px 22px;
+            border: 1px solid #dfd7c9;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-p {
+            background: #2d5fc7;
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+        }
+
+        .btn-s {
+            background: #e8b62a;
+            color: #0a0a0a;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+        }
+
+        /* AD DISPLAY BOX */
+        .ad-card {
+            border: 1px solid #dfd7c9;
+            background: #0a0a0a;
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(45, 95, 199, 0.15);
+        }
+
+        .ad-head {
+            background: #2d5fc7;
+            padding: 10px 14px;
+            border-bottom: 1px solid #dfd7c9;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .ad-body {
+            padding: 20px 16px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .m-card {
+            background: #f5efe5;
+            color: #0a0a0a;
+            border: 1px solid #dfd7c9;
+            box-shadow: 0 2px 8px rgba(232, 182, 42, 0.15);
+            padding: 10px 4px;
+            text-align: center;
+        }
+
+        .m-val {
+            font-size: 22px;
+            color: #2d5fc7;
+        }
+
+        .m-lbl {
+            font-size: 9px;
+            font-weight: 800;
+        }
+
+        /* 4. INTRO */
+        .intro {
+            background: #f5efe5;
+            padding: 32px 24px;
+            border-bottom: 1px solid #dfd7c9;
+        }
+
+        .intro h2 {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .intro p {
+            font-size: 14px;
+            color: #333;
+            font-weight: 600;
+            line-height: 1.6;
+        }
+
+        /* 4 PILLARS */
+        .pillars {
+            padding: 32px 24px;
+            border-bottom: 1px solid #dfd7c9;
+            background: #fff;
+        }
+
+        .pillars h3 {
+            font-size: 18px;
+            margin-bottom: 16px;
+        }
+
+        .p-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .p-card {
+            background: #f5efe5;
+            border: 1px solid #dfd7c9;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+            padding: 14px;
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+
+        .p-num {
+            background: #2d5fc7;
+            color: #fff;
+            width: 26px;
+            height: 26px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #dfd7c9;
+            flex-shrink: 0;
+        }
+
+        .p-card:nth-child(2) .p-num {
+            background: #e8b62a;
+            color: #0a0a0a;
+        }
+
+        .p-card h4 {
+            font-size: 13px;
+            color: #0a0a0a;
+            line-height: 1.3;
+        }
+
+        /* 5 SERVICES */
+        .svc-card {
+            padding: 32px 24px;
+            border-bottom: 1px solid #dfd7c9;
+            background: #fff;
+        }
+
+        .svc-card:nth-child(even) {
+            background: #fdfbf7;
+        }
+
+        .svc-head {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .svc-icon {
+            width: 44px;
+            height: 44px;
+            background: #2d5fc7;
+            color: #fff;
+            border: 1px solid #dfd7c9;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .svc-icon.yellow {
+            background: #e8b62a;
+            color: #0a0a0a;
+        }
+
+        .svc-icon.dark {
+            background: #0a0a0a;
+            color: #fff;
+        }
+
+        .svc-info h3 {
+            font-size: 19px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .svc-info p {
+            font-size: 12px;
+            color: #666;
+            font-weight: 600;
+        }
+
+        .chip-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            gap: 10px;
+            margin-top: 14px;
+        }
+
+        .chip {
+            background: #f5efe5;
+            border: 1px solid #dfd7c9;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+            padding: 10px 12px;
+            font-size: 12px;
+            font-weight: 700;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .svc-card:nth-child(even) .chip {
+            background: #fff;
+        }
+
+        .tag {
+            font-size: 8px;
+            padding: 2px 5px;
+            border: 1px solid #dfd7c9;
+        }
+
+        .tag-n {
+            background: #2d5fc7;
+            color: #fff;
+        }
+
+        .tag-a {
+            background: #e8b62a;
+            color: #0a0a0a;
+        }
+
+        /* CLOSING AD */
+        .closing {
+            background: #2d5fc7;
+            color: #fff;
+            padding: 40px 24px;
+            text-align: center;
+            border-bottom: 1px solid #dfd7c9;
+        }
+
+        .closing h2 {
+            font-size: 30px;
+            margin-bottom: 12px;
+        }
+
+        .closing p {
+            font-size: 14px;
+            max-width: 460px;
+            margin: 0 auto 24px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .btn-c {
+            background: #e8b62a;
+            color: #0a0a0a;
+            font-size: 15px;
+            padding: 14px 30px;
+            border: 1px solid #dfd7c9;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: #0a0a0a;
+            color: #fff;
+            padding: 32px 24px 20px;
+        }
+
+        .f-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+            flex-wrap: wrap;
+        }
+
+        .f-brand h3 {
+            font-size: 22px;
+        }
+
+        .f-brand p {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 4px;
+            max-width: 200px;
+        }
+
+        .f-cols {
+            display: flex;
+            gap: 28px;
+            flex-wrap: wrap;
+        }
+
+        .f-col h4 {
+            font-size: 11px;
+            color: #e8b62a;
+            margin-bottom: 8px;
+        }
+
+        .f-col a {
+            display: block;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .f-bot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.5);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .s-row {
+            display: flex;
+            gap: 6px;
+        }
+
+        .s-btn {
+            width: 30px;
+            height: 30px;
+            background: #f5efe5;
+            color: #0a0a0a;
+            border: 1px solid #dfd7c9;
+            box-shadow: 0 2px 8px rgba(45, 95, 199, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 10px 5px; }
+            .header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 16px;
+                padding: 20px 12px;
+            }
+            .brand {
+                justify-content: center;
+            }
+            .nav {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 14px;
+            }
+            .hero { padding: 30px 16px; }
+            .hero h1 { font-size: 26px; }
+            .btn-group {
+                flex-direction: column;
+                width: 100%;
+            }
+            .btn-group .btn {
+                text-align: center;
+                width: 100%;
+            }
+            .p-grid,
+            .grid-3 { grid-template-columns: 1fr; }
+            .chip-grid { grid-template-columns: 1fr; }
+            .f-top {
+                flex-direction: column;
+                gap: 24px;
+            }
+            .f-cols {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .closing h2 { font-size: 24px; }
+            .svc-card, .intro, .pillars, .closing {
+                padding: 24px 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wrap">
+
+        <!-- 1. TOP TICKER SALE BANNER -->
+        <div class="ticker">
+            <div class="ticker-title b-bold">⚡ GEN Z VIBED DIGITAL TECHNOLOGY SALE</div>
+            <div>
+                <span class="badge b-bold bg-yellow">UP TO 50% OFF</span>
+                <span class="badge b-bold" style="background:#fff; color:#0a0a0a;">FREE CONSULTATION</span>
+            </div>
+        </div>
+
+        <!-- 2. KIVEX HEADER -->
+        <header class="header">
+            <a href="https://www.kivextechnology.com" class="brand">
+                <div class="logo-k b-bold bg-yellow">K</div>
+                <div>
+                    <div class="brand-title b-bold">KIVEX<span style="color:#2d5fc7;">.</span></div>
+                    <div class="brand-sub b-bold">NEXT-GEN DIGITAL SOLUTIONS</div>
+                </div>
+            </a>
+            <div class="nav">
+                <a href="#services" class="b-bold">Services</a>
+                <a href="#pillars" class="b-bold">Pillars</a>
+                <a href="https://www.kivextechnology.com" class="btn-nav b-bold bx-shadow bg-blue">Book Consultation</a>
+            </div>
+        </header>
+
+        <!-- 3. HERO AD SECTION -->
+        <section class="hero">
+            <div class="stamp b-bold bg-yellow">🔥 SUMMER TECH FLASH SALE • UP TO 50% OFF</div>
+
+            <h1 class="b-bold">
+                Build Smarter.<br>
+                <span class="hl-blue">Grow Faster.</span><br>
+                <span class="hl-yellow">Scale Limitlessly.</span>
+            </h1>
+
+            <p>We build ultra-fast Web Applications, AI Automations, High-Impact Branding, and Ironclad Cloud
+                Infrastructure. Stop settling for slow tech—dominate your market today.</p>
+
+            <div class="btn-group">
+                <a href="https://www.kivextechnology.com" class="btn b-bold btn-p">Get Started ⚡</a>
+                <a href="https://www.kivextechnology.com" class="btn b-bold btn-s">Book Free Consultation 📅</a>
+            </div>
+
+            <!-- AD DISPLAY CARD -->
+            <div class="ad-card">
+                <div class="ad-head">
+                    <span class="b-bold" style="font-size:12px; color:#e8b62a;">⚡ KIVEX DIGITAL ENGINE v2026</span>
+                    <span class="badge b-bold bg-yellow" style="font-size:10px;">50% OFF SPECIAL</span>
+                </div>
+                <div class="ad-body">
+                    <p class="b-bold" style="font-size:13px;">Next-Gen Full-Stack • AI Workflow • Cloud Infrastructure
+                    </p>
+                    <div class="grid-3">
+                        <div class="m-card">
+                            <div class="m-val b-bold">10X</div>
+                            <div class="m-lbl b-bold">Speed & Scale</div>
+                        </div>
+                        <div class="m-card">
+                            <div class="m-val b-bold">50%</div>
+                            <div class="m-lbl b-bold">Cost Savings</div>
+                        </div>
+                        <div class="m-card">
+                            <div class="m-val b-bold">99.9%</div>
+                            <div class="m-lbl b-bold">Cloud Uptime</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. INTRODUCTION -->
+        <section class="intro">
+            <span class="stamp b-bold" style="background:#0a0a0a; color:#e8b62a;">KIVEX FOR NEXT-GEN DIGITAL
+                SOLUTIONS</span>
+            <h2 class="b-bold">Built for Modern Tech Dominance</h2>
+            <p>KIVEX delivers battle-tested digital architecture combining full-stack development, custom AI marketing
+                pipelines, viral creative media, and enterprise-grade cloud management. Designed to give your business
+                an unfair edge in the digital space.</p>
+        </section>
+
+        <!-- 4 HEAD TOPIC PILLARS DIVISION -->
+        <section id="pillars" class="pillars">
+            <h3 class="b-bold">Our 4 Core Service Pillars</h3>
+            <div class="p-grid">
+                <div class="p-card">
+                    <div class="p-num b-bold">1</div>
+                    <div>
+                        <h4 class="b-bold">Web & Digital Products <span class="tag b-bold tag-a">Flagship</span></h4>
+                    </div>
+                </div>
+                <div class="p-card">
+                    <div class="p-num b-bold">2</div>
+                    <div>
+                        <h4 class="b-bold">AI Marketing & Automation <span class="tag b-bold tag-a">Flagship</span></h4>
+                    </div>
+                </div>
+                <div class="p-card">
+                    <div class="p-num b-bold">3</div>
+                    <div>
+                        <h4 class="b-bold">Brand & Content Experience</h4>
+                    </div>
+                </div>
+                <div class="p-card">
+                    <div class="p-num b-bold">4</div>
+                    <div>
+                        <h4 class="b-bold">Managed Cloud & Growth</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5 DETAILED SERVICES CATEGORIES -->
+        <div id="services">
+
+            <!-- 1. Web Development -->
+            <div class="svc-card">
+                <div class="svc-head">
+                    <div class="svc-icon">💻</div>
+                    <div class="svc-info">
+                        <h3 class="b-bold">1. Web Development <span class="tag b-bold tag-n">Flagship</span></h3>
+                        <p>High-conversion web platforms & responsive digital applications.</p>
+                    </div>
+                </div>
+                <div class="chip-grid b-bold">
+                    <div class="chip"><span>🎨 Web Design</span></div>
+                    <div class="chip"><span>⚡ Web Development</span></div>
+                    <div class="chip"><span>📄 Single-page Website</span></div>
+                    <div class="chip"><span>🛒 Shopify Stores</span></div>
+                    <div class="chip"><span>🚀 Web Applications</span></div>
+                </div>
+            </div>
+
+            <!-- 2. AI & Automation -->
+            <div class="svc-card">
+                <div class="svc-head">
+                    <div class="svc-icon yellow">🤖</div>
+                    <div class="svc-info">
+                        <h3 class="b-bold">2. AI & Automation <span class="tag b-bold tag-n">Flagship</span></h3>
+                        <p>Automate sales workflows, CRM pipelines, and lead gen.</p>
+                    </div>
+                </div>
+                <div class="chip-grid b-bold">
+                    <div class="chip"><span>✨ AI Marketing</span><span class="tag tag-n">New</span></div>
+                    <div class="chip"><span>🔄 Automation & CRM</span></div>
+                    <div class="chip"><span>💬 AI Chatbots</span><span class="tag tag-a">Add</span></div>
+                    <div class="chip"><span>⚙️ AI Workflow Automation</span><span class="tag tag-a">Add</span></div>
+                    <div class="chip"><span>🎯 Lead Generation Automation</span><span class="tag tag-a">Add</span></div>
+                </div>
+            </div>
+
+            <!-- 3. Creative & Media -->
+            <div class="svc-card">
+                <div class="svc-head">
+                    <div class="svc-icon dark">🎨</div>
+                    <div class="svc-info">
+                        <h3 class="b-bold">3. Creative & Media</h3>
+                        <p>Custom logos, AI art generation, and viral promotional content.</p>
+                    </div>
+                </div>
+                <div class="chip-grid b-bold">
+                    <div class="chip"><span>🏷️ Custom Logo & Branding</span></div>
+                    <div class="chip"><span>🖼️ AI-generated Art</span></div>
+                    <div class="chip"><span>🎬 Promo Videos & Animations</span></div>
+                    <div class="chip"><span>📹 Script for Reels & Video</span></div>
+                    <div class="chip"><span>📄 Marketing Materials</span></div>
+                </div>
+            </div>
+
+            <!-- 4. Digital Marketing & Online Presence -->
+            <div class="svc-card">
+                <div class="svc-head">
+                    <div class="svc-icon">📈</div>
+                    <div class="svc-info">
+                        <h3 class="b-bold">4. Digital Marketing & Online Presence</h3>
+                        <p>SEO copywriting, email campaigns, and multi-channel expansion.</p>
+                    </div>
+                </div>
+                <div class="chip-grid b-bold">
+                    <div class="chip"><span>✍️ SEO Blog & Copywriting</span></div>
+                    <div class="chip"><span>📧 Email Newsletters</span></div>
+                    <div class="chip"><span>📲 Social Media Setup</span></div>
+                    <div class="chip"><span>📍 Google Business Profile Setup</span><span class="tag tag-a">Add</span>
+                    </div>
+                    <div class="chip"><span>📱 Social Media Management</span><span class="tag tag-a">Add</span></div>
+                </div>
+            </div>
+
+            <!-- 5. Cloud & Infrastructure -->
+            <div class="svc-card">
+                <div class="svc-head">
+                    <div class="svc-icon yellow">☁️</div>
+                    <div class="svc-info">
+                        <h3 class="b-bold">5. Cloud & Infrastructure</h3>
+                        <p>Server management, domain DNS, 24/7 maintenance & security.</p>
+                    </div>
+                </div>
+                <div class="chip-grid b-bold">
+                    <div class="chip"><span>🖥️ Servers & Hosting</span></div>
+                    <div class="chip"><span>🌐 Domain & DNS Management</span><span class="tag tag-a">Add</span></div>
+                    <div class="chip"><span>🛠️ Website Maintenance & Support</span><span class="tag tag-a">Add</span>
+                    </div>
+                    <div class="chip"><span>🔒 Website Security & Backups</span><span class="tag tag-a">Add</span></div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 6. CLOSING AD SECTION -->
+        <section class="closing">
+            <span class="stamp b-bold bg-yellow">⚡ LIMITED SLOTS • UP TO 50% OFF</span>
+            <h2 class="b-bold">Ready to Build <span
+                    style="background:#e8b62a; color:#0a0a0a; padding:0 4px; border:2px solid #0a0a0a;">The
+                    Future?</span></h2>
+            <p>Don't let legacy tools hold your company back. Lock in our exclusive 50% OFF sale pricing and scale
+                limitlessly with KIVEX.</p>
+            <a href="https://www.kivextechnology.com" class="btn-c b-bold">Let's Build Together 🚀</a>
+        </section>
+
+        <!-- 7. FOOTER -->
+        <footer class="footer">
+            <div class="f-top">
+                <div class="f-brand">
+                    <h3 class="b-bold">KIVEX<span style="color:#e8b62a;">.</span></h3>
+                    <p>KIVEX Technology — Next-Gen Digital Solutions for high-growth brands worldwide.</p>
+                </div>
+                <div class="f-cols">
+                    <div class="f-col">
+                        <h4 class="b-bold">Website</h4>
+                        <a href="https://www.kivextechnology.com">www.kivextechnology.com</a>
+                    </div>
+                    <div class="f-col">
+                        <h4 class="b-bold">Contact</h4>
+                        <a href="mailto:info@kivextechnology.com">info@kivextechnology.com</a>
+                        <a href="tel:+91 7041888899">+91 7041888899</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="f-bot">
+                <span>© 2026 KIVEX Technology. All rights reserved.</span>
+                <div class="s-row">
+                    <a href="https://www.kivextechnology.com" class="s-btn b-bold" title="LinkedIn">IN</a>
+                    <a href="https://www.kivextechnology.com" class="s-btn b-bold" title="Twitter / X">𝕏</a>
+                    <a href="https://www.kivextechnology.com" class="s-btn b-bold" title="Instagram">IG</a>
+                    <a href="https://www.kivextechnology.com" class="s-btn b-bold" title="GitHub">GIT</a>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+</body>
+
+</html>
