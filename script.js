@@ -1,3 +1,24 @@
+// loader
+window.addEventListener('load', () => {
+    const loader = document.getElementById('loader');
+    if (loader) {
+        setTimeout(() => {
+            loader.classList.add('loaded');
+            document.body.classList.add('loaded');
+            if (typeof typeLine === 'function') {
+                setTimeout(() => typeLine(0), 1200); // wait for fadeUp to start
+            }
+            // Allow time for the slide-up animation to finish before hiding completely
+            setTimeout(() => {
+                loader.style.display = 'none';
+            }, 800);
+        }, 1200); // Wait for the loading bar animation to finish
+    } else {
+        document.body.classList.add('loaded');
+        if (typeof typeLine === 'function') typeLine(0);
+    }
+});
+
 // year
 document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -7,25 +28,17 @@ const navLinks = document.getElementById('navLinks');
 navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
 navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
 
-window.initAnimationsList = [];
-window.startKivexAnimations = function() {
-    window.initAnimationsList.forEach(fn => fn());
-};
-
 // reveal on scroll (vertical, horizontal, diagonal variants)
 const revealSelector = '.reveal, .reveal-left, .reveal-right, .reveal-diag, .reveal-diag-rev';
 const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-window.initAnimationsList.push(() => {
-    if (!reduced) {
-        const io = new IntersectionObserver((entries) => {
-            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-        }, { threshold: .15 });
-        document.querySelectorAll(revealSelector).forEach(el => io.observe(el));
-    } else {
-        document.querySelectorAll(revealSelector).forEach(el => el.classList.add('in'));
-    }
-});
+if (!reduced) {
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: .15 });
+    document.querySelectorAll(revealSelector).forEach(el => io.observe(el));
+} else {
+    document.querySelectorAll(revealSelector).forEach(el => el.classList.add('in'));
+}
 
 // custom cursor: ring trails with easing, dot tracks instantly; both invert via mix-blend-mode
 const cursorRing = document.getElementById('cursorRing');
@@ -54,14 +67,12 @@ if (canCustomCursor) {
 // hero wordmark: split into animated letters
 const heroWord = document.getElementById('heroWord');
 const wordText = 'KIVEX';
-window.initAnimationsList.push(() => {
-    wordText.split('').forEach((ch, i) => {
-        const s = document.createElement('span');
-        s.className = 'letter';
-        s.textContent = ch;
-        s.style.animationDelay = (i * 0.12) + 's';
-        heroWord.appendChild(s);
-    });
+wordText.split('').forEach((ch, i) => {
+    const s = document.createElement('span');
+    s.className = 'letter';
+    s.textContent = ch;
+    s.style.animationDelay = (i * 0.12) + 's';
+    heroWord.appendChild(s);
 });
 
 // hero glow follows pointer (desktop only, respects reduced motion)
@@ -103,14 +114,12 @@ const animateCount = (el) => {
         requestAnimationFrame(tick);
     }
 };
-window.initAnimationsList.push(() => {
-    if (stats.length) {
-        const statIO = new IntersectionObserver((entries) => {
-            entries.forEach(e => { if (e.isIntersecting) { animateCount(e.target); statIO.unobserve(e.target); } });
-        }, { threshold: .4 });
-        stats.forEach(s => statIO.observe(s));
-    }
-});
+if (stats.length) {
+    const statIO = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { animateCount(e.target); statIO.unobserve(e.target); } });
+    }, { threshold: .4 });
+    stats.forEach(s => statIO.observe(s));
+}
 
 // testimonial carousel
 const tTrack = document.getElementById('tTrack');
@@ -214,7 +223,7 @@ function typeLine(index) {
     }
     step();
 }
-typeLine(0);
+// typeLine(0) is now called when the loader finishes
 
 // contact form -> opens WhatsApp with a pre-filled message built from the fields
 const WHATSAPP_NUMBER = '917041888899'; // country code 91 + number, no + or spaces
@@ -362,22 +371,5 @@ document.querySelectorAll('.foot-svc-link').forEach(elem => {
             window.location.href = 'service.html?id=' + serviceId;
         }
     });
-});
-
-// Preloader
-window.addEventListener('load', () => {
-    const preloader = document.getElementById('preloader');
-    if (preloader && preloader.style.display !== 'none') {
-        sessionStorage.setItem('kivex_visited', 'true');
-        setTimeout(() => {
-            if (window.startKivexAnimations) window.startKivexAnimations();
-            preloader.classList.add('preloader-hidden');
-            setTimeout(() => {
-                preloader.style.display = 'none';
-            }, 600);
-        }, 2500);
-    } else {
-        if (window.startKivexAnimations) window.startKivexAnimations();
-    }
 });
 

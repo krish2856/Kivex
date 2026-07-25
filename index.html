@@ -16,18 +16,15 @@
 </head>
 
 <body>
-    <!-- PRELOADER -->
-    <div id="preloader">
+    <!-- LOADER -->
+    <div id="loader" class="loader">
         <div class="loader-content">
-            <span class="loader-logo">KIVEX</span>
-            <div class="loader-bar"><div class="loader-progress"></div></div>
+            <div class="logo-mark">KIVEX<span>Technology</span></div>
+            <div class="loader-progress">
+                <div class="loader-bar"></div>
+            </div>
         </div>
     </div>
-    <script>
-        if (sessionStorage.getItem('kivex_visited')) {
-            document.getElementById('preloader').style.display = 'none';
-        }
-    </script>
 
     <div class="cursor-ring" id="cursorRing"></div>
     <div class="cursor-dot" id="cursorDot"></div>
