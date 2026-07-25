@@ -7,17 +7,25 @@ const navLinks = document.getElementById('navLinks');
 navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
 navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
 
+window.initAnimationsList = [];
+window.startKivexAnimations = function() {
+    window.initAnimationsList.forEach(fn => fn());
+};
+
 // reveal on scroll (vertical, horizontal, diagonal variants)
 const revealSelector = '.reveal, .reveal-left, .reveal-right, .reveal-diag, .reveal-diag-rev';
 const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-if (!reduced) {
-    const io = new IntersectionObserver((entries) => {
-        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-    }, { threshold: .15 });
-    document.querySelectorAll(revealSelector).forEach(el => io.observe(el));
-} else {
-    document.querySelectorAll(revealSelector).forEach(el => el.classList.add('in'));
-}
+
+window.initAnimationsList.push(() => {
+    if (!reduced) {
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+        }, { threshold: .15 });
+        document.querySelectorAll(revealSelector).forEach(el => io.observe(el));
+    } else {
+        document.querySelectorAll(revealSelector).forEach(el => el.classList.add('in'));
+    }
+});
 
 // custom cursor: ring trails with easing, dot tracks instantly; both invert via mix-blend-mode
 const cursorRing = document.getElementById('cursorRing');
@@ -46,12 +54,14 @@ if (canCustomCursor) {
 // hero wordmark: split into animated letters
 const heroWord = document.getElementById('heroWord');
 const wordText = 'KIVEX';
-wordText.split('').forEach((ch, i) => {
-    const s = document.createElement('span');
-    s.className = 'letter';
-    s.textContent = ch;
-    s.style.animationDelay = (i * 0.07) + 's';
-    heroWord.appendChild(s);
+window.initAnimationsList.push(() => {
+    wordText.split('').forEach((ch, i) => {
+        const s = document.createElement('span');
+        s.className = 'letter';
+        s.textContent = ch;
+        s.style.animationDelay = (i * 0.12) + 's';
+        heroWord.appendChild(s);
+    });
 });
 
 // hero glow follows pointer (desktop only, respects reduced motion)
@@ -93,12 +103,14 @@ const animateCount = (el) => {
         requestAnimationFrame(tick);
     }
 };
-if (stats.length) {
-    const statIO = new IntersectionObserver((entries) => {
-        entries.forEach(e => { if (e.isIntersecting) { animateCount(e.target); statIO.unobserve(e.target); } });
-    }, { threshold: .4 });
-    stats.forEach(s => statIO.observe(s));
-}
+window.initAnimationsList.push(() => {
+    if (stats.length) {
+        const statIO = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) { animateCount(e.target); statIO.unobserve(e.target); } });
+        }, { threshold: .4 });
+        stats.forEach(s => statIO.observe(s));
+    }
+});
 
 // testimonial carousel
 const tTrack = document.getElementById('tTrack');
@@ -358,11 +370,14 @@ window.addEventListener('load', () => {
     if (preloader && preloader.style.display !== 'none') {
         sessionStorage.setItem('kivex_visited', 'true');
         setTimeout(() => {
+            if (window.startKivexAnimations) window.startKivexAnimations();
             preloader.classList.add('preloader-hidden');
             setTimeout(() => {
                 preloader.style.display = 'none';
             }, 600);
         }, 2500);
+    } else {
+        if (window.startKivexAnimations) window.startKivexAnimations();
     }
 });
 
