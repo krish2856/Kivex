@@ -183,7 +183,7 @@ header .wrap {
     font-weight: 400;
     font-size: 10px;
     letter-spacing: .1em;
-    color: var(--gray-500);
+    color: var(--accent);
     display: block;
     margin-top: 2px;
     text-transform: uppercase;
@@ -507,54 +507,156 @@ section.dark .section-head p {
     color: var(--gray-400);
 }
 
-/* ---------- services ---------- */
-.svc-list {
-    border-top: 1px solid var(--line-light);
+/* ---------- services redesign ---------- */
+.services-container {
+    position: relative;
+    overflow: hidden;
+    min-height: 500px;
 }
 
-.svc-row {
-    display: grid;
-    grid-template-columns: 110px 1fr 1fr 24px;
-    align-items: center;
-    gap: 24px;
-    padding: 28px 0;
-    border-bottom: 1px solid var(--line-light);
-    cursor: default;
-    transition: padding-left .25s ease, background .25s ease;
+.services-view {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease, visibility 0.5s;
+    pointer-events: none;
 }
 
-.svc-row:hover {
-    padding-left: 14px;
-    background: var(--off-white);
+.services-view.active-view {
+    position: relative;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+    transition-delay: 0.1s;
 }
 
-.svc-path {
-    font-family: var(--mono);
-    font-size: 12px;
+.services-nav-bar {
+    margin-bottom: 32px;
+}
+
+.back-btn {
+    background: none;
+    border: none;
     color: var(--gray-500);
+    font-family: var(--body);
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 0;
+    transition: color 0.3s ease;
 }
 
-.svc-name {
+.back-btn:hover {
+    color: var(--black);
+}
+
+.back-btn .arrow {
+    transition: transform 0.3s ease;
+}
+
+.back-btn:hover .arrow {
+    transform: translateX(-4px);
+}
+
+.services-filter-bar {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    gap: 12px;
+    margin-bottom: 40px;
+    padding-bottom: 12px;
+    scrollbar-width: none; /* Firefox */
+}
+
+.services-filter-bar::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+}
+
+.filter-tab {
+    background: var(--off-white);
+    border: 1px solid var(--line-light);
+    color: var(--gray-500);
+    padding: 12px 24px;
+    border-radius: 100px;
+    font-family: var(--body);
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-tab:hover {
+    background: var(--line-light);
+    color: var(--black);
+}
+
+.filter-tab.active {
+    background: var(--black);
+    color: var(--white);
+    border-color: var(--black);
+}
+
+.svc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+}
+
+.svc-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 32px;
+    border: 1px solid var(--line-light);
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 220px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+}
+
+.svc-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+    border-color: var(--primary);
+}
+
+.cat-content h3 {
     font-family: var(--head);
-    font-weight: 700;
-    font-size: clamp(19px, 2.4vw, 26px);
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 8px;
 }
 
-.svc-desc {
+.cat-content p {
     font-size: 14.5px;
     color: var(--gray-500);
-    max-width: 420px;
 }
 
-.svc-arrow {
+.cat-arrow {
+    position: absolute;
+    bottom: 32px;
+    right: 32px;
     font-family: var(--mono);
-    font-size: 18px;
     opacity: 0;
-    transition: opacity .25s ease, transform .25s ease;
-    transform: translateX(-6px);
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+    color: var(--primary);
+    font-weight: bold;
 }
 
-.svc-row:hover .svc-arrow {
+.svc-card:hover .cat-arrow {
     opacity: 1;
     transform: translateX(0);
 }
@@ -783,9 +885,9 @@ section.dark .section-head p {
 .field select {
     width: 100%;
     background: transparent;
-    border: none;
-    border-bottom: 1px solid var(--line-dark);
-    padding: 10px 0;
+    border: 1px solid var(--accent);
+    border-radius: 0;
+    padding: 12px 14px;
     color: var(--white);
     font-size: 15px;
 }

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kivex Technology | Web Design, Development & CRM Automation</title>
+    <meta name="description"
+        content="Kivex Technology — website design, web development, servers, automation & Shopify builds. Building digital solutions for a better tomorrow.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="cursor-ring" id="cursorRing"></div>
+    <div class="cursor-dot" id="cursorDot"></div>
+
+    <header>
+        <div class="wrap">
+            <a href="#top" class="logo-mark">KIVEX<span>Technology</span></a>
+            <div class="nav-links" id="navLinks">
+                <nav class="main-nav">
+                    <a href="#about">About</a>
+                    <a href="#services">Services</a>
+                    <a href="#automation">Automation</a>
+                    <a href="#work">Work</a>
+                    <a href="#contact" class="btn" style="padding:10px 20px;">Start a Project</a>
+                </nav>
+            </div>
+            <button class="nav-toggle" id="navToggle"
+                aria-label="Toggle menu"><span></span><span></span><span></span></button>
+        </div>
+    </header>
+
+    <main id="top">
+
+        <!-- SERVICE DETAIL SECTION -->
+        <section id="services" style="padding-top: 120px;">
+            <div class="wrap">
+                <div class="services-container" id="servicesContainer">
+                    <!-- LEVEL 3: SERVICE DETAIL PANEL -->
+                    <div id="serviceDetail" style="position: relative; opacity: 1; visibility: visible; transform: none; pointer-events: auto;">
+                        <div class="services-nav-bar" style="margin-bottom: 20px;">
+                            <a href="index.html#services" class="back-btn" id="backToServices" style="text-decoration: none;">
+                                <span class="arrow">←</span> Back to Services
+                            </a>
+                        </div>
+                        <div class="so-header-grid" style="margin-top: 20px;">
+                            <div class="so-header-copy">
+                                <div class="so-eyebrow" id="soEyebrow">/web-design</div>
+                                <h1 class="so-title" id="soTitle">Website Design</h1>
+                                <p class="so-tagline" id="soTagline">Interfaces built around how your customers think.
+                                </p>
+                                <div class="so-actions">
+                                    <a href="#contact" class="btn so-cta-primary" id="soCtaPrimary">Start Project <span
+                                            class="arrow">→</span></a>
+                                </div>
+                            </div>
+                            <div class="so-hero-gallery">
+                                <div class="so-main-image-wrap">
+                                    <img id="soHeroImg" src="" alt="Service Featured Image" class="so-main-img">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SECTION 1: OVERVIEW -->
+                        <div class="so-section so-overview-section">
+                            <h2 class="so-section-heading"><span class="sec-num">01</span> Detailed Overview</h2>
+                            <p class="so-overview-text" id="soOverview"></p>
+                        </div>
+
+                        <!-- SECTION 2: WHAT IS INCLUDED -->
+                        <div class="so-section so-features-section">
+                            <h2 class="so-section-heading"><span class="sec-num">02</span> What Is Included</h2>
+                            <div class="so-features-grid" id="soFeaturesGrid"></div>
+                        </div>
+
+                        <!-- SECTION 3: PROCESS & TECH -->
+                        <div class="so-section so-process-section">
+                            <h2 class="so-section-heading"><span class="sec-num">03</span> Our Process</h2>
+                            <div class="so-process-timeline" id="soProcessTimeline"></div>
+                        </div>
+
+                        <div class="so-section so-tech-section">
+                            <h2 class="so-section-heading"><span class="sec-num">04</span> Technologies Used</h2>
+                            <div class="so-tech-badges" id="soTechBadges"></div>
+                        </div>
+
+                        <!-- SECTION 5: FAQ -->
+                        <div class="so-section so-faq-section">
+                            <h2 class="so-section-heading"><span class="sec-num">05</span> Frequently Asked Questions
+                            </h2>
+                            <div class="so-faq-list" id="soFaqList"></div>
+                        </div>
+
+                        <!-- SECTION 7: FINAL CTA -->
+                        <div class="so-section so-final-cta-section">
+                            <div class="so-final-cta-card">
+                                <h3>Ready to build your project?</h3>
+                                <p>Let's turn your vision into a high-performing digital asset today.</p>
+                                <a href="#contact" class="btn so-final-btn" id="soFinalCta">Get Free Consultation <span
+                                        class="arrow">→</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LIGHTBOX MODAL FOR ENLARGING IMAGES -->
+        <div class="lightbox-modal" id="imageLightbox" aria-hidden="true">
+            <div class="lightbox-overlay" id="lightboxOverlay"></div>
+            <div class="lightbox-content">
+                <button class="lightbox-close" id="lightboxClose" aria-label="Close Lightbox">✕</button>
+                <img id="lightboxImg" src="" alt="Enlarged view">
+                <div class="lightbox-caption" id="lightboxCaption"></div>
+            </div>
+        </div>
+
+
+
+        <!-- OTHER SECTIONS REMOVED -->
+
+    </main>
+
+    <footer>
+        <div class="wrap">
+            <div class="foot-top">
+                <div class="foot-word">KIVEX</div>
+                <div class="foot-cols">
+                    <div class="foot-col">
+                        <h4>Navigation</h4>
+                        <a href="#about">About</a>
+                        <a href="#services">Services</a>
+                        <a href="#automation">Automation</a>
+                        <a href="#work">Work</a>
+                        <a href="#contact">Contact</a>
+                    </div>
+                    <div class="foot-col">
+                        <h4>Services</h4>
+                        <a href="javascript:void(0)" class="foot-svc-link" data-service-id="web-design">Website
+                            Design</a>
+                        <a href="javascript:void(0)" class="foot-svc-link" data-service-id="development">Web
+                            Development</a>
+                        <a href="javascript:void(0)" class="foot-svc-link" data-service-id="automation">Automation &amp;
+                            CRM</a>
+                        <a href="javascript:void(0)" class="foot-svc-link" data-service-id="servers">Servers &amp;
+                            Hosting</a>
+                        <a href="javascript:void(0)" class="foot-svc-link" data-service-id="shopify">Shopify Stores</a>
+                        <a href="javascript:void(0)" class="foot-svc-link" data-service-id="single-page">Single-page
+                            Website</a>
+                        <a href="javascript:void(0)" class="foot-svc-link" data-service-id="branding">Custom Logo &amp;
+                            Branding</a>
+                    </div>
+                    <div class="foot-col">
+                        <h4>More Services</h4>
+                        <a href="javascript:void(0)" class="foot-svc-link" data-service-id="ai-art">AI-generated Art</a>
+                        <a href="javascript:void(0)" class="foot-svc-link" data-service-id="social-setup">Social Media
+                            Setup</a>
+                        <a href="javascript:void(0)" class="foot-svc-link" data-service-id="marketing">Marketing
+                            Materials</a>
+                        <a href="javascript:void(0)" class="foot-svc-link" data-service-id="promo-video">Promo Videos
+                            &amp; Animations</a>
+                        <a href="javascript:void(0)" class="foot-svc-link" data-service-id="seo-copy">SEO Blog &amp;
+                            Copywriting</a>
+                        <a href="javascript:void(0)" class="foot-svc-link" data-service-id="email-templates">Email
+                            Newsletters</a>
+                        <a href="javascript:void(0)" class="foot-svc-link" data-service-id="reels-script">Script for
+                            Reels</a>
+                    </div>
+                    <div class="foot-col">
+                        <h4>Social</h4>
+                        <a href="https://www.instagram.com/kivex_technology?igsh=eW0xMXhqNjRyZmRj" target="_blank"
+                            rel="noopener noreferrer">Instagram ↗</a>
+                    </div>
+                </div>
+            </div>
+            <div class="foot-bottom">
+                <span>© <span id="year"></span> Kivex Technology. Building digital solutions for a better
+                    tomorrow.</span>
+                <span>hello@kivextechnology.com</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="services-data.js"></script>
+    <script src="service.js"></script>
+
+</body>
+
+</html>
