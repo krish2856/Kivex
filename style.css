@@ -260,7 +260,7 @@ nav.main-nav a:hover::after {
     line-height: .92;
     letter-spacing: -0.01em;
     margin: 18px 0 8px;
-    color: var(--primary);
+    color: var(--black);
 }
 
 .hero-tech {
@@ -2160,7 +2160,7 @@ body.overlay-open {
 
 .loader .logo-mark {
     font-size: clamp(32px, 6vw, 42px);
-    color: var(--primary);
+    color: var(--black);
     overflow: hidden;
     position: relative;
     clip-path: inset(0 100% 0 0);
@@ -2181,11 +2181,12 @@ body.overlay-open {
 
 .loader-progress {
     width: 240px;
-    height: 1px;
+    height: 3px;
     background: var(--line-light);
     margin-top: 40px;
     position: relative;
     overflow: hidden;
+    border-radius: 2px;
 }
 
 .loader-bar {
@@ -2195,6 +2196,7 @@ body.overlay-open {
     height: 100%;
     width: 0%;
     background: var(--black);
+    border-radius: 2px;
     animation: loaderProgress 1.2s cubic-bezier(0.7, 0, 0.3, 1) forwards;
 }
 
