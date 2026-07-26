@@ -229,13 +229,30 @@ function typeLine(index) {
 const WHATSAPP_NUMBER = '917041888899'; // country code 91 + number, no + or spaces
 const form = document.getElementById('contactForm');
 const status = document.getElementById('formStatus');
-form.addEventListener('submit', function (e) {
+form.addEventListener('submit', async function (e) {
     e.preventDefault();
     const name = document.getElementById('name').value.trim();
     const email = document.getElementById('email').value.trim();
     const project = document.getElementById('project').value;
     const message = document.getElementById('message').value.trim();
 
+    status.textContent = 'Submitting your request...';
+
+    // 1. Send data to CRM Backend
+    try {
+        // IMPORTANT: Change this URL to your live Render URL after deploying
+        const API_URL = 'http://localhost:3000/api/leads'; 
+        await fetch(API_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, email, project, message })
+        });
+    } catch (err) {
+        console.error("Failed to save lead to CRM:", err);
+        // We catch the error so it continues to WhatsApp even if CRM is offline
+    }
+
+    // 2. Open WhatsApp
     const text =
         `New enquiry from kivextechnology.com\n` +
         `Name: ${name}\n` +
@@ -244,7 +261,7 @@ form.addEventListener('submit', function (e) {
         `Details: ${message}`;
 
     const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
-    status.textContent = 'Opening WhatsApp…';
+    status.textContent = 'Redirecting to WhatsApp…';
     window.open(waLink, '_blank');
 });
 
