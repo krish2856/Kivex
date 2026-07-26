@@ -9,70 +9,128 @@
     <link rel="stylesheet" href="crm.css">
 </head>
 <body>
-
     <!-- CRM Login Screen -->
     <div id="loginScreen" class="screen">
         <div class="login-box">
             <h1 class="logo">KIVEX</h1>
             <p>Admin CRM Portal</p>
             <div class="input-group">
-                <input type="password" id="adminPassword" placeholder="Enter Admin Password">
+                <input type="text" id="usernameInput" placeholder="Username">
+                <input type="password" id="passwordInput" placeholder="Password">
             </div>
             <button id="loginBtn" class="btn">Login</button>
-            <p id="loginError" class="error-text hidden">Incorrect password or server error.</p>
+            <p id="loginError" class="error-text hidden">Invalid credentials.</p>
         </div>
     </div>
 
-    <!-- CRM Dashboard Screen (Hidden by default) -->
+    <!-- CRM Dashboard Screen -->
     <div id="dashboardScreen" class="screen hidden">
         <header class="crm-header">
             <div class="header-left">
                 <h2 class="logo-small">KIVEX <span class="tag">CRM</span></h2>
+                <nav class="crm-nav hidden" id="adminNav">
+                    <button class="nav-btn active" id="tabLeads">Leads</button>
+                    <button class="nav-btn" id="tabUsers">Users</button>
+                </nav>
             </div>
             <div class="header-right">
-                <span id="backendStatus" class="status-badge checking">Checking connection...</span>
+                <span id="backendStatus" class="status-badge checking">Checking...</span>
+                <span id="currentUserDisplay" style="font-size: 13px; font-weight:600; color:#555;"></span>
                 <button id="logoutBtn" class="btn-outline">Logout</button>
             </div>
         </header>
 
         <main class="dashboard-content">
-            <div class="stats-row">
-                <div class="stat-card">
-                    <h3>Total Leads</h3>
-                    <p id="totalLeadsCount">0</p>
+            <!-- LEADS VIEW -->
+            <div id="viewLeads">
+                <div class="stats-row">
+                    <div class="stat-card">
+                        <h3>Total Leads</h3>
+                        <p id="totalLeadsCount">0</p>
+                    </div>
                 </div>
-                <div class="stat-card">
-                    <h3>Recent Activity</h3>
-                    <p>Within last 7 days</p>
+
+                <div class="leads-section">
+                    <div class="section-header">
+                        <h3>Contact Submissions</h3>
+                        <button id="refreshBtn" class="btn-icon">↻ Refresh</button>
+                    </div>
+
+                    <div class="table-container">
+                        <table id="leadsTable">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Project Type</th>
+                                    <th>Message</th>
+                                </tr>
+                            </thead>
+                            <tbody id="leadsBody"></tbody>
+                        </table>
+                        <div id="loadingLeads" class="loading-state">Loading leads...</div>
+                        <div id="noLeads" class="hidden empty-state">No leads found.</div>
+                    </div>
                 </div>
             </div>
 
-            <div class="leads-section">
-                <div class="section-header">
-                    <h3>Contact Submissions</h3>
-                    <button id="refreshBtn" class="btn-icon">↻ Refresh</button>
-                </div>
-
-                <div class="table-container">
-                    <table id="leadsTable">
-                        <thead>
-                            <tr>
-                                <th>Date</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Project Type</th>
-                                <th>Message</th>
-                            </tr>
-                        </thead>
-                        <tbody id="leadsBody">
-                            <!-- Leads will be injected here via JS -->
-                        </tbody>
-                    </table>
-                    <div id="loadingLeads" class="loading-state">Loading leads...</div>
-                    <div id="noLeads" class="hidden empty-state">No leads found.</div>
+            <!-- USERS VIEW (Admin Only) -->
+            <div id="viewUsers" class="hidden">
+                <div class="leads-section">
+                    <div class="section-header">
+                        <h3>System Users</h3>
+                        <button id="showAddUserBtn" class="btn-outline" style="padding: 6px 12px; font-size:12px;">+ Add User</button>
+                    </div>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Username</th>
+                                    <th>Role</th>
+                                    <th>Created At</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="usersBody"></tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </main>
+    </div>
+
+    <!-- Modals -->
+    <div id="userModal" class="modal hidden">
+        <div class="modal-content">
+            <h3 id="modalTitle">Add New User</h3>
+            <div class="input-group">
+                <input type="text" id="newUsername" placeholder="Username">
+                <input type="password" id="newPassword" placeholder="Password">
+                <select id="newRole" class="modal-select">
+                    <option value="staff">Staff (View Leads Only)</option>
+                    <option value="admin">Admin (Full Access)</option>
+                </select>
+            </div>
+            <div class="modal-actions">
+                <button id="cancelUserBtn" class="btn-outline">Cancel</button>
+                <button id="saveUserBtn" class="btn">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="passwordModal" class="modal hidden">
+        <div class="modal-content">
+            <h3>Change Password</h3>
+            <p id="pwTargetUser" style="font-size:12px; margin-bottom:10px; color:#555;"></p>
+            <div class="input-group">
+                <input type="password" id="changePasswordInput" placeholder="New Password">
+            </div>
+            <div class="modal-actions">
+                <button id="cancelPwBtn" class="btn-outline">Cancel</button>
+                <button id="savePwBtn" class="btn">Update</button>
+            </div>
+        </div>
     </div>
 
     <script src="crm.js"></script>
