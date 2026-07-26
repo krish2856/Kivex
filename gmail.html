@@ -536,9 +536,20 @@
         }
 
         @media (max-width: 600px) {
+            .ticker {
+                justify-content: center;
+                text-align: center;
+            }
+
             .header {
                 flex-direction: column;
                 text-align: center;
+                gap: 16px;
+            }
+
+            .nav {
+                flex-wrap: wrap;
+                justify-content: center;
             }
 
             .p-grid,
@@ -548,6 +559,23 @@
 
             .f-top {
                 flex-direction: column;
+                gap: 24px;
+                text-align: center;
+            }
+            
+            .f-brand p {
+                margin: 0 auto;
+            }
+
+            .f-cols {
+                justify-content: center;
+                text-align: center;
+            }
+
+            .f-bot {
+                flex-direction: column;
+                justify-content: center;
+                text-align: center;
             }
         }
     </style>
