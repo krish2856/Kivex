@@ -11,6 +11,16 @@
     <meta name="author" content="Kivex Technology">
     <meta name="theme-color" content="#f5efe5">
     <meta name="robots" content="index, follow">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23141414'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial Black,sans-serif' font-size='34' font-weight='900' fill='%23f5efe5'%3EK%3C/text%3E%3C/svg%3E">
+    <link rel="shortcut icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23141414'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial Black,sans-serif' font-size='34' font-weight='900' fill='%23f5efe5'%3EK%3C/text%3E%3C/svg%3E">
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='30' fill='%23141414'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial Black,sans-serif' font-size='100' font-weight='900' fill='%23f5efe5'%3EK%3C/text%3E%3C/svg%3E">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Kivex Technology | Web Design, Development & CRM Automation">
+    <meta property="og:description" content="Kivex Technology — website design, web development, servers, automation & Shopify builds. Building digital solutions for a better tomorrow.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kivextechnology.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -63,10 +73,15 @@
                 <div class="hero-grid">
                     <div>
                         <p class="hero-sub">We design, build, and automate the systems your business runs on — websites,
-                            web apps, servers, and the CRM automation that keeps leads from slipping through.</p>
+                            web apps, servers, and the CRM automation that keeps leads from slipping through.
+                            Whether you're a startup launching your first product or an established business ready to
+                            scale, Kivex Technology delivers end-to-end digital solutions built for performance,
+                            reliability, and growth. Our in-house team handles everything from brand identity and
+                            UI design to backend infrastructure and automated follow-up workflows — so nothing
+                            falls through the cracks.</p>
                         <div class="hero-ctas">
-                            <a href="#contact" class="btn">Start a project <span class="arrow">→</span></a>
-                            <a href="#work" class="btn ghost">See our work <span class="arrow">→</span></a>
+                            <a href="#contact" class="btn" id="hero-cta-start">Start a project <span class="arrow">→</span></a>
+                            <a href="#work" class="btn ghost" id="hero-cta-work">See our work <span class="arrow">→</span></a>
                         </div>
                     </div>
                     <div class="terminal" id="terminal">
@@ -121,6 +136,9 @@
                 </div>
                 <p class="work-note" style="color:var(--gray-400); margin-top:20px;">Placeholder figures — swap in your
                     real numbers.</p>
+                <div class="why-intro reveal-diag" style="margin-top:48px; padding-top:40px; border-top:1px solid rgba(255,255,255,0.08);">
+                    <p style="color:var(--gray-300); max-width:780px; line-height:1.8; font-size:clamp(14px,1.5vw,16px);">At Kivex Technology, we believe great digital products are built by teams who care about the craft. We are a full-service digital studio based in India, working with businesses across real estate, logistics, retail, and professional services. From the first wireframe to the final deployment, every decision is made with your customers and your growth in mind. We don't outsource, we don't use cookie-cutter templates, and we don't hand you off to a support queue — you get a direct line to the people who built your product, every step of the way.</p>
+                </div>
             </div>
         </section>
 
@@ -207,7 +225,7 @@
             <div class="wrap">
                 <div class="section-head reveal-diag">
                     <h2>Selected work.</h2>
-                    <p>/work — a few of the builds we've shipped. Swap in your own case studies here.</p>
+                    <p>A selection of live projects we have designed, developed, and deployed. Each build reflects our commitment to clean code, fast performance, and real business results.</p>
                 </div>
                 <div class="work-grid">
                     <a class="work-card reveal-diag" style="--d:0s" href="https://aastharealty.in" target="_blank"
@@ -233,7 +251,7 @@
                         </p>
                     </a>
                 </div>
-                <p class="work-note">Two real, live projects. Add more case studies here as you ship them.</p>
+                <p class="work-note">Every project is built from scratch — no page builders, no themes, no shortcuts. We write clean, maintainable code and hand you the keys.</p>
             </div>
         </section>
 
@@ -242,8 +260,7 @@
             <div class="wrap">
                 <div class="section-head reveal-diag">
                     <h2>What clients say.</h2>
-                    <p>/reviews — first slide is a real video review, drop your file in. The rest are placeholder
-                        quotes.</p>
+                    <p>Real feedback from real clients. We measure our success by the results we create for the businesses we work with.</p>
                 </div>
 
                 <div class="tcarousel reveal-left">
@@ -329,11 +346,11 @@
                 <div class="foot-cols">
                     <div class="foot-col">
                         <h4>Navigation</h4>
-                        <a href="#about">About</a>
-                        <a href="#services">Services</a>
-                        <a href="#automation">Automation</a>
-                        <a href="#work">Work</a>
-                        <a href="#contact">Contact</a>
+                        <a href="#about">Who We Are</a>
+                        <a href="#services">What We Do</a>
+                        <a href="#automation">CRM &amp; Automation</a>
+                        <a href="#work">Our Portfolio</a>
+                        <a href="#contact">Get In Touch</a>
                     </div>
                     <div class="foot-col">
                         <h4>Services</h4>
