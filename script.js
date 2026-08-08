@@ -390,3 +390,22 @@ document.querySelectorAll('.foot-svc-link').forEach(elem => {
     });
 });
 
+// hero read-more toggle
+const heroReadMoreBtn = document.getElementById('heroReadMoreBtn');
+const heroMoreText    = document.getElementById('heroMoreText');
+if (heroReadMoreBtn && heroMoreText) {
+    heroReadMoreBtn.addEventListener('click', () => {
+        const expanded = heroReadMoreBtn.getAttribute('aria-expanded') === 'true';
+        if (expanded) {
+            heroMoreText.classList.remove('visible');
+            heroMoreText.style.display = 'none';
+            heroReadMoreBtn.textContent = '... more';
+            heroReadMoreBtn.setAttribute('aria-expanded', 'false');
+        } else {
+            heroMoreText.style.display = 'inline';
+            heroMoreText.classList.add('visible');
+            heroReadMoreBtn.textContent = ' less';
+            heroReadMoreBtn.setAttribute('aria-expanded', 'true');
+        }
+    });
+}
