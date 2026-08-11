@@ -142,93 +142,48 @@ if (tTrack && tSlides.length > 0) {
 }
 
 // =========================================================
-// SERVICES — horizontal drag-scroll carousel
+// SERVICES — infinite auto-scroll marquee
 // =========================================================
 (function () {
     const grid = document.getElementById('svcGridContainer');
     if (!grid) return;
 
-    let isDragging = false;
-    let startX = 0;
-    let scrollLeft = 0;
-    let velocity = 0;
-    let lastX = 0;
-    let lastTime = 0;
-    let animFrame = null;
+    // Wait for cards to be rendered by services-data.js
+    const observer = new MutationObserver(() => {
+        const cards = grid.querySelectorAll('.svc-card');
+        if (cards.length === 0) return;
+        observer.disconnect();
+        setupMarquee();
+    });
+    observer.observe(grid, { childList: true });
 
-    function onPointerDown(e) {
-        if (e.target.closest('a')) return; // don't interfere with links
-        isDragging = true;
-        startX = e.pageX || e.touches?.[0]?.pageX || 0;
-        scrollLeft = grid.scrollLeft;
-        lastX = startX;
-        lastTime = Date.now();
-        velocity = 0;
-        grid.classList.add('dragging');
-        cancelAnimationFrame(animFrame);
+    function setupMarquee() {
+        const cards = grid.querySelectorAll('.svc-card');
+        if (cards.length === 0) return;
+
+        // Create track wrapper
+        const track = document.createElement('div');
+        track.className = 'svc-track';
+
+        // Move all cards into track
+        const cardArray = Array.from(cards);
+        cardArray.forEach(card => track.appendChild(card));
+
+        // Duplicate cards for seamless loop
+        cardArray.forEach(card => {
+            const clone = card.cloneNode(true);
+            clone.setAttribute('aria-hidden', 'true');
+            track.appendChild(clone);
+        });
+
+        grid.appendChild(track);
+
+        // Adjust speed based on total width
+        const totalWidth = track.scrollWidth / 2;
+        const speed = 40; // pixels per second
+        const duration = totalWidth / speed;
+        track.style.animationDuration = duration + 's';
     }
-
-    function onPointerMove(e) {
-        if (!isDragging) return;
-        e.preventDefault();
-        const x = e.pageX || e.touches?.[0]?.pageX || 0;
-        const now = Date.now();
-        const dt = now - lastTime;
-        if (dt > 0) {
-            velocity = (x - lastX) / dt;
-        }
-        lastX = x;
-        lastTime = now;
-        const walk = (startX - x) * 1; // sensitivity
-        grid.scrollLeft = scrollLeft + walk;
-    }
-
-    function onPointerUp() {
-        if (!isDragging) return;
-        isDragging = false;
-        grid.classList.remove('dragging');
-
-        // Momentum scroll
-        const momentum = velocity * 150;
-        let target = grid.scrollLeft - momentum;
-        // Snap to nearest card edge
-        const cardW = grid.querySelector('.svc-card')?.offsetWidth || 320;
-        const gap = 20;
-        const step = cardW + gap;
-        const snapped = Math.round(target / step) * step;
-        target = snapped;
-        target = Math.max(0, Math.min(target, grid.scrollWidth - grid.clientWidth));
-
-        // Animate to target
-        const startScroll = grid.scrollLeft;
-        const dist = target - startScroll;
-        const duration = 400;
-        const startTime = performance.now();
-
-        function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
-
-        function animate(now) {
-            const elapsed = now - startTime;
-            const p = Math.min(elapsed / duration, 1);
-            grid.scrollLeft = startScroll + dist * easeOut(p);
-            if (p < 1) {
-                animFrame = requestAnimationFrame(animate);
-            }
-        }
-        animFrame = requestAnimationFrame(animate);
-    }
-
-    grid.addEventListener('mousedown', onPointerDown);
-    grid.addEventListener('mousemove', onPointerMove);
-    grid.addEventListener('mouseup', onPointerUp);
-    grid.addEventListener('mouseleave', onPointerUp);
-
-    grid.addEventListener('touchstart', onPointerDown, { passive: true });
-    grid.addEventListener('touchmove', onPointerMove, { passive: false });
-    grid.addEventListener('touchend', onPointerUp);
-
-    // Prevent text selection while dragging
-    grid.addEventListener('dragstart', e => e.preventDefault());
 })();
     const tDots = document.querySelectorAll('.tdot');
 

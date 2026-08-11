@@ -658,23 +658,47 @@ section.dark .section-head p {
 .svc-grid {
     display: flex;
     gap: 20px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    padding: 8px 4px 24px;
-    cursor: grab;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
+    overflow: hidden;
+    padding: 8px 0 24px;
+    position: relative;
+    width: 100%;
 }
 
-.svc-grid::-webkit-scrollbar {
-    display: none;
+.svc-grid::before,
+.svc-grid::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 80px;
+    z-index: 2;
+    pointer-events: none;
 }
 
-.svc-grid.dragging {
-    cursor: grabbing;
-    scroll-behavior: auto;
-    scroll-snap-type: none;
+.svc-grid::before {
+    left: 0;
+    background: linear-gradient(90deg, var(--bg-color) 0%, transparent 100%);
+}
+
+.svc-grid::after {
+    right: 0;
+    background: linear-gradient(-90deg, var(--bg-color) 0%, transparent 100%);
+}
+
+.svc-track {
+    display: flex;
+    gap: 20px;
+    animation: svcScroll 30s linear infinite;
+    width: max-content;
+}
+
+.svc-grid:hover .svc-track {
+    animation-play-state: paused;
+}
+
+@keyframes svcScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-50% - 10px)); }
 }
 
 .svc-card {
@@ -694,7 +718,6 @@ section.dark .section-head p {
     position: relative;
     overflow: hidden;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
-    scroll-snap-align: start;
     user-select: none;
     -webkit-user-select: none;
 }
