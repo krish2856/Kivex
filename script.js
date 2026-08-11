@@ -150,12 +150,11 @@ if (tTrack && tSlides.length > 0) {
 
     let track = null;
     let halfWidth = 0;
-    let pos = 0; // current translateX
-    const speed = 60; // px per second
+    let pos = 0;
+    const speed = 60;
     let rafId = null;
-    let running = true;
+    let autoScroll = true;
 
-    // Drag state
     let isDragging = false;
     let dragStartX = 0;
     let dragStartPos = 0;
@@ -175,88 +174,89 @@ if (tTrack && tSlides.length > 0) {
         track = document.createElement('div');
         track.className = 'svc-track';
         cards.forEach(c => track.appendChild(c));
-        // Duplicate for loop
         cards.forEach(c => {
             const clone = c.cloneNode(true);
             clone.setAttribute('aria-hidden', 'true');
             track.appendChild(clone);
         });
         grid.appendChild(track);
-
         halfWidth = track.scrollWidth / 2;
-        pos = 0;
 
-        // Start animation loop
+        let lastTime = performance.now();
+
+        function animate() {
+            const now = performance.now();
+            const dt = (now - lastTime) / 1000;
+            lastTime = now;
+
+            if (autoScroll && !isDragging) {
+                pos -= speed * dt;
+                if (pos <= -halfWidth) pos += halfWidth;
+                if (pos > 0) pos -= halfWidth;
+            }
+
+            track.style.transform = `translateX(${pos}px)`;
+            rafId = requestAnimationFrame(animate);
+        }
         animate();
 
-        // Hover pause
+        // Hover: pause auto-scroll
         grid.addEventListener('mouseenter', () => {
-            if (!isDragging) running = false;
+            autoScroll = false;
         });
         grid.addEventListener('mouseleave', () => {
             if (!isDragging) {
-                running = true;
+                autoScroll = true;
                 lastTime = performance.now();
             }
         });
 
-        // Drag
-        grid.addEventListener('mousedown', dragStart);
-        window.addEventListener('mousemove', dragMove);
-        window.addEventListener('mouseup', dragEnd);
-        grid.addEventListener('touchstart', dragStart, { passive: true });
-        window.addEventListener('touchmove', dragMove, { passive: false });
-        window.addEventListener('touchend', dragEnd);
-    }
+        // Drag: mousedown anywhere on grid
+        grid.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            dragStartX = e.pageX;
+            dragStartPos = pos;
+            grid.classList.add('dragging');
+            e.preventDefault();
+        });
 
-    let lastTime = 0;
+        window.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            const delta = e.pageX - dragStartX;
+            pos = dragStartPos + delta;
+            if (pos <= -halfWidth) pos += halfWidth;
+            if (pos > 0) pos -= halfWidth;
+        });
 
-    function animate() {
-        const now = performance.now();
-        if (lastTime === 0) lastTime = now;
-        const dt = (now - lastTime) / 1000;
-        lastTime = now;
+        window.addEventListener('mouseup', () => {
+            if (!isDragging) return;
+            isDragging = false;
+            grid.classList.remove('dragging');
+            lastTime = performance.now();
+        });
 
-        if (running && !isDragging) {
-            pos -= speed * dt;
-        }
+        // Touch support
+        grid.addEventListener('touchstart', (e) => {
+            isDragging = true;
+            dragStartX = e.touches[0].pageX;
+            dragStartPos = pos;
+            grid.classList.add('dragging');
+        }, { passive: true });
 
-        // Wrap around
-        if (pos <= -halfWidth) {
-            pos += halfWidth;
-        }
-        if (pos > 0) {
-            pos -= halfWidth;
-        }
+        window.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            const delta = e.touches[0].pageX - dragStartX;
+            pos = dragStartPos + delta;
+            if (pos <= -halfWidth) pos += halfWidth;
+            if (pos > 0) pos -= halfWidth;
+        }, { passive: false });
 
-        track.style.transform = `translateX(${pos}px)`;
-        rafId = requestAnimationFrame(animate);
-    }
-
-    function dragStart(e) {
-        isDragging = true;
-        dragStartX = e.pageX || e.touches?.[0]?.pageX || 0;
-        dragStartPos = pos;
-        grid.classList.add('dragging');
-    }
-
-    function dragMove(e) {
-        if (!isDragging) return;
-        e.preventDefault();
-        const x = e.pageX || e.touches?.[0]?.pageX || 0;
-        const delta = x - dragStartX;
-        pos = dragStartPos + delta;
-
-        // Wrap while dragging
-        if (pos <= -halfWidth) pos += halfWidth;
-        if (pos > 0) pos -= halfWidth;
-    }
-
-    function dragEnd() {
-        if (!isDragging) return;
-        isDragging = false;
-        grid.classList.remove('dragging');
-        lastTime = performance.now();
+        window.addEventListener('touchend', () => {
+            if (!isDragging) return;
+            isDragging = false;
+            grid.classList.remove('dragging');
+            lastTime = performance.now();
+        });
     }
 })();
     const tDots = document.querySelectorAll('.tdot');
