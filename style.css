@@ -693,23 +693,12 @@ section.dark .section-head p {
 .svc-track {
     display: flex;
     gap: 20px;
-    animation: svcScroll 30s linear infinite;
     width: max-content;
     will-change: transform;
 }
 
-.svc-grid.paused .svc-track {
-    animation-play-state: paused;
-}
-
 .svc-grid.dragging .svc-track {
-    animation-play-state: paused;
     transition: none;
-}
-
-@keyframes svcScroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(calc(-50% - 10px)); }
 }
 
 .svc-card {
