@@ -142,13 +142,19 @@ if (tTrack && tSlides.length > 0) {
 }
 
 // =========================================================
-// SERVICES — infinite auto-scroll marquee
+// SERVICES — infinite auto-scroll marquee + drag on hover
 // =========================================================
 (function () {
     const grid = document.getElementById('svcGridContainer');
     if (!grid) return;
 
-    // Wait for cards to be rendered by services-data.js
+    let track = null;
+    let isDragging = false;
+    let startX = 0;
+    let scrollOffset = 0;
+    let lastTranslate = 0;
+
+    // Wait for cards to be rendered
     const observer = new MutationObserver(() => {
         const cards = grid.querySelectorAll('.svc-card');
         if (cards.length === 0) return;
@@ -161,15 +167,14 @@ if (tTrack && tSlides.length > 0) {
         const cards = grid.querySelectorAll('.svc-card');
         if (cards.length === 0) return;
 
-        // Create track wrapper
-        const track = document.createElement('div');
+        track = document.createElement('div');
         track.className = 'svc-track';
 
-        // Move all cards into track
+        // Move original cards into track
         const cardArray = Array.from(cards);
         cardArray.forEach(card => track.appendChild(card));
 
-        // Duplicate cards for seamless loop
+        // Duplicate for seamless loop
         cardArray.forEach(card => {
             const clone = card.cloneNode(true);
             clone.setAttribute('aria-hidden', 'true');
@@ -178,11 +183,132 @@ if (tTrack && tSlides.length > 0) {
 
         grid.appendChild(track);
 
-        // Adjust speed based on total width
+        // Set speed
         const totalWidth = track.scrollWidth / 2;
-        const speed = 40; // pixels per second
+        const speed = 40;
         const duration = totalWidth / speed;
         track.style.animationDuration = duration + 's';
+
+        // Setup drag events
+        setupDrag();
+    }
+
+    function setupDrag() {
+        // Hover: pause auto-scroll, enable drag
+        grid.addEventListener('mouseenter', () => {
+            if (isDragging) return;
+            // Capture current position before pausing
+            const computed = getComputedStyle(track);
+            const matrix = new DOMMatrix(computed.transform);
+            lastTranslate = matrix.m41;
+            grid.classList.add('paused');
+        });
+
+        grid.addEventListener('mouseleave', () => {
+            if (isDragging) return;
+            // Resume auto-scroll from current visual position
+            resumeFromPosition();
+        });
+
+        // Drag
+        grid.addEventListener('mousedown', onDragStart);
+        window.addEventListener('mousemove', onDragMove);
+        window.addEventListener('mouseup', onDragEnd);
+
+        grid.addEventListener('touchstart', onDragStart, { passive: true });
+        window.addEventListener('touchmove', onDragMove, { passive: false });
+        window.addEventListener('touchend', onDragEnd);
+    }
+
+    function onDragStart(e) {
+        if (!track) return;
+        isDragging = true;
+        startX = e.pageX || e.touches?.[0]?.pageX || 0;
+
+        // Get current translateX
+        const computed = getComputedStyle(track);
+        const matrix = new DOMMatrix(computed.transform);
+        scrollOffset = matrix.m41;
+
+        grid.classList.add('dragging');
+        track.style.transform = `translateX(${scrollOffset}px)`;
+    }
+
+    function onDragMove(e) {
+        if (!isDragging) return;
+        e.preventDefault();
+        const x = e.pageX || e.touches?.[0]?.pageX || 0;
+        const delta = x - startX;
+        const newX = scrollOffset + delta;
+        track.style.transform = `translateX(${newX}px)`;
+    }
+
+    function onDragEnd() {
+        if (!isDragging) return;
+        isDragging = false;
+        grid.classList.remove('dragging');
+
+        // Get where the track ended up
+        const computed = getComputedStyle(track);
+        const matrix = new DOMMatrix(computed.transform);
+        lastTranslate = matrix.m41;
+
+        // Resume animation from this position
+        resumeFromPosition();
+    }
+
+    function resumeFromPosition() {
+        if (!track) return;
+        grid.classList.remove('paused');
+
+        // Calculate where we are in the cycle (0 to -halfWidth)
+        const halfWidth = track.scrollWidth / 2;
+        const normalized = ((lastTranslate % halfWidth) + halfWidth) % halfWidth;
+        const startOffset = -normalized;
+        const endOffset = -(halfWidth + 10);
+        const distance = endOffset - startOffset;
+
+        // Remaining duration based on distance and speed
+        const speed = 40;
+        const duration = Math.abs(distance) / speed;
+
+        track.style.animation = 'none';
+        track.style.transform = `translateX(${startOffset}px)`;
+
+        // Force reflow
+        void track.offsetHeight;
+
+        // Set new animation from current position to end
+        track.style.animation = '';
+        track.style.animationDuration = duration + 's';
+
+        // Override keyframes with custom ones starting from current position
+        track.style.setProperty('--svc-start', `${startOffset}px`);
+        track.style.setProperty('--svc-end', `${endOffset}px`);
+        track.style.animation = `svcScrollCustom ${duration}s linear forwards`;
+
+        // Add custom keyframes
+        if (!document.getElementById('svc-custom-keyframes')) {
+            const style = document.createElement('style');
+            style.id = 'svc-custom-keyframes';
+            document.head.appendChild(style);
+        }
+        const styleEl = document.getElementById('svc-custom-keyframes');
+        styleEl.textContent = `
+            @keyframes svcScrollCustom {
+                0% { transform: translateX(var(--svc-start)); }
+                100% { transform: translateX(var(--svc-end)); }
+            }
+        `;
+
+        // After this animation ends, restart the infinite loop
+        track.addEventListener('animationend', function onEnd() {
+            track.removeEventListener('animationend', onEnd);
+            track.style.animation = '';
+            track.style.transform = '';
+            track.style.removeProperty('--svc-start');
+            track.style.removeProperty('--svc-end');
+        }, { once: true });
     }
 })();
     const tDots = document.querySelectorAll('.tdot');

@@ -662,6 +662,11 @@ section.dark .section-head p {
     padding: 8px 0 24px;
     position: relative;
     width: 100%;
+    cursor: grab;
+}
+
+.svc-grid:active {
+    cursor: grabbing;
 }
 
 .svc-grid::before,
@@ -690,10 +695,16 @@ section.dark .section-head p {
     gap: 20px;
     animation: svcScroll 30s linear infinite;
     width: max-content;
+    will-change: transform;
 }
 
-.svc-grid:hover .svc-track {
+.svc-grid.paused .svc-track {
     animation-play-state: paused;
+}
+
+.svc-grid.dragging .svc-track {
+    animation-play-state: paused;
+    transition: none;
 }
 
 @keyframes svcScroll {
