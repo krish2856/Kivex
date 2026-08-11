@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
             navLinks.classList.toggle('active');
         });
     }
-    
+
     // Update footer links to work properly on the service page
     document.querySelectorAll('.foot-svc-link').forEach(elem => {
         elem.addEventListener('click', (e) => {

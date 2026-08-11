@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kivex Technology | Portfolio</title>
+    <meta name="description"
+        content="Kivex Technology — A selection of projects we have designed, developed, and deployed. Web design, development, CRM automation, and digital solutions.">
+    <meta name="theme-color" content="#f5efe5">
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23141414'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial Black,sans-serif' font-size='34' font-weight='900' fill='%23f5efe5'%3EK%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="portfolio.css">
+</head>
+
+<body>
+
+    <!-- LOADER -->
+    <div id="loader" class="loader">
+        <div class="loader-content">
+            <div class="loader-logo">KIVEX<span>Technology</span></div>
+            <div class="loader-bar"><div class="loader-fill"></div></div>
+        </div>
+    </div>
+
+    <!-- CUSTOM CURSOR -->
+    <div class="cursor-ring" id="cursorRing"></div>
+    <div class="cursor-dot" id="cursorDot"></div>
+
+    <!-- NAVIGATION -->
+    <header id="siteHeader">
+        <div class="wrap">
+            <a href="index.html" class="logo">KIVEX<span>Technology</span></a>
+            <nav class="main-nav" id="mainNav">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="portfolio.html" class="nav-link active">Portfolio</a>
+                <a href="index.html#services" class="nav-link">Services</a>
+                <a href="index.html#contact" class="nav-link">Contact</a>
+            </nav>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- MOBILE NAV OVERLAY -->
+    <div class="mobile-nav-overlay" id="mobileNav">
+        <div class="mobile-nav-inner">
+            <a href="index.html" class="mobile-nav-link">Home</a>
+            <a href="portfolio.html" class="mobile-nav-link active">Portfolio</a>
+            <a href="index.html#services" class="mobile-nav-link">Services</a>
+            <a href="index.html#contact" class="mobile-nav-link">Contact</a>
+            <div class="mobile-nav-footer">
+                <a href="https://www.instagram.com/kivex_technology" target="_blank" rel="noopener">Instagram</a>
+                <span>info@kivextechnology.com</span>
+            </div>
+        </div>
+    </div>
+
+    <main>
+
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-glow" id="heroGlow"></div>
+            <div class="wrap">
+                <div class="hero-tag anim-slide-left">
+                    <span class="tag-line"></span>
+                    <span class="tag-text">Portfolio</span>
+                </div>
+                <h1 class="hero-title" id="heroTitle">
+                    <span class="line"><span class="inner">Selected</span></span>
+                    <span class="line"><span class="inner"><span class="accent">Work</span></span></span>
+                </h1>
+                <p class="hero-sub anim-slide-up" style="--d:.6s">A selection of projects we have designed, developed, and deployed. Each build reflects our commitment to clean code, fast performance, and real business results.</p>
+                <div class="hero-ctas anim-slide-up" style="--d:.8s">
+                    <a href="#projects" class="btn btn-primary">Explore projects <span class="arrow">→</span></a>
+                    <a href="index.html#contact" class="btn btn-outline">Start a project <span class="arrow">→</span></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- TICKER -->
+        <div class="ticker" aria-hidden="true">
+            <div class="ticker-track" id="tickerTrack"></div>
+        </div>
+
+        <!-- PROJECTS GRID -->
+        <section class="projects-section" id="projects">
+            <div class="wrap">
+                <div class="section-header anim-slide-up">
+                    <span class="section-tag">/ selected work</span>
+                    <h2 class="section-title" id="projectsTitle">Featured projects.</h2>
+                    <p class="section-sub" id="projectsSub">Click any project to visit the live site. Each build is hand-coded from scratch with no page builders or themes.</p>
+                </div>
+                <div class="projects-grid" id="projectsGrid">
+
+                    <!-- PROJECT 1: Aastha Realty -->
+                    <a class="project-card" href="https://aastharealty.in" target="_blank" rel="noopener" data-index="0">
+                        <div class="project-visual">
+                            <div class="project-img-placeholder">
+                                <span class="project-initial">AR</span>
+                            </div>
+                            <div class="project-overlay">
+                                <span class="project-visit">Visit site →</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <div class="project-meta">
+                                <span class="project-tag">Real Estate</span>
+                                <span class="project-year">2024</span>
+                            </div>
+                            <h3 class="project-title">Aastha Realty</h3>
+                            <p class="project-desc">Property & investment platform covering residential and commercial listings across Ahmedabad, GIFT City, Dholera SIR and Dubai, with investment-process explainer and WhatsApp-based enquiries.</p>
+                            <div class="project-tech">
+                                <span class="tech-badge">Web Design</span>
+                                <span class="tech-badge">Development</span>
+                                <span class="tech-badge">WhatsApp Integration</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- PROJECT 2: Rcargo -->
+                    <a class="project-card" href="https://rcargo.vercel.app" target="_blank" rel="noopener" data-index="1">
+                        <div class="project-visual">
+                            <div class="project-img-placeholder">
+                                <span class="project-initial">RC</span>
+                            </div>
+                            <div class="project-overlay">
+                                <span class="project-visit">Visit site →</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <div class="project-meta">
+                                <span class="project-tag">Logistics</span>
+                                <span class="project-year">2024</span>
+                            </div>
+                            <h3 class="project-title">Rcargo</h3>
+                            <p class="project-desc">Server-backed parcel booking system with branch and admin login, cargo booking, LR generation, automatic tariff/GST calculation, and consignment tracking.</p>
+                            <div class="project-tech">
+                                <span class="tech-badge">Web Development</span>
+                                <span class="tech-badge">Backend</span>
+                                <span class="tech-badge">Parcel Booking</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- PROJECT 3: OtherBooking -->
+                    <a class="project-card" href="https://otherbooking.vercel.app/" target="_blank" rel="noopener" data-index="2">
+                        <div class="project-visual">
+                            <div class="project-img-placeholder">
+                                <span class="project-initial">OB</span>
+                            </div>
+                            <div class="project-overlay">
+                                <span class="project-visit">Visit site →</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <div class="project-meta">
+                                <span class="project-tag">Travel & Booking</span>
+                                <span class="project-year">2025</span>
+                            </div>
+                            <h3 class="project-title">OtherBooking</h3>
+                            <p class="project-desc">A modern bus & travel booking management platform for trip management, passenger info, seat/pickup-drop management, fare & GST calculation, payment tracking, and auto-generated ticket printing.</p>
+                            <div class="project-tech">
+                                <span class="tech-badge">Web Development</span>
+                                <span class="tech-badge">Booking System</span>
+                                <span class="tech-badge">PDF Generation</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- PROJECT 4: Classic Gym -->
+                    <a class="project-card" href="https://gym-alpha-peach.vercel.app/" target="_blank" rel="noopener" data-index="3">
+                        <div class="project-visual">
+                            <div class="project-img-placeholder">
+                                <span class="project-initial">CG</span>
+                            </div>
+                            <div class="project-overlay">
+                                <span class="project-visit">Visit site →</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <div class="project-meta">
+                                <span class="project-tag">Fitness</span>
+                                <span class="project-year">2025</span>
+                            </div>
+                            <h3 class="project-title">Classic Gym</h3>
+                            <p class="project-desc">A premium, conversion-focused website designed for a modern fitness brand with strong visual identity, immersive web experience, and mobile-friendly design.</p>
+                            <div class="project-tech">
+                                <span class="tech-badge">Web Design</span>
+                                <span class="tech-badge">Branding</span>
+                                <span class="tech-badge">Responsive</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- PROJECT 5: Finance Loan Management -->
+                    <a class="project-card" href="https://finance-ruby-one.vercel.app/" target="_blank" rel="noopener" data-index="4">
+                        <div class="project-visual">
+                            <div class="project-img-placeholder">
+                                <span class="project-initial">FL</span>
+                            </div>
+                            <div class="project-overlay">
+                                <span class="project-visit">Visit site →</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <div class="project-meta">
+                                <span class="project-tag">Finance ERP</span>
+                                <span class="project-year">2025</span>
+                            </div>
+                            <h3 class="project-title">Finance Loan Management</h3>
+                            <p class="project-desc">Complete loan management ERP for financial institutions — loan processing, borrower profiles, EMI tracking, payment management, and financial reporting.</p>
+                            <div class="project-tech">
+                                <span class="tech-badge">Web Development</span>
+                                <span class="tech-badge">ERP System</span>
+                                <span class="tech-badge">Finance</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- PROJECT 6: Dental CRM -->
+                    <div class="project-card coming-soon" data-index="5">
+                        <div class="project-visual">
+                            <div class="project-img-placeholder">
+                                <span class="project-initial">DC</span>
+                            </div>
+                            <div class="project-overlay">
+                                <span class="project-visit">Coming Soon</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <div class="project-meta">
+                                <span class="project-tag">Healthcare CRM</span>
+                                <span class="project-year">2025</span>
+                            </div>
+                            <h3 class="project-title">Dental CRM</h3>
+                            <p class="project-desc">Complete dental practice management system for patient management, appointment scheduling, treatment history, billing & payment tracking, and clinic operations.</p>
+                            <div class="project-tech">
+                                <span class="tech-badge">CRM</span>
+                                <span class="tech-badge">Healthcare</span>
+                                <span class="tech-badge">Coming Soon</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PROJECT 7: Discount -->
+                    <div class="project-card coming-soon" data-index="6">
+                        <div class="project-visual">
+                            <div class="project-img-placeholder">
+                                <span class="project-initial">DS</span>
+                            </div>
+                            <div class="project-overlay">
+                                <span class="project-visit">Coming Soon</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <div class="project-meta">
+                                <span class="project-tag">Deals & Discovery</span>
+                                <span class="project-year">2025</span>
+                            </div>
+                            <h3 class="project-title">Discount</h3>
+                            <p class="project-desc">A deals & discovery platform where users search for products, services, or businesses, compare offers, and find the best available deals — web + mobile application.</p>
+                            <div class="project-tech">
+                                <span class="tech-badge">Search Platform</span>
+                                <span class="tech-badge">Mobile App</span>
+                                <span class="tech-badge">Coming Soon</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PROJECT 8: Real Estate CRM -->
+                    <div class="project-card coming-soon" data-index="7">
+                        <div class="project-visual">
+                            <div class="project-img-placeholder">
+                                <span class="project-initial">RE</span>
+                            </div>
+                            <div class="project-overlay">
+                                <span class="project-visit">Coming Soon</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <div class="project-meta">
+                                <span class="project-tag">Real Estate CRM</span>
+                                <span class="project-year">2025</span>
+                            </div>
+                            <h3 class="project-title">Real Estate CRM</h3>
+                            <p class="project-desc">Complete lead & sales management platform for real estate — capture, manage, follow up, and convert. Includes web CRM dashboard + mobile app for agents.</p>
+                            <div class="project-tech">
+                                <span class="tech-badge">CRM</span>
+                                <span class="tech-badge">Mobile App</span>
+                                <span class="tech-badge">Coming Soon</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- PROCESS -->
+        <section class="process-section">
+            <div class="wrap">
+                <div class="section-header anim-slide-up">
+                    <span class="section-tag">/ process</span>
+                    <h2 class="section-title" id="processTitle">How we build.</h2>
+                    <p class="section-sub" id="processSub">Every project goes through a streamlined process — from understanding your vision to delivering a product that exceeds expectations.</p>
+                </div>
+                <div class="process-grid stagger-children" id="processGrid">
+                    <div class="process-step" style="--d:0s">
+                        <div class="step-num">01</div>
+                        <h3>Discovery</h3>
+                        <p>We understand your business, goals, and target audience through detailed conversations and research.</p>
+                    </div>
+                    <div class="process-step" style="--d:0.1s">
+                        <div class="step-num">02</div>
+                        <h3>Design</h3>
+                        <p>Wireframes and visual designs that align with your brand identity and user experience best practices.</p>
+                    </div>
+                    <div class="process-step" style="--d:0.2s">
+                        <div class="step-num">03</div>
+                        <h3>Develop</h3>
+                        <p>Clean, maintainable code built with modern technologies. No page builders, no themes, no shortcuts.</p>
+                    </div>
+                    <div class="process-step" style="--d:0.3s">
+                        <div class="step-num">04</div>
+                        <h3>Deploy</h3>
+                        <p>Tested, optimized, and deployed. We hand you the keys and provide ongoing support as needed.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STATS -->
+        <section class="stats-section">
+            <div class="wrap">
+                <div class="stats-row">
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="8" data-suffix="+">0</div>
+                        <div class="stat-label">Projects shipped</div>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="3" data-suffix="+">0</div>
+                        <div class="stat-label">Automations running</div>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="100" data-suffix="%">0</div>
+                        <div class="stat-label">Server uptime</div>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="24" data-suffix="/7">0</div>
+                        <div class="stat-label">Support & monitoring</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta-section">
+            <div class="wrap">
+                <div class="cta-content anim-fade-scale">
+                    <h2 class="cta-title" id="ctaTitle">Let's create something <span class="accent">amazing</span> together.</h2>
+                    <p class="cta-sub anim-slide-up" style="--d:.2s">We design, build, and automate the systems your business runs on.</p>
+                    <a href="index.html#contact" class="btn btn-primary btn-lg anim-slide-up" style="--d:.35s">Start a project <span class="arrow">→</span></a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="wrap">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="footer-logo">KIVEX<span>Technology</span></div>
+                    <p class="footer-tagline">Building digital solutions for a better tomorrow.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h4>Navigate</h4>
+                        <a href="index.html">Home</a>
+                        <a href="portfolio.html">Portfolio</a>
+                        <a href="index.html#services">Services</a>
+                        <a href="index.html#contact">Contact</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Connect</h4>
+                        <a href="https://www.instagram.com/kivex_technology" target="_blank" rel="noopener">Instagram ↗</a>
+                        <a href="mailto:info@kivextechnology.com">Email ↗</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; <span id="year"></span> Kivex Technology. All rights reserved.</span>
+                <span>info@kivextechnology.com</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="portfolio.js"></script>
+</body>
+
+</html>

@@ -241,7 +241,7 @@ form.addEventListener('submit', async function (e) {
     // 1. Send data to CRM Backend
     try {
         // IMPORTANT: Change this URL to your live Render URL after deploying
-        const API_URL = 'http://localhost:3000/api/leads'; 
+        const API_URL = 'http://localhost:3000/api/leads';
         await fetch(API_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -277,15 +277,15 @@ let currentActiveCategory = 'all';
 
 function initCategories() {
     if (typeof serviceCategories === 'undefined' || !servicesFilterBar) return;
-    
+
     // Create "All Services" tab
     let tabsHTML = `<button class="filter-tab active" data-category="all">All Services</button>`;
-    
+
     // Create category tabs
     tabsHTML += serviceCategories.map(cat => `
         <button class="filter-tab" data-category="${cat.id}">${cat.title}</button>
     `).join('');
-    
+
     servicesFilterBar.innerHTML = tabsHTML;
 
     // Attach click events to tabs
@@ -293,12 +293,12 @@ function initCategories() {
         tab.addEventListener('click', () => {
             document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
             tab.classList.add('active');
-            
+
             const catId = tab.dataset.category;
             renderGrid(catId);
         });
     });
-    
+
     // Initial render
     renderGrid('all');
 }
@@ -306,7 +306,7 @@ function initCategories() {
 function renderGrid(catId) {
     currentActiveCategory = catId;
     let servicesToRender = [];
-    
+
     if (catId === 'all') {
         serviceCategories.forEach(cat => {
             servicesToRender = servicesToRender.concat(cat.services);
@@ -318,7 +318,7 @@ function renderGrid(catId) {
             servicesToRender = category.services;
         }
     }
-    
+
     svcGridContainer.innerHTML = servicesToRender.map(svcId => {
         const svc = servicesData[svcId];
         if (!svc) return '';
@@ -392,7 +392,7 @@ document.querySelectorAll('.foot-svc-link').forEach(elem => {
 
 // hero read-more toggle
 const heroReadMoreBtn = document.getElementById('heroReadMoreBtn');
-const heroMoreText    = document.getElementById('heroMoreText');
+const heroMoreText = document.getElementById('heroMoreText');
 if (heroReadMoreBtn && heroMoreText) {
     heroReadMoreBtn.addEventListener('click', () => {
         const expanded = heroReadMoreBtn.getAttribute('aria-expanded') === 'true';
