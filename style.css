@@ -656,49 +656,9 @@ section.dark .section-head p {
 }
 
 .svc-grid {
-    display: flex;
-    gap: 20px;
-    overflow: hidden;
-    padding: 8px 0 24px;
-    position: relative;
-    width: 100%;
-    cursor: grab;
-}
-
-.svc-grid:active {
-    cursor: grabbing;
-}
-
-.svc-grid::before,
-.svc-grid::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 80px;
-    z-index: 2;
-    pointer-events: none;
-}
-
-.svc-grid::before {
-    left: 0;
-    background: linear-gradient(90deg, var(--bg-color) 0%, transparent 100%);
-}
-
-.svc-grid::after {
-    right: 0;
-    background: linear-gradient(-90deg, var(--bg-color) 0%, transparent 100%);
-}
-
-.svc-track {
-    display: flex;
-    gap: 20px;
-    width: max-content;
-    will-change: transform;
-}
-
-.svc-grid.dragging .svc-track {
-    transition: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
 }
 
 .svc-card {
@@ -707,19 +667,14 @@ section.dark .section-head p {
     padding: 32px;
     border: 1px solid var(--line-light);
     cursor: pointer;
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     min-height: 220px;
-    min-width: 320px;
-    max-width: 380px;
-    flex-shrink: 0;
     position: relative;
     overflow: hidden;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
-    user-select: none;
-    -webkit-user-select: none;
 }
 
 .svc-card:hover {
