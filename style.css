@@ -656,9 +656,23 @@ section.dark .section-head p {
 }
 
 .svc-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 24px;
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 8px 4px 24px;
+    cursor: grab;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.svc-grid::-webkit-scrollbar {
+    display: none;
+}
+
+.svc-grid.dragging {
+    cursor: grabbing;
+    scroll-behavior: auto;
 }
 
 .svc-card {
@@ -667,14 +681,19 @@ section.dark .section-head p {
     padding: 32px;
     border: 1px solid var(--line-light);
     cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.3s ease;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     min-height: 220px;
+    min-width: 320px;
+    max-width: 380px;
+    flex-shrink: 0;
     position: relative;
     overflow: hidden;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .svc-card:hover {

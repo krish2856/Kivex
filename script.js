@@ -409,3 +409,41 @@ if (heroReadMoreBtn && heroMoreText) {
         }
     });
 }
+
+// =========================================================
+// SERVICES — horizontal drag scroll
+// =========================================================
+(function () {
+    const grid = document.getElementById('svcGridContainer');
+    if (!grid) return;
+
+    let isDown = false, startX, scrollLeft;
+
+    grid.addEventListener('mousedown', (e) => {
+        isDown = true;
+        grid.classList.add('dragging');
+        startX = e.pageX - grid.offsetLeft;
+        scrollLeft = grid.scrollLeft;
+    });
+
+    grid.addEventListener('mouseleave', () => { isDown = false; grid.classList.remove('dragging'); });
+    grid.addEventListener('mouseup', () => { isDown = false; grid.classList.remove('dragging'); });
+
+    grid.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - grid.offsetLeft;
+        grid.scrollLeft = scrollLeft - (x - startX);
+    });
+
+    // Touch
+    grid.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].pageX - grid.offsetLeft;
+        scrollLeft = grid.scrollLeft;
+    }, { passive: true });
+
+    grid.addEventListener('touchmove', (e) => {
+        const x = e.touches[0].pageX - grid.offsetLeft;
+        grid.scrollLeft = scrollLeft - (x - startX);
+    }, { passive: true });
+})();
