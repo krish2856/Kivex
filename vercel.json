@@ -1,7 +1,4 @@
 {
-  "buildCommand": "cd kivex-website && npm install && npm run build",
-  "outputDirectory": "kivex-website/.next",
-  "installCommand": "cd kivex-website && npm install",
   "framework": "nextjs",
   "rootDirectory": "kivex-website"
 }
