@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Logo from "@/components/ui/Logo";
 
 interface LoadingScreenProps {
   onComplete: () => void;
@@ -62,19 +63,13 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
       style={{
         zIndex: 9999,
         opacity: isFading ? 0 : 1,
+        pointerEvents: isFading ? "none" : "auto",
         transition: "opacity 500ms ease-out",
       }}
     >
-      <h1
-        className="text-white font-display"
-        style={{
-          fontSize: "clamp(2.5rem, 6vw, 4rem)",
-          letterSpacing: "0.3em",
-          fontWeight: 700,
-        }}
-      >
-        KIVEX
-      </h1>
+      <div className="flex items-center justify-center animate-pulse">
+        <Logo className="h-14 sm:h-18 md:h-20 w-auto filter drop-shadow-[0_4px_24px_rgba(45,95,199,0.4)]" />
+      </div>
 
       <div className="mt-10 flex flex-col items-center">
         <div

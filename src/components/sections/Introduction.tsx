@@ -18,32 +18,41 @@ export default function Introduction() {
   return (
     <section
       ref={sectionRef}
+      id="introduction"
       className="relative overflow-hidden"
       style={{ backgroundColor: "#F5EFE5" }}
     >
       {/* Subtle vertical line accent — hidden on phones */}
-      <div className="absolute left-8 md:left-16 top-0 bottom-0 w-[1px] bg-black/[0.06] hidden md:block" />
+      <div className="absolute left-6 md:left-16 top-0 bottom-0 w-[1px] bg-black/[0.06] hidden md:block" />
       <motion.div
-        className="absolute left-8 md:left-16 top-0 w-[1px] origin-top hidden md:block"
+        className="absolute left-6 md:left-16 top-0 w-[1px] origin-top hidden md:block"
         style={{ height: lineHeight, backgroundColor: "#2D5FC7" }}
       />
 
-      <div className="mx-auto max-w-7xl px-5 sm:px-6 py-20 sm:py-28 md:py-36 lg:py-40 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-10 sm:gap-14 lg:gap-24 items-start lg:items-center">
+      {/* Top transition connecting thread from Hero */}
+      <div className="flex justify-center pt-2 sm:pt-4">
+        <div className="h-6 sm:h-10 w-[1px] bg-gradient-to-b from-black/15 via-[#2D5FC7]/30 to-transparent" />
+      </div>
+
+      <div className="mx-auto max-w-7xl px-5 sm:px-6 pt-4 sm:pt-6 md:pt-8 pb-4 sm:pb-6 md:pb-8 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-8 sm:gap-12 lg:gap-24 items-start lg:items-center">
           {/* Left: Large statement */}
           <div>
             <ScrollReveal>
-              <span
-                className="text-xs sm:text-sm font-semibold tracking-widest uppercase"
-                style={{ color: "#2D5FC7" }}
-              >
-                Introduction
-              </span>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/[0.04] border border-black/[0.06]">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#2D5FC7]" />
+                <span
+                  className="text-[11px] sm:text-xs font-semibold tracking-widest uppercase"
+                  style={{ color: "#2D5FC7" }}
+                >
+                  Core Philosophy
+                </span>
+              </div>
             </ScrollReveal>
             <TextReveal
               text="TECHNOLOGY SHOULD SIMPLIFY COMPLEXITY."
               as="h2"
-              className="mt-4 sm:mt-6 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight"
+              className="mt-4 sm:mt-6 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.12]"
               style={{ color: "#0A0A0A" }}
             />
           </div>
@@ -52,60 +61,56 @@ export default function Introduction() {
           <div>
             <ScrollReveal delay={0.15}>
               <p
-                className="text-base sm:text-lg md:text-xl leading-relaxed"
-                style={{ color: "#525252" }}
+                className="text-base sm:text-lg md:text-xl leading-relaxed font-normal"
+                style={{ color: "#404040" }}
               >
-                Kivex Technology combines design, engineering, AI, and
-                automation to create digital systems built around real business
-                needs. We don&apos;t believe in one-size-fits-all. Every project
-                starts with understanding your business, your users, and your
-                goals.
+                Most software projects stall because teams reach for bloated templates instead of addressing the core operational need. At Kivex, we engineer web applications, client portals, and automation pipelines built around the specific way your business works.
               </p>
             </ScrollReveal>
 
             <ScrollReveal delay={0.25}>
-              {/* Stats — row on tablet+, stacked on phone */}
-              <div className="mt-8 sm:mt-10 flex flex-wrap items-center gap-6 sm:gap-8">
+              {/* Stats — clean balanced 3-column grid */}
+              <div className="mt-8 sm:mt-10 pt-6 border-t border-black/[0.08] grid grid-cols-3 gap-3 sm:gap-6">
                 <div>
                   <div
-                    className="text-2xl sm:text-3xl md:text-4xl font-bold"
+                    className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight"
                     style={{ color: "#2D5FC7" }}
                   >
                     100%
                   </div>
                   <div
-                    className="text-[10px] sm:text-xs font-medium mt-1 tracking-wider uppercase"
-                    style={{ color: "#A3A3A3" }}
+                    className="text-[10px] sm:text-xs font-semibold mt-1 tracking-wider uppercase"
+                    style={{ color: "#737373" }}
                   >
                     Custom Built
                   </div>
                 </div>
-                <div className="w-[1px] h-10 sm:h-12 bg-black/10 hidden sm:block" />
-                <div>
+
+                <div className="border-l border-black/10 pl-3 sm:pl-6">
                   <div
-                    className="text-2xl sm:text-3xl md:text-4xl font-bold"
+                    className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight"
                     style={{ color: "#2D5FC7" }}
                   >
                     AI-First
                   </div>
                   <div
-                    className="text-[10px] sm:text-xs font-medium mt-1 tracking-wider uppercase"
-                    style={{ color: "#A3A3A3" }}
+                    className="text-[10px] sm:text-xs font-semibold mt-1 tracking-wider uppercase"
+                    style={{ color: "#737373" }}
                   >
                     Architecture
                   </div>
                 </div>
-                <div className="w-[1px] h-10 sm:h-12 bg-black/10 hidden sm:block" />
-                <div>
+
+                <div className="border-l border-black/10 pl-3 sm:pl-6">
                   <div
-                    className="text-2xl sm:text-3xl md:text-4xl font-bold"
+                    className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight"
                     style={{ color: "#2D5FC7" }}
                   >
                     End-to-End
                   </div>
                   <div
-                    className="text-[10px] sm:text-xs font-medium mt-1 tracking-wider uppercase"
-                    style={{ color: "#A3A3A3" }}
+                    className="text-[10px] sm:text-xs font-semibold mt-1 tracking-wider uppercase"
+                    style={{ color: "#737373" }}
                   >
                     Delivery
                   </div>

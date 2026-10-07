@@ -15,7 +15,8 @@ const steps = [
 export default function Automation() {
   return (
     <section
-      className="section-padding overflow-hidden"
+      id="automation"
+      className="pt-8 sm:pt-12 md:pt-14 pb-16 sm:pb-20 md:pb-24 px-5 sm:px-6 md:px-8 lg:px-12 overflow-hidden relative"
       style={{ backgroundColor: "#0A0A0A" }}
     >
       <div className="mx-auto max-w-7xl">
@@ -24,27 +25,27 @@ export default function Automation() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-16 md:mb-20 max-w-3xl"
+          className="mb-12 sm:mb-16 md:mb-20 max-w-3xl"
         >
-          <span
-            className="text-sm font-semibold tracking-widest uppercase"
-            style={{ color: "#E8B62A" }}
-          >
-            Automation
-          </span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E8B62A]/10 border border-[#E8B62A]/20 mb-3">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#E8B62A]" />
+            <span
+              className="text-[11px] sm:text-xs font-semibold tracking-widest uppercase"
+              style={{ color: "#E8B62A" }}
+            >
+              Intelligent Automation
+            </span>
+          </div>
           <h2
-            className="mt-4 text-3xl md:text-4xl lg:text-5xl font-bold leading-tight"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight"
             style={{ color: "#F5EFE5" }}
           >
             TURN REPETITIVE WORK INTO AUTOMATED SYSTEMS.
           </h2>
           <p
-            className="mt-6 text-lg md:text-xl leading-relaxed max-w-2xl"
-            style={{ color: "#A3A3A3" }}
+            className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl leading-relaxed max-w-2xl text-[#A3A3A3]"
           >
-            From lead capture to conversion — we build intelligent pipelines
-            that eliminate repetitive tasks, reduce human error, and scale your
-            operations without scaling your team.
+            When an inquiry arrives, our automations route the lead, trigger WhatsApp or Slack alerts, update your CRM, and log next steps without anyone copying and pasting data.
           </p>
         </motion.div>
 
@@ -101,7 +102,7 @@ export default function Automation() {
                 className="relative z-10 flex flex-col items-center gap-3"
               >
                 <div
-                  className="w-16 h-16 rounded-full flex items-center justify-center text-xl font-bold border-2 transition-all duration-500"
+                  className="w-16 h-16 rounded-full flex items-center justify-center text-xl font-bold border-2 transition-all duration-500 hover:scale-110"
                   style={{
                     backgroundColor: "#141414",
                     borderColor: "#2D5FC7",
@@ -127,38 +128,43 @@ export default function Automation() {
           {steps.map((step, i) => (
             <motion.div
               key={step.label}
-              initial={{ opacity: 0, x: -20 }}
+              initial={{ opacity: 0, x: -15 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.5 }}
+              transition={{ delay: i * 0.08, duration: 0.4 }}
               className="flex items-stretch"
             >
               {/* Vertical line + dot */}
-              <div className="flex flex-col items-center w-12 shrink-0">
+              <div className="flex flex-col items-center w-10 shrink-0">
                 <div
-                  className="w-4 h-4 rounded-full border-2 mt-5"
+                  className="w-3.5 h-3.5 rounded-full border-2 mt-4"
                   style={{
                     backgroundColor: "#2D5FC7",
-                    borderColor: "#2D5FC7",
-                    boxShadow: "0 0 12px rgba(45,95,199,0.3)",
+                    borderColor: "#4A7AE8",
+                    boxShadow: "0 0 10px rgba(45,95,199,0.4)",
                   }}
                 />
                 {i < steps.length - 1 && (
-                  <div className="flex-1 w-[2px]" style={{ backgroundColor: "#2D5FC7" }} />
+                  <div className="flex-1 w-[2px] bg-gradient-to-b from-[#2D5FC7] to-[#1E3D8A]/50 my-1" />
                 )}
               </div>
 
               {/* Content */}
-              <div className="flex-1 py-4 px-4 mb-4 rounded-xl" style={{ backgroundColor: "#141414", border: "1px solid rgba(45,95,199,0.2)" }}>
+              <div
+                className="flex-1 py-3 px-4 mb-3 rounded-xl flex items-center justify-between border border-white/[0.08] bg-[#141414]"
+              >
                 <div className="flex items-center gap-3">
-                  <span style={{ color: "#E8B62A" }}>{step.icon}</span>
+                  <span className="text-base" style={{ color: "#E8B62A" }}>{step.icon}</span>
                   <span
-                    className="text-sm font-bold tracking-widest uppercase"
+                    className="text-xs font-bold tracking-widest uppercase"
                     style={{ color: "#F5EFE5" }}
                   >
                     {step.label}
                   </span>
                 </div>
+                <span className="text-[10px] font-mono text-white/40">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
               </div>
             </motion.div>
           ))}
@@ -169,8 +175,8 @@ export default function Automation() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-16 md:mt-20 grid grid-cols-2 md:grid-cols-4 gap-8"
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mt-14 sm:mt-16 md:mt-20 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6"
         >
           {[
             { value: "10x", label: "Faster Lead Processing" },
@@ -178,15 +184,18 @@ export default function Automation() {
             { value: "80%", label: "Less Manual Work" },
             { value: "24/7", label: "Automated Operations" },
           ].map((stat) => (
-            <div key={stat.label}>
+            <div
+              key={stat.label}
+              className="p-4 sm:p-5 rounded-2xl border border-white/[0.06] bg-[#141414]/60 backdrop-blur-sm"
+            >
               <div
-                className="text-3xl md:text-4xl font-bold"
+                className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight"
                 style={{ color: "#E8B62A" }}
               >
                 {stat.value}
               </div>
               <div
-                className="mt-2 text-sm font-medium"
+                className="mt-1.5 text-xs sm:text-sm font-medium leading-snug"
                 style={{ color: "#A3A3A3" }}
               >
                 {stat.label}

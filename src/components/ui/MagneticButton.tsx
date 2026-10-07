@@ -27,7 +27,13 @@ export default function MagneticButton({
 
   const handleMouseMove = useCallback(
     (e: React.MouseEvent) => {
-      if (reducedMotion || !ref.current) return;
+      if (
+        reducedMotion ||
+        !ref.current ||
+        (typeof window !== "undefined" && !window.matchMedia("(pointer: fine)").matches)
+      ) {
+        return;
+      }
       const rect = ref.current.getBoundingClientRect();
       const centerX = rect.left + rect.width / 2;
       const centerY = rect.top + rect.height / 2;

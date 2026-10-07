@@ -1,7 +1,11 @@
 export const navLinks = [
-  { label: "Work", href: "#work" },
   { label: "Services", href: "#services" },
-  { label: "About", href: "#about" },
+  { label: "Ecosystem", href: "#ecosystem" },
+  { label: "Automation", href: "#automation" },
+  { label: "Process", href: "#process" },
+  { label: "Why Kivex", href: "#why-kivex" },
+  { label: "Work", href: "#work" },
+  { label: "Clients", href: "#clients" },
   { label: "Contact", href: "#contact" },
 ];
 

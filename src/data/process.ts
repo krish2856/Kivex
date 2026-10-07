@@ -8,31 +8,31 @@ export const processSteps: ProcessStep[] = [
   {
     number: "01",
     title: "DISCOVER",
-    description: "We deep-dive into your business, audience, goals, and competitive landscape to understand exactly what needs to be built.",
+    description: "We review your current workflow, audit where your team loses hours, and pin down the exact features you actually need.",
   },
   {
     number: "02",
     title: "STRATEGY",
-    description: "We architect the optimal solution — defining technology choices, user flows, system design, and a clear roadmap.",
+    description: "We map out user flows, database schemas, and API integrations before writing code so there are no surprises later.",
   },
   {
     number: "03",
     title: "DESIGN",
-    description: "We craft interfaces that feel premium, intuitive, and conversion-focused. Every pixel has a purpose.",
+    description: "We design clean, responsive interfaces that customers can navigate easily without needing an explanation.",
   },
   {
     number: "04",
     title: "BUILD",
-    description: "We develop using modern, scalable technology. Clean code, performance-first architecture, rigorous testing.",
+    description: "We write maintainable TypeScript and clean components with fast API response times and verified mobile layouts.",
   },
   {
     number: "05",
     title: "AUTOMATE",
-    description: "We integrate intelligent automation — eliminating manual work and creating systems that operate at scale.",
+    description: "We connect webhooks, CRM records, WhatsApp alerts, and automated reminders so routine work runs on its own.",
   },
   {
     number: "06",
     title: "LAUNCH",
-    description: "We deploy, monitor, optimize, and support. Your digital system goes live with ongoing partnership.",
+    description: "We deploy to production, verify domain records and analytics, and stay active on monitoring to handle any edge cases.",
   },
 ];

@@ -4,34 +4,34 @@ import { motion } from "framer-motion";
 
 const propositions = [
   {
-    title: "Custom Solutions",
+    title: "Built for Your Workflow",
     description:
-      "No templates. No shortcuts. Every solution is built from scratch to fit your exact business needs.",
+      "We do not use generic page builders or off-the-shelf templates. Every database schema, UI component, and API call is built around how your company operates.",
   },
   {
-    title: "Modern Technology",
+    title: "Tested Web Architecture",
     description:
-      "We use the latest frameworks, tools, and AI capabilities to build systems that are fast, reliable, and future-proof.",
+      "We build with Next.js, React, Node, and TypeScript, backed by automated testing, edge caching, and reliable cloud deployments.",
   },
   {
-    title: "Automation-First Thinking",
+    title: "Hands-Off Automation",
     description:
-      "We design systems that eliminate manual work, reduce errors, and scale without adding headcount.",
+      "We connect forms, payments, and CRMs directly to your WhatsApp or Slack channels so your team never wastes time copying data between tabs.",
   },
   {
-    title: "Performance Driven",
+    title: "Verified Load Speed",
     description:
-      "Speed matters. Every project is optimized for Core Web Vitals, load times, and real-world performance.",
+      "We test on real mobile phones and throttled mobile data networks to ensure sub-second initial loads and top performance scores.",
   },
   {
-    title: "Scalable Architecture",
+    title: "Solid Infrastructure",
     description:
-      "Systems built to grow with you. From 100 users to 100,000 — the architecture handles it.",
+      "Stateless API endpoints, isolated database connections, and CDN caching ensure your app stays fast as customer volume multiplies.",
   },
   {
-    title: "Business-Focused Design",
+    title: "Direct Conversion Focus",
     description:
-      "Beautiful design that converts. Every interface decision is tied to a business outcome, not just aesthetics.",
+      "Every page section, callout, and inquiry form is placed to reduce user hesitation and increase qualified leads.",
   },
 ];
 
@@ -48,7 +48,7 @@ export default function WhyKivex() {
   return (
     <section
       id="why-kivex"
-      className="section-padding"
+      className="relative px-5 sm:px-6 md:px-8 py-16 sm:py-20 md:py-24 lg:py-28 overflow-hidden rounded-t-[32px] sm:rounded-t-[40px] md:rounded-t-[48px] border-t border-white/[0.08] shadow-[0_-25px_50px_rgba(0,0,0,0.3)]"
       style={{ backgroundColor: "#0A0A0A" }}
     >
       <div className="mx-auto max-w-7xl">
@@ -57,24 +57,26 @@ export default function WhyKivex() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-16 md:mb-24 max-w-4xl"
+          className="mb-12 sm:mb-16 md:mb-20 max-w-4xl"
         >
-          <span
-            className="text-sm font-semibold tracking-widest uppercase"
-            style={{ color: "#E8B62A" }}
-          >
-            Why Kivex
-          </span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E8B62A]/10 border border-[#E8B62A]/20 mb-3">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#E8B62A]" />
+            <span
+              className="text-[11px] sm:text-xs font-semibold tracking-widest uppercase"
+              style={{ color: "#E8B62A" }}
+            >
+              Why Kivex
+            </span>
+          </div>
           <h2
-            className="mt-4 text-3xl md:text-5xl lg:text-6xl font-bold leading-tight"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
             style={{ color: "#F5EFE5" }}
           >
-            WE DON&apos;T JUST BUILD DIGITAL PRODUCTS. WE BUILD DIGITAL
-            SYSTEMS.
+            DIGITAL SYSTEMS ENGINEERED TO RUN YOUR BUSINESS.
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-14">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {propositions.map((prop, i) => (
             <motion.div
               key={prop.title}
@@ -83,21 +85,24 @@ export default function WhyKivex() {
               whileInView="visible"
               viewport={{ once: true, margin: "-40px" }}
               variants={fadeUp}
-              className="group"
+              className="group p-6 sm:p-7 rounded-2xl border border-white/[0.06] bg-[#141414]/60 hover:bg-[#141414] hover:border-[#2D5FC7]/40 transition-all duration-300"
             >
-              <div
-                className="w-8 h-[2px] mb-6 transition-all duration-300 group-hover:w-16 group-hover:bg-yellow"
-                style={{ backgroundColor: "#2D5FC7" }}
-              />
+              <div className="flex items-center justify-between mb-5">
+                <div
+                  className="w-8 h-[2px] transition-all duration-300 group-hover:w-14"
+                  style={{ backgroundColor: "#2D5FC7" }}
+                />
+                <span className="text-[10px] font-mono text-white/30">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+              </div>
               <h3
-                className="text-lg md:text-xl font-bold mb-3"
-                style={{ color: "#F5EFE5" }}
+                className="text-lg md:text-xl font-bold mb-2.5 text-[#F5EFE5] group-hover:text-white transition-colors"
               >
                 {prop.title}
               </h3>
               <p
-                className="text-sm md:text-base leading-relaxed"
-                style={{ color: "#A3A3A3" }}
+                className="text-sm md:text-base leading-relaxed text-[#A3A3A3]"
               >
                 {prop.description}
               </p>

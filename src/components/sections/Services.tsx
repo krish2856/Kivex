@@ -2,8 +2,10 @@
 
 import { useState, useRef } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
-import { services, type ServiceItem } from "@/data/services";
+import { services, type ServiceItem, type ServiceCategory } from "@/data/services";
 import { cn } from "@/lib/utils";
+import { useProjectModal } from "@/context/ProjectModalContext";
+import ServiceDetailModal from "@/components/ui/ServiceDetailModal";
 
 const categoryIcons: Record<string, string> = {
   web: "< >",
@@ -21,7 +23,17 @@ const categoryColors: Record<string, string> = {
   cloud: "#1E3D8A",
 };
 
-function ServiceCard({ service, index, color }: { service: ServiceItem; index: number; color: string }) {
+function ServiceCard({
+  service,
+  index,
+  color,
+  onLearnMore,
+}: {
+  service: ServiceItem;
+  index: number;
+  color: string;
+  onLearnMore: () => void;
+}) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
@@ -32,11 +44,12 @@ function ServiceCard({ service, index, color }: { service: ServiceItem; index: n
         duration: 0.5,
         ease: [0.22, 1, 0.36, 1],
       }}
-      className="group relative"
+      className="group relative cursor-pointer"
+      onClick={onLearnMore}
     >
       <div
         className={cn(
-          "relative rounded-2xl border p-6 transition-all duration-500 cursor-default overflow-hidden",
+          "relative rounded-2xl border p-6 transition-all duration-500 overflow-hidden",
           "border-black/[0.06] bg-white/50 hover:bg-white hover:shadow-lg hover:shadow-black/5 hover:border-transparent"
         )}
       >
@@ -76,8 +89,8 @@ function ServiceCard({ service, index, color }: { service: ServiceItem; index: n
           {/* Bottom accent line */}
           <div className="mt-4 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
             <div className="h-[2px] w-0 group-hover:w-8 transition-all duration-500" style={{ backgroundColor: color }} />
-            <span className="text-[10px] font-bold tracking-wider uppercase" style={{ color }}>
-              Learn more
+            <span className="text-[10px] font-bold tracking-wider uppercase flex items-center gap-1" style={{ color }}>
+              Learn more →
             </span>
           </div>
         </div>
@@ -90,6 +103,12 @@ export default function Services() {
   const [activeId, setActiveId] = useState<string>(services[0].id);
   const [openMobile, setOpenMobile] = useState<string | null>(null);
   const [hoveredTab, setHoveredTab] = useState<string | null>(null);
+  const [selectedServiceForDetail, setSelectedServiceForDetail] = useState<{
+    category: ServiceCategory;
+    service: ServiceItem;
+  } | null>(null);
+
+  const { openProjectModal } = useProjectModal();
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
@@ -100,24 +119,29 @@ export default function Services() {
   };
 
   return (
-    <section ref={sectionRef} id="services" className="relative bg-[#F5EFE5] overflow-hidden">
+    <section ref={sectionRef} id="services" className="relative bg-[#F5EFE5]">
       {/* Background accent */}
-      <div
-        className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full blur-[200px] opacity-[0.03] pointer-events-none"
-        style={{ backgroundColor: categoryColors[activeId] }}
-      />
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div
+          className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full blur-[200px] opacity-[0.03]"
+          style={{ backgroundColor: categoryColors[activeId] }}
+        />
+      </div>
 
-      <div className="mx-auto max-w-6xl px-6 py-24 md:py-32">
+      <div className="mx-auto max-w-7xl px-5 sm:px-6 pt-4 sm:pt-6 md:pt-8 pb-16 sm:pb-20 md:pb-28 lg:pb-32">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         >
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#2D5FC7]">
-            Our Expertise
-          </p>
-          <h2 className="mt-3 text-4xl font-bold tracking-tight text-[#0A0A0A] sm:text-5xl md:text-6xl">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/[0.04] border border-black/[0.06] mb-3">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#2D5FC7]" />
+            <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.2em] text-[#2D5FC7]">
+              Our Expertise
+            </span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#0A0A0A]">
             WHAT WE BUILD
           </h2>
         </motion.div>
@@ -234,6 +258,12 @@ export default function Services() {
                       service={svc}
                       index={i}
                       color={categoryColors[activeCategory.id]}
+                      onLearnMore={() =>
+                        setSelectedServiceForDetail({
+                          category: activeCategory,
+                          service: svc,
+                        })
+                      }
                     />
                   ))}
                 </div>
@@ -261,7 +291,8 @@ export default function Services() {
               >
                 <button
                   onClick={() => toggleMobile(cat.id)}
-                  className="flex w-full items-center justify-between px-5 py-4 text-left"
+                  className="flex w-full items-center justify-between px-5 py-4 text-left min-h-[52px]"
+                  aria-expanded={isOpen}
                 >
                   <span className="flex items-center gap-3">
                     <span
@@ -281,7 +312,7 @@ export default function Services() {
                   </span>
                   <span
                     className={cn(
-                      "ml-4 flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs transition-all duration-300",
+                      "ml-4 flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-xs transition-all duration-300",
                       isOpen
                         ? "text-white rotate-180"
                         : "bg-black/5 text-black/40"
@@ -318,7 +349,7 @@ export default function Services() {
                   <div className="overflow-hidden">
                     <div className="border-t border-black/[0.06] px-5 pb-5 pt-4">
                       <p
-                        className="mb-4 text-xs font-medium uppercase tracking-wider"
+                        className="mb-4 text-xs font-semibold uppercase tracking-wider"
                         style={{ color: categoryColors[cat.id] }}
                       >
                         {cat.tagline}
@@ -330,17 +361,31 @@ export default function Services() {
                             initial={isOpen ? { opacity: 0, x: -10 } : false}
                             animate={isOpen ? { opacity: 1, x: 0 } : {}}
                             transition={{ delay: i * 0.05, duration: 0.3 }}
-                            className="flex gap-3"
+                            className="flex gap-3 items-start p-2.5 rounded-xl hover:bg-black/[0.03] transition-colors cursor-pointer"
+                            onClick={() =>
+                              setSelectedServiceForDetail({
+                                category: cat,
+                                service: svc,
+                              })
+                            }
                           >
                             <span
                               className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full"
                               style={{ backgroundColor: categoryColors[cat.id] }}
                             />
-                            <div>
-                              <p className="text-sm font-semibold text-[#0A0A0A]">
-                                {svc.name}
-                              </p>
-                              <p className="mt-0.5 text-xs leading-relaxed text-black/45">
+                            <div className="flex-1">
+                              <div className="flex items-center justify-between">
+                                <p className="text-sm font-semibold text-[#0A0A0A]">
+                                  {svc.name}
+                                </p>
+                                <span
+                                  className="text-[10px] font-bold uppercase tracking-wider"
+                                  style={{ color: categoryColors[cat.id] }}
+                                >
+                                  Learn more →
+                                </span>
+                              </div>
+                              <p className="mt-0.5 text-xs leading-relaxed text-black/55">
                                 {svc.description}
                               </p>
                             </div>
@@ -355,6 +400,27 @@ export default function Services() {
           })}
         </div>
       </div>
+
+      {/* Subtle bottom gradient into dark ecosystem */}
+      <div className="h-12 md:h-16 bg-gradient-to-b from-transparent to-black/[0.03] pointer-events-none" />
+
+      {/* Service Process Detail Modal */}
+      <AnimatePresence>
+        {selectedServiceForDetail && (
+          <ServiceDetailModal
+            category={selectedServiceForDetail.category}
+            service={selectedServiceForDetail.service}
+            categoryColor={
+              categoryColors[selectedServiceForDetail.category.id] || "#2D5FC7"
+            }
+            onClose={() => setSelectedServiceForDetail(null)}
+            onStartProject={(serviceName) => {
+              setSelectedServiceForDetail(null);
+              openProjectModal(serviceName);
+            }}
+          />
+        )}
+      </AnimatePresence>
     </section>
   );
 }

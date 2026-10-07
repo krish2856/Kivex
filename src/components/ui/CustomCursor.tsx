@@ -20,7 +20,13 @@ export default function CustomCursor() {
   const [isHovering, setIsHovering] = useState(false);
 
   useEffect(() => {
-    const checkDesktop = () => setIsDesktop(window.innerWidth > 768);
+    // Only activate on pointer devices with fine pointer and no touch
+    const checkDesktop = () => {
+      const hasFinePointer = window.matchMedia("(pointer: fine)").matches;
+      const isWideScreen = window.innerWidth > 768;
+      setIsDesktop(hasFinePointer && isWideScreen);
+    };
+
     checkDesktop();
     window.addEventListener("resize", checkDesktop);
     return () => window.removeEventListener("resize", checkDesktop);
@@ -34,7 +40,7 @@ export default function CustomCursor() {
       mouse.current.y = e.clientY;
 
       if (innerRef.current) {
-        innerRef.current.style.transform = `translate(${e.clientX - INNER_SIZE / 2}px, ${e.clientY - INNER_SIZE / 2}px)`;
+        innerRef.current.style.transform = `translate3d(${e.clientX - INNER_SIZE / 2}px, ${e.clientY - INNER_SIZE / 2}px, 0)`;
       }
     };
 
@@ -43,33 +49,47 @@ export default function CustomCursor() {
       outerPos.current.y = lerp(outerPos.current.y, mouse.current.y, LERP_FACTOR);
 
       if (outerRef.current) {
-        outerRef.current.style.transform = `translate(${outerPos.current.x - OUTER_SIZE / 2}px, ${outerPos.current.y - OUTER_SIZE / 2}px)`;
+        outerRef.current.style.transform = `translate3d(${outerPos.current.x - OUTER_SIZE / 2}px, ${outerPos.current.y - OUTER_SIZE / 2}px, 0)`;
       }
 
       rafId.current = requestAnimationFrame(animate);
     };
 
-    const onHoverStart = () => setIsHovering(true);
-    const onHoverEnd = () => setIsHovering(false);
+    // Event delegation: dynamically catches newly rendered items and tabs!
+    const onPointerOver = (e: MouseEvent) => {
+      const target = (e.target as HTMLElement)?.closest?.(
+        "a, button, input, textarea, select, [role='button'], [data-cursor-hover], [data-cursor-project]"
+      );
+      if (target) {
+        setIsHovering(true);
+      }
+    };
 
-    const interactiveSelector = "a, button, input, textarea, select, [role='button'], [data-cursor-hover]";
-    const targets = document.querySelectorAll<HTMLElement>(interactiveSelector);
+    const onPointerOut = (e: MouseEvent) => {
+      const target = (e.target as HTMLElement)?.closest?.(
+        "a, button, input, textarea, select, [role='button'], [data-cursor-hover], [data-cursor-project]"
+      );
+      if (target) {
+        // Check if moving to another interactive element
+        const related = (e.relatedTarget as HTMLElement)?.closest?.(
+          "a, button, input, textarea, select, [role='button'], [data-cursor-hover], [data-cursor-project]"
+        );
+        if (!related) {
+          setIsHovering(false);
+        }
+      }
+    };
 
-    targets.forEach((el) => {
-      el.addEventListener("mouseenter", onHoverStart);
-      el.addEventListener("mouseleave", onHoverEnd);
-    });
-
-    document.addEventListener("mousemove", onMouseMove);
+    document.addEventListener("mousemove", onMouseMove, { passive: true });
+    document.addEventListener("mouseover", onPointerOver, { passive: true });
+    document.addEventListener("mouseout", onPointerOut, { passive: true });
     rafId.current = requestAnimationFrame(animate);
 
     return () => {
       document.removeEventListener("mousemove", onMouseMove);
+      document.removeEventListener("mouseover", onPointerOver);
+      document.removeEventListener("mouseout", onPointerOut);
       cancelAnimationFrame(rafId.current);
-      targets.forEach((el) => {
-        el.removeEventListener("mouseenter", onHoverStart);
-        el.removeEventListener("mouseleave", onHoverEnd);
-      });
     };
   }, [isDesktop]);
 
@@ -87,7 +107,7 @@ export default function CustomCursor() {
           borderRadius: "50%",
           border: "1.5px solid white",
           mixBlendMode: "difference" as const,
-          transition: "width 0.3s ease, height 0.3s ease",
+          transition: "width 0.25s ease, height 0.25s ease",
           willChange: "transform",
         }}
       />
