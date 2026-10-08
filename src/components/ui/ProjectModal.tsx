@@ -103,12 +103,7 @@ function ProjectModalDialog() {
         <div>
           {/* Header */}
           <div className="mb-6 pr-8">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#2D5FC7]/15 border border-[#2D5FC7]/30 mb-2.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#2D5FC7] animate-pulse" />
-              <span className="text-[11px] font-semibold tracking-widest uppercase text-[#2D5FC7]">
-                Start a Project
-              </span>
-            </div>
+
             <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#F5EFE5]">
               Tell Us What You&apos;re Building
             </h2>

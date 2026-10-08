@@ -135,12 +135,6 @@ export default function Services() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/[0.04] border border-black/[0.06] mb-3">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#2D5FC7]" />
-            <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.2em] text-[#2D5FC7]">
-              Our Expertise
-            </span>
-          </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#0A0A0A]">
             WHAT WE BUILD
           </h2>

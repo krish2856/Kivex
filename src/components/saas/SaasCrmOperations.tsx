@@ -14,10 +14,7 @@ export default function SaasCrmOperations() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* Section Headline */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#2D5FC7]/15 border border-[#2D5FC7]/30 text-[11px] font-mono font-bold tracking-widest text-[#2D5FC7] uppercase mb-4 shadow-2xs">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#2D5FC7] animate-pulse" />
-            CORE SAAS ENGINE &bull; CENTRALIZED OPERATIONS CONSOLE
-          </div>
+
 
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#0F172A] tracking-[-0.035em] leading-[1.05] uppercase">
             A Single Cockpit For Your <span className="text-[#2D5FC7]">Entire Business</span>

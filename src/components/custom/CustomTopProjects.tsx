@@ -129,10 +129,7 @@ export default function CustomTopProjects() {
         {/* Curated Showcase Top Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 sm:pb-16 border-b border-black/[0.08]">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100/90 border border-emerald-300 text-[10px] sm:text-xs font-mono font-bold tracking-widest text-emerald-900 uppercase mb-4 shadow-2xs">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse" />
-              PORTFOLIO &bull; PRODUCTION PROVEN
-            </div>
+
 
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-[#0F172A] tracking-[-0.035em] leading-[0.98] uppercase">
               Our Live <span className="text-[#2D5FC7]">Projects</span>

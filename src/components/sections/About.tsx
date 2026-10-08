@@ -48,15 +48,7 @@ export default function About() {
           transition={{ duration: 0.6 }}
           className="mb-12 sm:mb-16 md:mb-20"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/[0.04] border border-black/[0.06] mb-3">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#2D5FC7]" />
-            <span
-              className="text-[11px] sm:text-xs font-semibold tracking-widest uppercase"
-              style={{ color: "#2D5FC7" }}
-            >
-              Company
-            </span>
-          </div>
+
           <h2
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight"
             style={{ color: "#0A0A0A" }}

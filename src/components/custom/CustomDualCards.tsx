@@ -79,10 +79,7 @@ export default function CustomDualCards({
                 }
               }}
             >
-              <div className="flex items-center justify-between mb-3">
-                <span className="text-[10px] font-mono uppercase tracking-wider px-3 py-1 rounded-full bg-blue-500/20 text-[#93C5FD] font-bold border border-blue-400/30">
-                  DESIGN ECOSYSTEM
-                </span>
+              <div className="flex items-center justify-end mb-3">
                 <span className="text-xs font-mono text-slate-300 group-hover:text-blue-300 transition-colors">
                   Explore 12 Deliverables &rarr;
                 </span>
@@ -162,10 +159,7 @@ export default function CustomDualCards({
                 }
               }}
             >
-              <div className="flex items-center justify-between mb-3">
-                <span className="text-[10px] font-mono uppercase tracking-wider px-3 py-1 rounded-full bg-amber-500/20 text-[#FDE68A] font-bold border border-amber-400/30">
-                  GROWTH ECOSYSTEM
-                </span>
+              <div className="flex items-center justify-end mb-3">
                 <span className="text-xs font-mono text-slate-300 group-hover:text-amber-300 transition-colors">
                   Explore 5 Formats &rarr;
                 </span>

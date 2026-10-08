@@ -71,10 +71,7 @@ export default function DentalTopProjects({
 
         {/* Monumental Headline */}
         <div className="text-center my-6 sm:my-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/70 border border-slate-300 text-[10px] sm:text-xs font-mono font-bold tracking-widest text-[#2D5FC7] uppercase mb-4 shadow-2xs">
-            <span className="w-2 h-2 rounded-full bg-[#2D5FC7] animate-pulse" />
-            CLIENT LIVE PROJECTS
-          </div>
+
 
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -105,10 +102,7 @@ export default function DentalTopProjects({
 
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-7">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 text-[10px] sm:text-xs font-mono font-semibold uppercase tracking-wider mb-4">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
-                NEXT CLIENT ONBOARDING WINDOW OPEN
-              </div>
+
 
               <h3 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight uppercase leading-tight">
                 Launch Your Clinic’s <br />

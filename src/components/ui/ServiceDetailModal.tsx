@@ -94,18 +94,7 @@ export default function ServiceDetailModal({
         {/* 1. Header (Pinned & Fixed) */}
         <div className="p-5 sm:p-7 md:p-8 pb-4 border-b border-white/[0.08] flex items-start justify-between gap-4 shrink-0 bg-[#0A0A0A]/90 backdrop-blur-sm relative z-20">
           <div className="pr-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-2.5">
-              <span
-                className="w-1.5 h-1.5 rounded-full"
-                style={{ backgroundColor: categoryColor }}
-              />
-              <span
-                className="text-[10px] sm:text-[11px] font-semibold tracking-widest uppercase"
-                style={{ color: categoryColor }}
-              >
-                {category.title}
-              </span>
-            </div>
+
 
             <h3 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-[#F5EFE5]">
               {service.name}

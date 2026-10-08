@@ -231,12 +231,7 @@ export default function RealEstateMarketingContent({ onBack }: RealEstateMarketi
   return (
     <div className="relative w-full bg-[#F5EFE5] text-[#0A0A0A]">
       <div className="pt-8 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto flex items-center justify-between border-b border-black/[0.08] pb-4">
-        <div className="flex items-center gap-2">
-          <span className="w-2.5 h-2.5 rounded-full bg-[#2D5FC7] animate-pulse" />
-          <span className="text-xs font-mono font-bold tracking-wider uppercase text-slate-800">
-            MARKETING CONTENT SUITE &bull; 4 FULL PRODUCTION MODULES
-          </span>
-        </div>
+        <div />
         {onBack && (
           <button
             type="button"

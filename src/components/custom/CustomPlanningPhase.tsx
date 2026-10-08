@@ -39,10 +39,7 @@ export default function CustomPlanningPhase() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-black/[0.08]">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C69432]/15 border border-[#C69432]/30 text-[11px] font-mono font-bold tracking-widest text-[#9B701F] uppercase mb-4 shadow-2xs">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#C69432] animate-pulse" />
-              PHASE 01 &bull; REQUIREMENTS &amp; ARCHITECTURE PLANNING
-            </div>
+
 
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#0F172A] tracking-[-0.035em] leading-[1.05] uppercase">
               How We Plan: <span className="text-[#2D5FC7]">Requirements</span> &amp; Architecture Blueprint

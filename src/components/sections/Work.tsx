@@ -298,15 +298,6 @@ export default function Work() {
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="mb-10 sm:mb-14 md:mb-16 max-w-4xl"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#2D5FC7]/10 border border-[#2D5FC7]/20 mb-3">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#2D5FC7]" />
-            <span
-              className="text-[11px] sm:text-xs font-semibold tracking-widest uppercase"
-              style={{ color: "#2D5FC7" }}
-            >
-              Selected Case Studies
-            </span>
-          </div>
           <h2
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight"
             style={{ color: "#F5EFE5" }}
@@ -332,12 +323,6 @@ export default function Work() {
           className="mb-8 sm:mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-white/[0.08]"
         >
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#2D5FC7]/15 border border-[#2D5FC7]/30 mb-3">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#2D5FC7] animate-pulse" />
-              <span className="text-[11px] font-semibold tracking-widest uppercase text-[#4A7AE8]">
-                Featured Portfolio
-              </span>
-            </div>
             <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-[#F5EFE5]">
               Top Projects
             </h3>

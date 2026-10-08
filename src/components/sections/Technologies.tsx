@@ -286,21 +286,7 @@ export default function Technologies() {
       <div className="relative mx-auto max-w-7xl">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-black/[0.04] border border-black/[0.08] mb-4"
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-[#2D5FC7]" />
-            <span
-              className="text-[11px] font-semibold tracking-widest uppercase font-mono"
-              style={{ color: "#2D5FC7" }}
-            >
-              Enterprise Engineering
-            </span>
-          </motion.div>
+
 
           <motion.h2
             initial={{ opacity: 0, y: 20 }}

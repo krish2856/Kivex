@@ -75,9 +75,7 @@ export default function CustomMarketingContent({ onBack }: CustomMarketingConten
                 <span>Back to Overview</span>
               </button>
             )}
-            <span className="text-xs font-mono uppercase tracking-wider text-slate-500">
-              Distribution &bull; Growth Engines
-            </span>
+
           </div>
 
           <button

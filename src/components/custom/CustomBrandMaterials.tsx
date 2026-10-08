@@ -196,9 +196,7 @@ export default function CustomBrandMaterials({ onBack, defaultFilter = "all" }: 
 
         {/* Title */}
         <div className="my-8 sm:my-12 max-w-3xl">
-          <span className="text-[11px] font-mono tracking-widest uppercase text-[#C69432] font-bold">
-            EXPANDED BRANDING &amp; MARKETING SUITE
-          </span>
+
           <h2 className="text-3xl sm:text-5xl font-black text-[#0F172A] tracking-[-0.035em] leading-[1.05] uppercase mt-2">
             Brand Assets, Design Systems &amp; <span className="text-[#2D5FC7]">Marketing Engines</span>
           </h2>

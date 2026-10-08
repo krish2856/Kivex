@@ -122,21 +122,6 @@ export default function ClientStories() {
         {/* Block 1: TRUSTED BY - Our Clients Logo Grid              */}
         {/* ======================================================== */}
         <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-black/[0.04] border border-black/[0.08] mb-3.5"
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-[#E8B62A]" />
-            <span
-              className="text-[11px] font-semibold tracking-widest uppercase font-mono"
-              style={{ color: "#0A0A0A" }}
-            >
-              Trusted By
-            </span>
-          </motion.div>
 
           <motion.h2
             initial={{ opacity: 0, y: 15 }}
@@ -177,21 +162,6 @@ export default function ClientStories() {
         {/* Block 2: CLIENT STORIES - What Our Clients Say           */}
         {/* ======================================================== */}
         <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-black/[0.04] border border-black/[0.08] mb-3.5"
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-[#2D5FC7]" />
-            <span
-              className="text-[11px] font-semibold tracking-widest uppercase font-mono"
-              style={{ color: "#2D5FC7" }}
-            >
-              Client Stories
-            </span>
-          </motion.div>
 
           <motion.h2
             initial={{ opacity: 0, y: 15 }}

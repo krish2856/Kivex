@@ -21,24 +21,6 @@ export default function DentalHero() {
       <div className="absolute inset-0 bg-[radial-gradient(rgba(198,148,50,0.14)_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
 
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        {/* Top Meta Ribbon with frosted glass finish */}
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="flex items-center justify-center gap-2 sm:gap-3 text-[11px] sm:text-xs font-mono tracking-wider mb-6 uppercase"
-        >
-          <div className="inline-flex items-center gap-2 sm:gap-3 px-4 py-1.5 rounded-full bg-white/70 backdrop-blur-xl border border-white/80 shadow-[0_8px_30px_rgba(198,148,50,0.14),inset_0_1px_1px_rgba(255,255,255,0.95)]">
-            <span className="font-bold text-slate-900 flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-[#C69432] shadow-[0_0_8px_rgba(198,148,50,0.8)] animate-pulse" />
-              Dental Clinic Growth System
-            </span>
-            <span className="text-slate-400">&bull;</span>
-            <span className="px-2.5 py-0.5 rounded-full bg-[#C69432]/12 border border-[#C69432]/30 font-bold text-[#9B701F] shadow-xs">
-              Single Complete Ecosystem
-            </span>
-          </div>
-        </motion.div>
 
         {/* Monumental Hero Headline */}
         <div className="relative z-30 text-center my-6 sm:my-10 max-w-4xl mx-auto">

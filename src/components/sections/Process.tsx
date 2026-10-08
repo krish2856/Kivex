@@ -163,15 +163,6 @@ export default function Process() {
         <div className="w-full max-w-7xl mx-auto py-8">
           {/* Header */}
           <div className="mb-8">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/[0.04] border border-black/[0.06] mb-2.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#2D5FC7]" />
-              <span
-                className="text-[11px] font-semibold tracking-widest uppercase"
-                style={{ color: "#2D5FC7" }}
-              >
-                Methodology
-              </span>
-            </div>
             <h2
               className="text-3xl xl:text-4xl font-bold tracking-tight"
               style={{ color: "#0A0A0A" }}
@@ -309,15 +300,6 @@ export default function Process() {
         <div className="mx-auto max-w-2xl">
           {/* Header */}
           <div className="mb-8">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/[0.04] border border-black/[0.06] mb-3">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#2D5FC7]" />
-              <span
-                className="text-[11px] font-semibold tracking-widest uppercase"
-                style={{ color: "#2D5FC7" }}
-              >
-                Methodology
-              </span>
-            </div>
             <h2
               className="text-3xl sm:text-4xl font-bold tracking-tight"
               style={{ color: "#0A0A0A" }}

@@ -145,10 +145,7 @@ export default function RealEstateDualCards({
                 }
               }}
             >
-              <div className="flex items-center justify-between mb-3">
-                <span className="text-[10px] font-mono uppercase tracking-wider px-3 py-1 rounded-full bg-blue-500/20 text-[#93C5FD] font-bold border border-blue-400/30">
-                  DESIGN ECOSYSTEM
-                </span>
+              <div className="flex items-center justify-end mb-3">
                 <span className="text-xs font-mono text-slate-300 group-hover:text-blue-300 transition-colors">
                   Explore 12 Deliverables &rarr;
                 </span>
@@ -228,10 +225,7 @@ export default function RealEstateDualCards({
                 }
               }}
             >
-              <div className="flex items-center justify-between mb-3">
-                <span className="text-[10px] font-mono uppercase tracking-wider px-3 py-1 rounded-full bg-amber-500/20 text-[#FDE68A] font-bold border border-amber-400/30">
-                  GROWTH ECOSYSTEM
-                </span>
+              <div className="flex items-center justify-end mb-3">
                 <span className="text-xs font-mono text-slate-300 group-hover:text-amber-300 transition-colors">
                   Explore 5 Formats &rarr;
                 </span>
@@ -288,9 +282,6 @@ export default function RealEstateDualCards({
           className="mt-12 p-6 sm:p-8 rounded-3xl bg-white border border-slate-200/90 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6"
         >
           <div className="flex flex-col items-start text-left max-w-2xl">
-            <span className="text-[10px] font-mono uppercase tracking-widest text-[#2D5FC7] font-bold">
-              KIVEX POSITIONING &bull; THE COMPLETE SYSTEM
-            </span>
             <h4 className="mt-1 text-lg sm:text-xl font-extrabold text-[#0F172A] tracking-tight">
               Building Digital Systems That Move Businesses Forward.
             </h4>

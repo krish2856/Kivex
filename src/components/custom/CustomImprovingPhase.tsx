@@ -58,10 +58,7 @@ export default function CustomImprovingPhase() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-black/[0.08]">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 border border-emerald-300 text-[11px] font-mono font-bold tracking-widest text-emerald-800 uppercase mb-4 shadow-2xs">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              PHASE 03 &bull; CONTINUOUS IMPROVING &amp; SCALE
-            </div>
+
 
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#0F172A] tracking-[-0.035em] leading-[1.05] uppercase">
               The Improving Phase: <span className="text-emerald-600">Telemetry</span>, Speed &amp; Rapid Iteration

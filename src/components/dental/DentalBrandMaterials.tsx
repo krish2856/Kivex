@@ -357,16 +357,7 @@ export default function DentalBrandMaterials({ onBack }: DentalBrandMaterialsPro
 
         {/* Massive Monumental Headline with Eyebrow and Description */}
         <div className="text-center max-w-4xl mx-auto my-6 sm:my-10">
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <span className="inline-block text-[11px] font-mono tracking-widest text-[#2D5FC7] uppercase font-bold px-3 py-1 rounded-full bg-blue-50 border border-blue-200/80 mb-3">
-              PHYSICAL CLINIC BRANDING SUITE
-            </span>
-          </motion.div>
+
 
           <motion.h2
             initial={{ opacity: 0, y: 20 }}

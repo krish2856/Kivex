@@ -12,10 +12,7 @@ export default function RealEstateSelectedWebsites() {
         {/* Curated Showcase Top Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 sm:pb-16 border-b border-black/[0.08]">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100/80 border border-amber-300 text-[10px] sm:text-xs font-mono font-bold tracking-widest text-amber-900 uppercase mb-4 shadow-2xs">
-              <span className="w-1.5 h-1.5 rounded-full bg-amber-600 animate-pulse" />
-              TEMPLATES &bull; COMING SOON
-            </div>
+
 
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-[#0F172A] tracking-[-0.035em] leading-[0.98] uppercase">
               Real Estate <span className="text-[#2D5FC7]">Templates</span>
@@ -51,9 +48,7 @@ export default function RealEstateSelectedWebsites() {
           <div className="absolute bottom-0 left-0 w-80 h-80 bg-amber-100/40 rounded-full blur-3xl pointer-events-none" />
 
           <div className="relative z-10 max-w-2xl mx-auto flex flex-col items-center">
-            <span className="px-3.5 py-1 rounded-full bg-amber-400/20 text-amber-800 text-[11px] font-mono font-bold uppercase tracking-wider border border-amber-300 mb-4">
-              ★ LAUNCHING SOON
-            </span>
+
 
             <h3 className="text-3xl sm:text-4xl font-black text-[#0F172A] tracking-tight uppercase">
               Real Estate Templates Coming Soon

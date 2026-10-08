@@ -38,17 +38,6 @@ export default function Introduction() {
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-8 sm:gap-12 lg:gap-24 items-start lg:items-center">
           {/* Left: Large statement */}
           <div>
-            <ScrollReveal>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/[0.04] border border-black/[0.06]">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#2D5FC7]" />
-                <span
-                  className="text-[11px] sm:text-xs font-semibold tracking-widest uppercase"
-                  style={{ color: "#2D5FC7" }}
-                >
-                  Core Philosophy
-                </span>
-              </div>
-            </ScrollReveal>
             <TextReveal
               text="TECHNOLOGY SHOULD SIMPLIFY COMPLEXITY."
               as="h2"

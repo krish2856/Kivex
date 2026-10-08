@@ -59,15 +59,6 @@ export default function WhyKivex() {
           transition={{ duration: 0.6 }}
           className="mb-12 sm:mb-16 md:mb-20 max-w-4xl"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E8B62A]/10 border border-[#E8B62A]/20 mb-3">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#E8B62A]" />
-            <span
-              className="text-[11px] sm:text-xs font-semibold tracking-widest uppercase"
-              style={{ color: "#E8B62A" }}
-            >
-              Why Kivex
-            </span>
-          </div>
           <h2
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
             style={{ color: "#F5EFE5" }}

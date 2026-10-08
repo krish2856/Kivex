@@ -115,17 +115,6 @@ export default function Ecosystem() {
       <div className="mx-auto max-w-7xl px-5 sm:px-6 pt-12 sm:pt-16 md:pt-20 pb-4 sm:pb-6 md:pb-8 relative z-10">
         {/* Header */}
         <div className="text-center">
-          <ScrollReveal>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E8B62A]/10 border border-[#E8B62A]/20 mb-3">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#E8B62A] animate-pulse" />
-              <span
-                className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.2em]"
-                style={{ color: "#E8B62A" }}
-              >
-                Connected by Design
-              </span>
-            </div>
-          </ScrollReveal>
           <TextReveal
             text="THE KIVEX ECOSYSTEM"
             as="h2"

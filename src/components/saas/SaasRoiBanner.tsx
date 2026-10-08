@@ -68,10 +68,7 @@ export default function SaasRoiBanner() {
 
         {/* Section Headline */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100/90 border border-emerald-300 text-[11px] font-mono font-bold tracking-widest text-emerald-900 uppercase mb-4 shadow-2xs">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse" />
-            ROI &bull; COMMERCIAL SAAS VS 100% PROPRIETARY PLATFORM
-          </div>
+
 
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#0F172A] tracking-[-0.035em] leading-[1.05] uppercase">
             Stop The Endless <span className="text-[#2D5FC7]">Per-Seat Subscription Drain</span>

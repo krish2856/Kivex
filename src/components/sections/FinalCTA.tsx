@@ -81,21 +81,7 @@ export default function FinalCTA() {
         ))}
 
       <div className="relative mx-auto max-w-4xl text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#E8B62A]/10 border border-[#E8B62A]/20 mb-5"
-        >
-          <span className="w-1.5 h-1.5 rounded-full bg-[#E8B62A] animate-pulse" />
-          <span
-            className="text-xs font-semibold tracking-widest uppercase font-mono"
-            style={{ color: "#E8B62A" }}
-          >
-            Let&apos;s Create
-          </span>
-        </motion.div>
+
 
         <motion.h2
           initial={{ opacity: 0, y: 30 }}

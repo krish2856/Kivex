@@ -108,36 +108,7 @@ export default function RealEstateTopProjects({
       }`}
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        {/* Top Header Meta Bar with Creative Logo & Deployment Fact */}
-        <div className="flex flex-wrap items-center justify-between gap-4 pb-8 mb-8 border-b border-black/[0.08]">
-          <div className="flex flex-wrap items-center gap-3 sm:gap-4">
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/80 border border-black/[0.08] shadow-2xs text-xs font-mono">
-              <span className="w-5 h-5 rounded-full bg-[#2D5FC7] text-white flex items-center justify-center text-[10px] font-bold shadow-xs">
-                ✓
-              </span>
-              <span className="font-bold text-slate-900">CLIENT SHOWCASE:</span>
-              <span className="text-slate-600">Built &amp; deployed live by Kivex Technology</span>
-            </div>
 
-            <div className="hidden sm:flex items-center -space-x-2">
-              <div className="w-7 h-7 rounded-full bg-[#0b1c3e] border-2 border-[#F5EFE5] flex items-center justify-center text-[10px] text-white font-bold">
-                AR
-              </div>
-              <div className="w-7 h-7 rounded-full bg-[#2D5FC7] border-2 border-[#F5EFE5] flex items-center justify-center text-[10px] text-white font-bold">
-                K.
-              </div>
-            </div>
-
-            <span className="text-xs font-mono font-medium text-slate-600 hidden 2xl:inline">
-              1 official verified live deployment
-            </span>
-          </div>
-
-          <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/80 border border-black/[0.08] shadow-2xs text-xs font-mono">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="font-bold text-slate-900">100% PRODUCTION VERIFIED</span>
-          </div>
-        </div>
 
         {/* Monumental Headline */}
         <div className="text-center my-6 sm:my-10">
