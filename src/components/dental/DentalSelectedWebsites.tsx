@@ -34,18 +34,18 @@ const templateWebsites: TemplateProject[] = [
     url: "https://dentalprime-eight.vercel.app/",
   },
   {
-    id: "dental-precision",
-    title: "Dental Precision Studio",
-    categoryTag: "Aesthetic Dentistry",
-    badge: "DENTAL / AESTHETIC STUDIO",
+    id: "premium-dental-care",
+    title: "Smile Dental Care & Aesthetics",
+    categoryTag: "Modern Family & Cosmetic Clinic",
+    badge: "DENTAL / FAMILY & COSMETIC",
     featured: true,
     description:
-      "Patient-first aesthetic practice experience with clear treatment breakdowns, emergency consultation flows, practitioner profiles, and Google Reviews trust signals.",
-    technologies: ["REACT", "RESPONSIVE UX", "PATIENT SCHEDULING"],
-    image: "/dental/templates/dental-ten-woad.png",
+      "Modern family and cosmetic dentistry portal with interactive treatment previews, doctor credentials, before-and-after smile galleries, and instant appointment triage.",
+    technologies: ["NEXT.JS", "RESPONSIVE UX", "APPOINTMENT TRIAGE"],
+    image: "/dental/templates/premium-dental-care.png",
     gridClass: "col-span-1 lg:col-span-5",
     imageHeight: "h-[280px] sm:h-[340px] md:h-[400px]",
-    url: "https://dental-ten-woad.vercel.app/",
+    url: "https://premium-dental-care-fwlt.vercel.app/",
   },
 
   // ROW 2: Narrow (5 cols) + Wide (7 cols)
@@ -154,18 +154,18 @@ const templateWebsites: TemplateProject[] = [
 
   // ROW 5: Three Equal Columns (4 cols each)
   {
-    id: "premium-dental-care",
-    title: "Smile Dental Care & Aesthetics",
-    categoryTag: "Modern Family & Cosmetic Clinic",
-    badge: "DENTAL / FAMILY & COSMETIC",
+    id: "aura-dental-atelier",
+    title: "Aura Dental Atelier",
+    categoryTag: "Biomimetic Prosthodontics & Implants",
+    badge: "SWISS DENTAL / ROBOTIC IMPLANTS",
     featured: true,
     description:
-      "Modern family and cosmetic dentistry portal with interactive treatment previews, doctor credentials, before-and-after smile galleries, and instant appointment triage.",
-    technologies: ["NEXT.JS", "RESPONSIVE UX", "APPOINTMENT TRIAGE"],
-    image: "/dental/templates/premium-dental-care.png",
+      "Swiss biomimetic prosthodontics and robotic implant architecture featuring sub-micron ceramic restorations, 3D facial aesthetic workflows, and frictionless booking.",
+    technologies: ["NEXT.JS", "ROBOTIC IMPLANTS", "BIOMIMETIC CERAMICS"],
+    image: "/dental/templates/auradental-banner.png",
     gridClass: "col-span-1 md:col-span-4",
     imageHeight: "h-[250px] sm:h-[300px] md:h-[320px]",
-    url: "https://premium-dental-care-fwlt.vercel.app/",
+    url: "https://auradental-nine.vercel.app/",
   },
   {
     id: "ortosense-orthodontics",
