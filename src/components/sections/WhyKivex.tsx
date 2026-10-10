@@ -1,6 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
+import SpotlightCard from "@/components/reactbits/SpotlightCard/SpotlightCard";
+import BlurText from "@/components/reactbits/BlurText/BlurText";
 
 const propositions = [
   {
@@ -59,12 +61,13 @@ export default function WhyKivex() {
           transition={{ duration: 0.6 }}
           className="mb-12 sm:mb-16 md:mb-20 max-w-4xl"
         >
-          <h2
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
-            style={{ color: "#F5EFE5" }}
-          >
-            DIGITAL SYSTEMS ENGINEERED TO RUN YOUR BUSINESS.
-          </h2>
+          <BlurText
+            text="DIGITAL SYSTEMS ENGINEERED TO RUN YOUR BUSINESS."
+            delay={30}
+            animateBy="words"
+            direction="top"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-[#F5EFE5]"
+          />
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
@@ -76,27 +79,31 @@ export default function WhyKivex() {
               whileInView="visible"
               viewport={{ once: true, margin: "-40px" }}
               variants={fadeUp}
-              className="group p-6 sm:p-7 rounded-2xl border border-white/[0.06] bg-[#141414]/60 hover:bg-[#141414] hover:border-[#2D5FC7]/40 transition-all duration-300"
             >
-              <div className="flex items-center justify-between mb-5">
-                <div
-                  className="w-8 h-[2px] transition-all duration-300 group-hover:w-14"
-                  style={{ backgroundColor: "#2D5FC7" }}
-                />
-                <span className="text-[10px] font-mono text-white/30">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-              </div>
-              <h3
-                className="text-lg md:text-xl font-bold mb-2.5 text-[#F5EFE5] group-hover:text-white transition-colors"
+              <SpotlightCard
+                theme="dark"
+                spotlightColor="rgba(45, 95, 199, 0.3)"
+                className="!p-6 sm:!p-7 !rounded-2xl border border-white/[0.08] bg-[#141414]/80 hover:bg-[#141414] hover:border-[#2D5FC7]/50 transition-all duration-300 h-full flex flex-col justify-between"
               >
-                {prop.title}
-              </h3>
-              <p
-                className="text-sm md:text-base leading-relaxed text-[#A3A3A3]"
-              >
-                {prop.description}
-              </p>
+                <div className="relative z-10">
+                  <div className="flex items-center justify-between mb-5">
+                    <div
+                      className="w-8 h-[2px] transition-all duration-300 group-hover:w-14"
+                      style={{ backgroundColor: "#2D5FC7" }}
+                    />
+                  </div>
+                  <h3
+                    className="text-lg md:text-xl font-bold mb-2.5 text-[#F5EFE5] group-hover:text-white transition-colors"
+                  >
+                    {prop.title}
+                  </h3>
+                  <p
+                    className="text-sm md:text-base leading-relaxed text-[#A3A3A3]"
+                  >
+                    {prop.description}
+                  </p>
+                </div>
+              </SpotlightCard>
             </motion.div>
           ))}
         </div>

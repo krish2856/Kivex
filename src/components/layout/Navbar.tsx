@@ -409,21 +409,13 @@ export default function Navbar() {
                                       )}
                                     >
                                       <div>
-                                        <div className="flex items-center justify-between mb-1.5">
-                                          <span
-                                            className={cn(
-                                              "text-[9px] font-mono font-bold tracking-wider px-2 py-0.5 rounded border uppercase",
-                                              item.badgeColor
-                                            )}
-                                          >
-                                            {item.badge}
-                                          </span>
+                                        <div className="flex items-center justify-between gap-2">
+                                          <div className="text-sm font-bold text-white group-hover:text-[#4A7AE8] transition-colors">
+                                            {item.title}
+                                          </div>
                                           <span className="text-xs text-white/40 group-hover:text-white transition-colors">
                                             ↗
                                           </span>
-                                        </div>
-                                        <div className="text-sm font-bold text-white group-hover:text-[#4A7AE8] transition-colors">
-                                          {item.title}
                                         </div>
                                         <p className="text-[11px] text-white/50 mt-1 leading-relaxed line-clamp-2">
                                           {item.subtitle}
@@ -513,12 +505,14 @@ export default function Navbar() {
 
       {/* Mobile Menu Overlay */}
       <div
+        data-lenis-prevent
         className={cn(
-          "fixed inset-0 z-[60] bg-[#0A0A0A] flex flex-col items-center justify-start transition-all duration-500 md:hidden px-6 py-8 overflow-y-auto",
+          "fixed inset-0 z-[60] bg-[#0A0A0A] flex flex-col items-center justify-start transition-all duration-500 md:hidden px-6 py-8 overflow-y-auto overscroll-contain touch-pan-y",
           mobileOpen
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
         )}
+        style={{ WebkitOverflowScrolling: "touch" }}
         aria-hidden={!mobileOpen}
       >
         {/* Close Button */}
@@ -569,12 +563,11 @@ export default function Navbar() {
                     <button
                       type="button"
                       onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-                      className="inline-flex items-center gap-1 text-xs px-2.5 py-1 rounded-full bg-white/10 text-white/80 hover:bg-white/20 transition-colors"
+                      className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/10 text-white/80 hover:bg-white/20 transition-colors"
                       aria-label="Toggle all capabilities list"
                     >
-                      <span className="text-[11px] font-mono">Directory</span>
                       <svg
-                        className={cn("w-3 h-3 transition-transform duration-300", mobileServicesOpen && "rotate-180")}
+                        className={cn("w-4 h-4 transition-transform duration-300", mobileServicesOpen && "rotate-180")}
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -587,11 +580,12 @@ export default function Navbar() {
 
                   {/* Expandable Mobile Services Directory */}
                   {mobileServicesOpen && (
-                    <div className="mt-3 p-3.5 rounded-xl bg-white/[0.04] border border-white/10 text-left max-h-48 overflow-y-auto">
-                      <span className="text-[10px] font-mono text-[#4A7AE8] uppercase tracking-wider block mb-2 font-bold">
-                        Complete Capabilities Index
-                      </span>
-                      <div className="grid grid-cols-2 gap-1 text-xs">
+                    <div
+                      data-lenis-prevent
+                      className="mt-3 p-3.5 rounded-xl bg-white/[0.04] border border-white/10 text-left max-h-48 overflow-y-auto overscroll-contain touch-pan-y"
+                      style={{ WebkitOverflowScrolling: "touch" }}
+                    >
+                      <div className="grid grid-cols-2 gap-1.5 text-xs">
                         {services.flatMap((s) => s.services).map((item) => (
                           <button
                             key={item.name}
@@ -626,12 +620,11 @@ export default function Navbar() {
                     <button
                       type="button"
                       onClick={() => setMobileWorkOpen(!mobileWorkOpen)}
-                      className="inline-flex items-center gap-1 text-xs px-2.5 py-1 rounded-full bg-[#2D5FC7]/20 text-[#38BDF8] hover:bg-[#2D5FC7]/30 transition-colors"
+                      className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/10 text-white/80 hover:bg-white/20 transition-colors"
                       aria-label="Toggle all work solutions list"
                     >
-                      <span className="text-[11px] font-mono">4 Solutions</span>
                       <svg
-                        className={cn("w-3 h-3 transition-transform duration-300", mobileWorkOpen && "rotate-180")}
+                        className={cn("w-4 h-4 transition-transform duration-300", mobileWorkOpen && "rotate-180")}
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -645,9 +638,6 @@ export default function Navbar() {
                   {/* Expandable Mobile Work Solutions */}
                   {mobileWorkOpen && (
                     <div className="mt-3 p-3.5 rounded-xl bg-white/[0.04] border border-white/10 text-left space-y-2">
-                      <span className="text-[10px] font-mono text-[#38BDF8] uppercase tracking-wider block mb-1 font-bold">
-                        Core Platform Solutions
-                      </span>
                       <div className="grid grid-cols-1 gap-1.5">
                         {workPlatforms.map((item) => (
                           <Link
@@ -657,11 +647,8 @@ export default function Navbar() {
                             className="p-2.5 rounded-lg bg-white/[0.03] hover:bg-white/[0.08] border border-white/[0.06] flex items-center justify-between transition-colors"
                           >
                             <div>
-                              <div className="text-xs font-bold text-white flex items-center gap-2">
-                                <span>{item.title}</span>
-                                <span className={cn("text-[9px] font-mono px-1.5 py-0.2 rounded border", item.badgeColor)}>
-                                  {item.badge}
-                                </span>
+                              <div className="text-xs font-bold text-white">
+                                {item.title}
                               </div>
                               <div className="text-[11px] text-white/50">{item.subtitle}</div>
                             </div>

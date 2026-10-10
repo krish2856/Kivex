@@ -1,123 +1,151 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import TextReveal from "@/components/ui/TextReveal";
-import ScrollReveal from "@/components/ui/ScrollReveal";
+import { motion, useInView } from "framer-motion";
+import CountUp from "@/components/reactbits/CountUp/CountUp";
+import DecryptedText from "@/components/reactbits/DecryptedText/DecryptedText";
+import ShinyText from "@/components/reactbits/ShinyText/ShinyText";
+import BlurText from "@/components/reactbits/BlurText/BlurText";
 
 export default function Introduction() {
   const sectionRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
-
-  const lineHeight = useTransform(scrollYProgress, [0.1, 0.5], ["0%", "100%"]);
-  const bgX = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
+  const isInView = useInView(sectionRef, { once: true, margin: "-60px" });
 
   return (
     <section
       ref={sectionRef}
       id="introduction"
-      className="relative overflow-hidden"
+      className="relative w-full overflow-hidden py-10 sm:py-14 md:py-16"
       style={{ backgroundColor: "#F5EFE5" }}
     >
-      {/* Subtle vertical line accent — hidden on phones */}
-      <div className="absolute left-6 md:left-16 top-0 bottom-0 w-[1px] bg-black/[0.06] hidden md:block" />
-      <motion.div
-        className="absolute left-6 md:left-16 top-0 w-[1px] origin-top hidden md:block"
-        style={{ height: lineHeight, backgroundColor: "#2D5FC7" }}
-      />
+      <div className="mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8">
+        {/* Short 2-line animated introduction above */}
+        <div className="max-w-4xl mb-8 sm:mb-10">
+          <BlurText
+            text="We engineer custom web applications, client portals, and intelligent automation pipelines built around the exact way your business operates."
+            delay={30}
+            animateBy="words"
+            direction="bottom"
+            stepDuration={0.3}
+            className="text-lg sm:text-xl md:text-2xl leading-relaxed font-medium text-[#0A0A0A]/80"
+          />
+        </div>
 
-      {/* Top transition connecting thread from Hero */}
-      <div className="flex justify-center pt-2 sm:pt-4">
-        <div className="h-6 sm:h-10 w-[1px] bg-gradient-to-b from-black/15 via-[#2D5FC7]/30 to-transparent" />
-      </div>
-
-      <div className="mx-auto max-w-7xl px-5 sm:px-6 pt-4 sm:pt-6 md:pt-8 pb-4 sm:pb-6 md:pb-8 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-8 sm:gap-12 lg:gap-24 items-start lg:items-center">
-          {/* Left: Large statement */}
-          <div>
-            <TextReveal
-              text="TECHNOLOGY SHOULD SIMPLIFY COMPLEXITY."
-              as="h2"
-              className="mt-4 sm:mt-6 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.12]"
-              style={{ color: "#0A0A0A" }}
-            />
-          </div>
-
-          {/* Right: Supporting text + stats */}
-          <div>
-            <ScrollReveal delay={0.15}>
-              <p
-                className="text-base sm:text-lg md:text-xl leading-relaxed font-normal"
-                style={{ color: "#404040" }}
+        {/* Full-width simple text row (no cards) with React Bits text animations */}
+        <div className="pt-8 sm:pt-10 border-t border-black/10 grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6 lg:gap-12 w-full">
+          {/* Stat 1: 100% CUSTOM BUILT */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div
+              className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-none"
+              style={{ color: "#2D5FC7" }}
+            >
+              <ShinyText
+                color="#2D5FC7"
+                shineColor="#7BA4FA"
+                speed={2.8}
+                shineWidth={35}
+                followPointer={true}
               >
-                Most software projects stall because teams reach for bloated templates instead of addressing the core operational need. At Kivex, we engineer web applications, client portals, and automation pipelines built around the specific way your business works.
-              </p>
-            </ScrollReveal>
+                <CountUp from={0} to={100} duration={2} />%
+              </ShinyText>
+            </div>
+            <div className="text-xs sm:text-sm font-semibold mt-2.5 tracking-[0.16em] uppercase text-[#737373]">
+              <DecryptedText
+                text="CUSTOM BUILT"
+                speed={40}
+                maxIterations={8}
+                animateOn="inViewHover"
+                className="text-[#737373]"
+                encryptedClassName="text-[#2D5FC7]"
+              />
+            </div>
+          </motion.div>
 
-            <ScrollReveal delay={0.25}>
-              {/* Stats — clean balanced 3-column grid */}
-              <div className="mt-8 sm:mt-10 pt-6 border-t border-black/[0.08] grid grid-cols-3 gap-3 sm:gap-6">
-                <div>
-                  <div
-                    className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight"
-                    style={{ color: "#2D5FC7" }}
-                  >
-                    100%
-                  </div>
-                  <div
-                    className="text-[10px] sm:text-xs font-semibold mt-1 tracking-wider uppercase"
-                    style={{ color: "#737373" }}
-                  >
-                    Custom Built
-                  </div>
-                </div>
+          {/* Stat 2: AI-First ARCHITECTURE */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+            transition={{ duration: 0.6, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
+            className="sm:border-l sm:border-black/10 sm:pl-6 lg:pl-12"
+          >
+            <div
+              className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-none"
+              style={{ color: "#2D5FC7" }}
+            >
+              <ShinyText
+                color="#2D5FC7"
+                shineColor="#7BA4FA"
+                speed={2.8}
+                shineWidth={35}
+                followPointer={true}
+              >
+                <DecryptedText
+                  text="AI-First"
+                  speed={38}
+                  maxIterations={10}
+                  animateOn="inViewHover"
+                  className="text-[#2D5FC7]"
+                  encryptedClassName="text-[#E8B62A]"
+                />
+              </ShinyText>
+            </div>
+            <div className="text-xs sm:text-sm font-semibold mt-2.5 tracking-[0.16em] uppercase text-[#737373]">
+              <DecryptedText
+                text="ARCHITECTURE"
+                speed={40}
+                maxIterations={8}
+                animateOn="inViewHover"
+                className="text-[#737373]"
+                encryptedClassName="text-[#2D5FC7]"
+              />
+            </div>
+          </motion.div>
 
-                <div className="border-l border-black/10 pl-3 sm:pl-6">
-                  <div
-                    className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight"
-                    style={{ color: "#2D5FC7" }}
-                  >
-                    AI-First
-                  </div>
-                  <div
-                    className="text-[10px] sm:text-xs font-semibold mt-1 tracking-wider uppercase"
-                    style={{ color: "#737373" }}
-                  >
-                    Architecture
-                  </div>
-                </div>
-
-                <div className="border-l border-black/10 pl-3 sm:pl-6">
-                  <div
-                    className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight"
-                    style={{ color: "#2D5FC7" }}
-                  >
-                    End-to-End
-                  </div>
-                  <div
-                    className="text-[10px] sm:text-xs font-semibold mt-1 tracking-wider uppercase"
-                    style={{ color: "#737373" }}
-                  >
-                    Delivery
-                  </div>
-                </div>
-              </div>
-            </ScrollReveal>
-          </div>
+          {/* Stat 3: End-to-End DELIVERY */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+            transition={{ duration: 0.6, delay: 0.34, ease: [0.22, 1, 0.36, 1] }}
+            className="sm:border-l sm:border-black/10 sm:pl-6 lg:pl-12"
+          >
+            <div
+              className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-none"
+              style={{ color: "#2D5FC7" }}
+            >
+              <ShinyText
+                color="#2D5FC7"
+                shineColor="#7BA4FA"
+                speed={2.8}
+                shineWidth={35}
+                followPointer={true}
+              >
+                <DecryptedText
+                  text="End-to-End"
+                  speed={38}
+                  maxIterations={10}
+                  animateOn="inViewHover"
+                  className="text-[#2D5FC7]"
+                  encryptedClassName="text-[#E8B62A]"
+                />
+              </ShinyText>
+            </div>
+            <div className="text-xs sm:text-sm font-semibold mt-2.5 tracking-[0.16em] uppercase text-[#737373]">
+              <DecryptedText
+                text="DELIVERY"
+                speed={40}
+                maxIterations={8}
+                animateOn="inViewHover"
+                className="text-[#737373]"
+                encryptedClassName="text-[#2D5FC7]"
+              />
+            </div>
+          </motion.div>
         </div>
       </div>
-
-      {/* Background floating shape */}
-      <motion.div
-        className="absolute -right-32 top-1/2 -translate-y-1/2 w-[300px] sm:w-[400px] md:w-[500px] h-[300px] sm:h-[400px] md:h-[500px] rounded-full blur-[150px] md:blur-[200px] opacity-[0.03] pointer-events-none"
-        style={{
-          backgroundColor: "#2D5FC7",
-          x: bgX,
-        }}
-      />
     </section>
   );
 }

@@ -7,6 +7,9 @@ import { projects, type Project } from "@/data/projects";
 import { cn } from "@/lib/utils";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import ProjectArchitectureBanner from "@/components/ui/ProjectArchitectureBanner";
+import ShinyText from "@/components/reactbits/ShinyText/ShinyText";
+import DecryptedText from "@/components/reactbits/DecryptedText/DecryptedText";
+import BlurText from "@/components/reactbits/BlurText/BlurText";
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
   const [hovered, setHovered] = useState(false);
@@ -14,7 +17,12 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    if (typeof window !== "undefined" && window.matchMedia && !window.matchMedia("(pointer: fine)").matches) return;
+    if (
+      typeof window !== "undefined" &&
+      window.matchMedia &&
+      !window.matchMedia("(pointer: fine)").matches
+    )
+      return;
     if (!cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
     const x = (e.clientX - rect.left) / rect.width - 0.5;
@@ -28,9 +36,11 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
   };
 
   const cardClasses = cn(
-    "group relative flex flex-col justify-between rounded-2xl overflow-hidden transition-all duration-500 border-2 w-full",
+    "group relative flex flex-col justify-between rounded-2xl overflow-hidden transition-all duration-500 border w-full h-full",
     project.comingSoon ? "cursor-default" : "cursor-pointer",
-    hovered ? "border-[#2D5FC7] shadow-[0_0_30px_rgba(45,95,199,0.2)]" : "border-white/[0.08]"
+    hovered
+      ? "border-[#2D5FC7] shadow-[0_12px_30px_rgba(0,0,0,0.4)]"
+      : "border-white/[0.08]"
   );
 
   const cardStyle = {
@@ -38,7 +48,8 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
     transform: hovered
       ? `perspective(1000px) rotateY(${mousePos.x * 3}deg) rotateX(${-mousePos.y * 3}deg)`
       : "perspective(1000px) rotateY(0deg) rotateX(0deg)",
-    transition: "transform 0.4s cubic-bezier(0.23,1,0.32,1), border-color 0.3s ease, box-shadow 0.3s ease",
+    transition:
+      "transform 0.4s cubic-bezier(0.23,1,0.32,1), border-color 0.3s ease, box-shadow 0.3s ease",
   };
 
   const cardInner = (
@@ -50,7 +61,9 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]/80" />
           <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F]/80" />
           <span className="ml-2 text-[10px] font-mono text-white/40 truncate">
-            {project.url ? project.url.replace("https://", "").replace(/\/$/, "") : `${project.title.toLowerCase().replace(/\s+/g, "")}.kivex.app`}
+            {project.url
+              ? project.url.replace("https://", "").replace(/\/$/, "")
+              : `${project.title.toLowerCase().replace(/\s+/g, "")}.kivex.app`}
           </span>
         </div>
 
@@ -66,7 +79,6 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
               className="w-full h-full object-cover object-top"
               loading="lazy"
             />
-            {/* Smooth gradient blend into the card */}
             <div className="absolute inset-0 bg-gradient-to-t from-[#141414] via-transparent to-black/20 pointer-events-none" />
           </div>
         ) : (
@@ -108,12 +120,14 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       <div className="p-5 sm:p-6 flex flex-col justify-between flex-1">
         <div>
           <div className="flex items-center justify-between">
-            <span
-              className="text-[11px] font-semibold tracking-widest uppercase font-mono"
-              style={{ color: "#2D5FC7" }}
-            >
-              {project.category}
-            </span>
+            <DecryptedText
+              text={project.category}
+              speed={25}
+              maxIterations={6}
+              animateOn="hover"
+              className="text-[11px] font-semibold tracking-widest uppercase font-mono text-[#2D5FC7]"
+              encryptedClassName="text-[#4A7AE8]"
+            />
             {project.comingSoon && (
               <span
                 className="text-[10px] font-bold tracking-widest uppercase px-2.5 py-0.5 rounded-full"
@@ -127,10 +141,13 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
               </span>
             )}
             {project.featured && !project.comingSoon && (
-              <span
-                className="text-[10px] font-bold tracking-widest uppercase px-2.5 py-0.5 rounded-full bg-[#2D5FC7]/15 text-[#4A7AE8] border border-[#2D5FC7]/30 shadow-[0_0_12px_rgba(45,95,199,0.2)]"
-              >
-                ★ Top Project
+              <span className="text-[10px] font-bold tracking-widest uppercase px-2.5 py-0.5 rounded-full bg-[#2D5FC7]/15 text-[#4A7AE8] border border-[#2D5FC7]/30">
+                <ShinyText
+                  text="★ TOP PROJECT"
+                  color="#4A7AE8"
+                  shineColor="#FFFFFF"
+                  speed={2.5}
+                />
               </span>
             )}
           </div>
@@ -172,8 +189,8 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
               project.comingSoon
                 ? "opacity-100"
                 : hovered
-                  ? "opacity-100 translate-x-0"
-                  : "opacity-60 -translate-x-1"
+                ? "opacity-100 translate-x-0"
+                : "opacity-60 -translate-x-1"
             )}
           >
             <span
@@ -298,20 +315,19 @@ export default function Work() {
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="mb-10 sm:mb-14 md:mb-16 max-w-4xl"
         >
-          <h2
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight"
-            style={{ color: "#F5EFE5" }}
-          >
-            OUR WORK
-          </h2>
-          <p
-            className="mt-3 text-sm sm:text-base md:text-lg max-w-xl leading-relaxed text-[#A3A3A3]"
-          >
+          <BlurText
+            text="OUR WORK"
+            delay={35}
+            animateBy="words"
+            direction="top"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#F5EFE5]"
+          />
+          <p className="mt-3 text-sm sm:text-base md:text-lg max-w-xl leading-relaxed text-[#A3A3A3]">
             Digital systems built for performance, scale, and business impact.
           </p>
         </motion.div>
 
-        {/* Solutions Architecture Diagram matching user sketch */}
+        {/* Solutions Architecture Banner with Light Orange BG & Blue / Yellow / Black Cards */}
         <ProjectArchitectureBanner />
 
         {/* Top Projects Section Header */}
@@ -367,7 +383,11 @@ export default function Work() {
                   onClick={() => setShowAllMobile(!showAllMobile)}
                   className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[#2D5FC7]/15 text-[#4A7AE8] border border-[#2D5FC7]/30 hover:bg-[#2D5FC7]/25 transition-all cursor-pointer"
                 >
-                  <span>{showAllMobile ? "Show Top 3 ↑" : `View All (${filteredProjects.length}) ↓`}</span>
+                  <span>
+                    {showAllMobile
+                      ? "Show Top 3 ↑"
+                      : `View All (${filteredProjects.length}) ↓`}
+                  </span>
                 </button>
               </div>
             )}

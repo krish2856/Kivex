@@ -1,6 +1,14 @@
 "use client";
 
+import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
+import ShinyText from "@/components/reactbits/ShinyText/ShinyText";
+import DecryptedText from "@/components/reactbits/DecryptedText/DecryptedText";
+import BlurText from "@/components/reactbits/BlurText/BlurText";
+import LogoLoop from "@/components/reactbits/LogoLoop/LogoLoop";
+import Waves from "@/components/reactbits/Waves/Waves";
+import SpotlightCard from "@/components/reactbits/SpotlightCard/SpotlightCard";
+import Magnet from "@/components/reactbits/Magnet/Magnet";
 
 interface Technology {
   name: string;
@@ -265,13 +273,121 @@ const technologies: Technology[] = [
   },
 ];
 
+function TechCard({
+  tech,
+  index,
+  inLoop = false,
+}: {
+  tech: Technology;
+  index: number;
+  inLoop?: boolean;
+}) {
+  return (
+    <div
+      className={
+        inLoop
+          ? "w-[175px] sm:w-[205px] md:w-[220px] h-[160px] sm:h-[175px] py-2 select-none"
+          : "w-full h-full select-none"
+      }
+    >
+      <SpotlightCard
+        theme="light"
+        spotlightColor={`${tech.brandColor}35`}
+        className="group relative h-full w-full !rounded-2xl sm:!rounded-3xl !p-4 sm:!p-5 flex flex-col items-center justify-center bg-white/85 hover:bg-white border border-black/[0.06] hover:border-black/15 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 cursor-pointer overflow-hidden"
+      >
+        {/* Subtle brand accent bar at top */}
+        <div
+          className="absolute top-0 left-1/2 -translate-x-1/2 h-[3px] w-8 group-hover:w-20 rounded-b-full transition-all duration-500 opacity-50 group-hover:opacity-100"
+          style={{ backgroundColor: tech.brandColor }}
+        />
+
+        <div className="relative z-10 flex flex-col items-center justify-center w-full">
+          {/* Continuously Floating Tech Icon */}
+          <motion.div
+            animate={{
+              y: [0, -5, 0],
+              rotate: tech.name === "React" || tech.name === "Kubernetes" ? [0, 8, -8, 0] : [0, 0, 0],
+            }}
+            transition={{
+              duration: 3.2 + (index % 4) * 0.4,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: (index % 6) * 0.25,
+            }}
+            className="relative mb-3 flex items-center justify-center transition-transform duration-300 group-hover:scale-115"
+          >
+            {/* Soft brand halo behind icon on hover */}
+            <div
+              className="absolute inset-0 rounded-full blur-xl opacity-0 group-hover:opacity-35 transition-opacity duration-300 scale-125 pointer-events-none"
+              style={{ backgroundColor: tech.brandColor }}
+            />
+            {tech.icon(tech.brandColor)}
+          </motion.div>
+
+          {/* Tech Name with DecryptedText */}
+          <div className="text-xs sm:text-sm font-bold text-[#0A0A0A] tracking-tight transition-colors">
+            <DecryptedText
+              text={tech.name}
+              speed={25}
+              maxIterations={6}
+              animateOn="hover"
+              className="font-bold"
+              encryptedClassName="text-[#2D5FC7] font-mono"
+            />
+          </div>
+
+          {/* Tech Category Subtitle */}
+          <span className="text-[10px] text-black/50 group-hover:text-black/75 tracking-wide text-center mt-1 truncate max-w-full px-1 transition-colors">
+            {tech.category}
+          </span>
+        </div>
+      </SpotlightCard>
+    </div>
+  );
+}
+
 export default function Technologies() {
+  const row1Logos = useMemo(
+    () =>
+      technologies.slice(0, 6).map((tech, i) => ({
+        node: <TechCard tech={tech} index={i} inLoop />,
+        title: tech.name,
+      })),
+    []
+  );
+
+  const row2Logos = useMemo(
+    () =>
+      technologies.slice(6, 12).map((tech, i) => ({
+        node: <TechCard tech={tech} index={i + 6} inLoop />,
+        title: tech.name,
+      })),
+    []
+  );
+
   return (
     <section
       id="technologies"
       className="relative px-5 sm:px-6 md:px-8 py-20 sm:py-24 md:py-28 overflow-hidden rounded-t-[32px] sm:rounded-t-[40px] md:rounded-t-[48px] border-t border-black/[0.06] shadow-[0_-25px_50px_rgba(0,0,0,0.25)]"
       style={{ backgroundColor: "#F5EFE5" }}
     >
+      {/* Interactive Moving Waves Background from React Bits */}
+      <div className="absolute inset-0 pointer-events-none opacity-35 overflow-hidden">
+        <Waves
+          lineColor="rgba(45, 95, 199, 0.14)"
+          backgroundColor="transparent"
+          waveSpeedX={0.018}
+          waveSpeedY={0.01}
+          waveAmpX={36}
+          waveAmpY={18}
+          xGap={16}
+          yGap={36}
+          friction={0.92}
+          tension={0.005}
+          maxCursorMove={100}
+        />
+      </div>
+
       {/* Subtle ambient spotlight */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div
@@ -285,18 +401,16 @@ export default function Technologies() {
 
       <div className="relative mx-auto max-w-7xl">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-
-
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#0A0A0A]"
-          >
-            Technologies We Use
-          </motion.h2>
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
+          <div className="flex justify-center">
+            <BlurText
+              text="Technologies We Use"
+              delay={40}
+              animateBy="words"
+              direction="top"
+              className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#0A0A0A] justify-center"
+            />
+          </div>
 
           <motion.p
             initial={{ opacity: 0, y: 15 }}
@@ -310,33 +424,30 @@ export default function Technologies() {
           </motion.p>
         </div>
 
-        {/* 6-Column Grid (clean non-selectable showcase display cards) */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3.5 sm:gap-4 lg:gap-5">
-          {technologies.map((tech, i) => (
-            <motion.div
-              key={tech.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.04 }}
-              className="group relative aspect-square sm:aspect-[4/3] lg:aspect-square rounded-2xl sm:rounded-3xl p-4 sm:p-5 flex flex-col items-center justify-center bg-white/75 hover:bg-white border border-black/[0.06] hover:border-black/15 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 select-none cursor-default"
-            >
-              {/* Tech Icon */}
-              <div className="relative mb-3 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
-                {tech.icon(tech.brandColor)}
-              </div>
-
-              {/* Tech Name */}
-              <span className="text-xs sm:text-sm font-bold text-[#0A0A0A] tracking-tight transition-colors">
-                {tech.name}
-              </span>
-
-              {/* Tech Category Subtitle */}
-              <span className="text-[10px] text-black/45 tracking-wide text-center mt-1 truncate max-w-full px-1">
-                {tech.category}
-              </span>
-            </motion.div>
-          ))}
+        {/* Continuous Dual-Direction Moving Marquee (React Bits LogoLoop) */}
+        <div className="space-y-4 sm:space-y-6 py-2">
+          <LogoLoop
+            logos={row1Logos}
+            direction="left"
+            speed={45}
+            gap={20}
+            pauseOnHover={true}
+            fadeOut={true}
+            fadeOutColor="#F5EFE5"
+            scaleOnHover={false}
+            ariaLabel="Frontend, Mobile and Backend Technologies"
+          />
+          <LogoLoop
+            logos={row2Logos}
+            direction="right"
+            speed={45}
+            gap={20}
+            pauseOnHover={true}
+            fadeOut={true}
+            fadeOutColor="#F5EFE5"
+            scaleOnHover={false}
+            ariaLabel="Cloud, DevOps and AI Technologies"
+          />
         </div>
       </div>
     </section>

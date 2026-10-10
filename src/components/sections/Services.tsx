@@ -6,6 +6,8 @@ import { services, type ServiceItem, type ServiceCategory } from "@/data/service
 import { cn } from "@/lib/utils";
 import { useProjectModal } from "@/context/ProjectModalContext";
 import ServiceDetailModal from "@/components/ui/ServiceDetailModal";
+import SpotlightCard from "@/components/reactbits/SpotlightCard/SpotlightCard";
+import ShinyText from "@/components/reactbits/ShinyText/ShinyText";
 
 const categoryIcons: Record<string, string> = {
   web: "< >",
@@ -47,29 +49,14 @@ function ServiceCard({
       className="group relative cursor-pointer"
       onClick={onLearnMore}
     >
-      <div
-        className={cn(
-          "relative rounded-2xl border p-6 transition-all duration-500 overflow-hidden",
-          "border-black/[0.06] bg-white/50 hover:bg-white hover:shadow-lg hover:shadow-black/5 hover:border-transparent"
-        )}
+      <SpotlightCard
+        theme="light"
+        spotlightColor={color}
+        className="!p-6 !rounded-2xl border border-black/[0.06] bg-white/60 hover:bg-white hover:shadow-xl hover:shadow-black/5 transition-all duration-300 overflow-hidden"
       >
-        {/* Hover gradient overlay */}
-        <div
-          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"
-          style={{
-            background: `radial-gradient(circle at 50% 0%, ${color}08 0%, transparent 70%)`,
-          }}
-        />
-
-        <div className="relative">
-          {/* Number badge */}
-          <div className="flex items-start justify-between mb-4">
-            <span
-              className="text-[10px] font-mono font-bold tracking-wider opacity-30"
-              style={{ color }}
-            >
-              {String(index + 1).padStart(2, "0")}
-            </span>
+        <div className="relative z-10">
+          {/* Accent dot */}
+          <div className="flex items-start justify-end mb-2">
             <div
               className="w-2 h-2 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-150"
               style={{ backgroundColor: color }}
@@ -82,7 +69,7 @@ function ServiceCard({
             {service.name}
           </h4>
 
-          <p className="mt-2 text-sm leading-relaxed text-black/40 group-hover:text-black/55 transition-colors duration-300">
+          <p className="mt-2 text-sm leading-relaxed text-black/50 group-hover:text-black/75 transition-colors duration-300">
             {service.description}
           </p>
 
@@ -94,7 +81,7 @@ function ServiceCard({
             </span>
           </div>
         </div>
-      </div>
+      </SpotlightCard>
     </motion.div>
   );
 }
@@ -394,9 +381,6 @@ export default function Services() {
           })}
         </div>
       </div>
-
-      {/* Subtle bottom gradient into dark ecosystem */}
-      <div className="h-12 md:h-16 bg-gradient-to-b from-transparent to-black/[0.03] pointer-events-none" />
 
       {/* Service Process Detail Modal */}
       <AnimatePresence>

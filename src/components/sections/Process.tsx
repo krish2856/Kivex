@@ -48,29 +48,21 @@ function StepItem({
         {step.number}
       </div>
 
-      {/* Title & Phase */}
+      {/* Title & Description */}
       <div className="flex-1 min-w-0">
         <div className="flex items-center gap-2">
-          <span
+          <h4
             className={cn(
-              "text-[10px] xl:text-[11px] font-mono uppercase tracking-wider font-semibold transition-colors",
-              isActive ? "text-[#2D5FC7]" : "text-black/40"
+              "text-sm xl:text-base font-bold tracking-tight transition-colors truncate",
+              isActive ? "text-[#0A0A0A]" : "text-black/70 group-hover:text-[#0A0A0A]"
             )}
           >
-            Phase {step.number}
-          </span>
+            {step.title}
+          </h4>
           {isActive && (
-            <span className="w-1.5 h-1.5 rounded-full bg-[#2D5FC7] animate-pulse" />
+            <span className="w-1.5 h-1.5 rounded-full bg-[#2D5FC7] animate-pulse shrink-0" />
           )}
         </div>
-        <h4
-          className={cn(
-            "text-sm xl:text-base font-bold tracking-tight transition-colors truncate",
-            isActive ? "text-[#0A0A0A]" : "text-black/70 group-hover:text-[#0A0A0A]"
-          )}
-        >
-          {step.title}
-        </h4>
         <AnimatePresence>
           {isActive && (
             <motion.p
@@ -212,18 +204,8 @@ export default function Process() {
                     }}
                   />
 
-                  {/* Top header row */}
-                  <div className="flex items-center justify-between relative z-10">
-                    <span className="text-xs font-mono tracking-widest uppercase px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[#E8B62A]">
-                      Phase {processSteps[activeIndex].number} of {String(processSteps.length).padStart(2, "0")}
-                    </span>
-                    <span className="text-xs font-mono text-white/30 tracking-wider">
-                      KIVEX FRAMEWORK
-                    </span>
-                  </div>
-
                   {/* Middle focus */}
-                  <div className="relative z-10 py-4">
+                  <div className="relative z-10 my-auto py-4">
                     <div
                       className="text-7xl xl:text-8xl font-bold font-mono tracking-tighter mb-1.5"
                       style={{ color: "#2D5FC735" }}
@@ -342,10 +324,7 @@ export default function Process() {
                 className="rounded-2xl p-6 sm:p-8 relative overflow-hidden border border-white/[0.08] shadow-xl"
                 style={{ backgroundColor: "#0A0A0A" }}
               >
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-[11px] font-mono tracking-widest uppercase text-[#E8B62A]">
-                    Phase {processSteps[activeIndex].number} of {String(processSteps.length).padStart(2, "0")}
-                  </span>
+                <div className="flex items-center justify-end mb-2">
                   <span
                     className="text-4xl font-bold font-mono"
                     style={{ color: "#2D5FC750" }}

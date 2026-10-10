@@ -17,6 +17,7 @@ import ClientStories from "@/components/sections/ClientStories";
 import FinalCTA from "@/components/sections/FinalCTA";
 import Footer from "@/components/layout/Footer";
 import SmoothScroll from "@/components/ui/SmoothScroll";
+import ClickSpark from "@/components/reactbits/ClickSpark/ClickSpark";
 
 const CustomCursor = dynamic(() => import("@/components/ui/CustomCursor"), {
   ssr: false,
@@ -40,22 +41,29 @@ export default function HomeClient() {
   return (
     <ProjectModalProvider>
       <SmoothScroll>
-        <CustomCursor />
-
-        {isLoading && <LoadingScreen onComplete={handleLoadingComplete} />}
-
-        <main
-          id="main-content"
-          className={`relative w-full overflow-x-clip transition-opacity duration-500 ${
-            isLoading ? "opacity-0" : "opacity-100"
-          }`}
+        <ClickSpark
+          sparkColor="#2D5FC7"
+          sparkSize={8}
+          sparkRadius={18}
+          sparkCount={8}
+          duration={350}
         >
+          <CustomCursor />
+
+          {isLoading && <LoadingScreen onComplete={handleLoadingComplete} />}
+
+          <main
+            id="main-content"
+            className={`relative w-full overflow-x-clip transition-opacity duration-500 ${
+              isLoading ? "opacity-0" : "opacity-100"
+            }`}
+          >
           <Navbar />
           <Hero />
           <Introduction />
           <Services />
-          <Ecosystem />
           <ServiceMarqueeBar />
+          <Ecosystem />
           <Automation />
           <Process />
           <WhyKivex />
@@ -67,6 +75,7 @@ export default function HomeClient() {
         </main>
 
         <ProjectModal />
+        </ClickSpark>
       </SmoothScroll>
     </ProjectModalProvider>
   );
