@@ -40,7 +40,7 @@ export default function DentalHero() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="mt-4 text-sm sm:text-base md:text-lg text-slate-700 max-w-2xl mx-auto font-normal"
           >
-            Complete digital infrastructure, smart CRM, Antigravity AI assistant, and Make.com automation engineered to attract patients, manage operations, and grow your practice.
+            Modern website design, centralized dental CRM, smart AI assistant, and automated booking workflows built to attract patients and streamline daily clinic operations.
           </motion.p>
         </div>
 
@@ -107,7 +107,7 @@ export default function DentalHero() {
                       : "text-slate-400 hover:text-white hover:bg-white/5"
                   }`}
                 >
-                  <span>Antigravity AI</span>
+                  <span>Smart AI Assistant</span>
                   <span className="w-1.5 h-1.5 rounded-full bg-[#E8B62A]" />
                 </button>
               </div>
@@ -202,7 +202,7 @@ export default function DentalHero() {
                   />
                   <div className="absolute top-4 left-4 z-10 hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/70 backdrop-blur-md border border-white/10 text-white text-xs font-medium">
                     <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-                    <span>Live Clinical Operations Engine &bull; Dr. Aditi Rao</span>
+                    <span>Live Clinical Operations Console</span>
                   </div>
                 </motion.div>
               )}
@@ -219,23 +219,23 @@ export default function DentalHero() {
                   <div className="relative w-32 h-32 sm:w-44 sm:h-44 rounded-3xl overflow-hidden shadow-2xl mb-5 border-2 border-white/20 bg-[#081B4E] group-hover:scale-105 transition-transform duration-500">
                     <Image
                       src="/dental/antigravity-engine.png"
-                      alt="Antigravity by Google DeepMind"
+                      alt="Smart AI Assistant for Practice Operations"
                       fill
                       priority
                       sizes="200px"
                       className="object-cover"
                     />
                   </div>
-                  <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight">Antigravity by Google</h3>
+                  <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight">Smart AI Assistant</h3>
                   <p className="text-xs sm:text-sm text-blue-300 font-mono tracking-widest uppercase mt-1">
-                    AI BUSINESS ASSISTANT &amp; WORKFLOW INTELLIGENCE
+                    AI PRACTICE ASSISTANT &amp; WORKFLOW ENGINE
                   </p>
                   <p className="text-xs sm:text-sm text-slate-300 max-w-md text-center mt-3 leading-relaxed">
-                    Reads CRM trends, handles repetitive administrative tasks, and sends generated social content to Buffer for automated publishing.
+                    Reads CRM trends, handles repetitive administrative tasks, and helps schedule automated patient recalls.
                   </p>
                   <div className="absolute top-4 left-4 z-10 hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/70 backdrop-blur-md border border-white/10 text-white text-xs font-medium">
                     <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
-                    <span>Antigravity AI Assistant</span>
+                    <span>Smart AI Assistant</span>
                   </div>
                 </motion.div>
               )}

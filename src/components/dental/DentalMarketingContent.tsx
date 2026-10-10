@@ -37,31 +37,31 @@ const modules: Module[] = [
   {
     id: "automated-social-post",
     num: "01",
-    badge: "PILLAR 04",
+    badge: "AUTOMATION",
     badgeClass: "text-blue-700 bg-blue-50 border-blue-200",
-    fact: "Antigravity intelligence + Buffer automated scheduling across all platforms",
+    fact: "Automated scheduling and social content distribution",
     byLine: "Social Automation by",
     title: ["Automated Social Posts", "That Fill Chairs"],
     dockTag: "AUTO.",
     dockTitle: "Social Media Automation",
-    dockSub: "Antigravity AI • Buffer Publishing",
+    dockSub: "Scheduled Publishing & Feeds",
     dockCta: "Launch Social Engine",
-    eyebrow: "PILLAR 04 • SOCIAL MEDIA AUTOMATION",
+    eyebrow: "SOCIAL MEDIA AUTOMATION",
     heading: "Automated Content & Publishing System",
-    copy: "We build an automated social media content system for the clinic. Antigravity acts as the intelligence layer generating captions, dental educational content, promotional creatives, and content calendars, while Buffer handles automated multi-platform scheduling.",
+    copy: "We build an automated social media content system for the clinic, generating dental educational posts, patient care tips, and structured calendars with scheduled multi-platform publishing.",
     points: [
-      ["AI Content & Captions:", "Antigravity generates post ideas, educational dental explainers, and promotional creatives."],
-      ["Buffer Publishing Workflow:", "Queues and automates posts across Instagram, Facebook, LinkedIn, and Twitter."],
+      ["Educational Content:", "Generates treatment explainers, patient care tips, and promotional creatives."],
+      ["Publishing Workflow:", "Queues and automates posts across Instagram, Facebook, and LinkedIn."],
       ["Direct WhatsApp Link:", "Transforms every post into an instant patient consultation and chair booking."],
     ],
     cta: "Explore Social Calendar",
     media: "poster",
-    mediaLabel: "Antigravity by Google • AI Engine",
+    mediaLabel: "Automated Social Engine",
   },
   {
     id: "reels-with-model",
     num: "02",
-    badge: "PILLAR 06",
+    badge: "VIDEO",
     badgeClass: "text-rose-600 bg-rose-50 border-rose-200",
     fact: "High-retention vertical reels, smile reveals & promotional creatives",
     byLine: "Cinema Production by",
@@ -70,7 +70,7 @@ const modules: Module[] = [
     dockTitle: "Aspirational Model Shoots",
     dockSub: "9:16 Vertical • 4K HDR",
     dockCta: "Schedule Model Shoot",
-    eyebrow: "PILLAR 06 • REELS & PROMOTIONAL CREATIVES",
+    eyebrow: "REELS & PROMOTIONAL CREATIVES",
     heading: "Real Models That Dissolve Patient Fear",
     copy: "Patients don't buy medical drills or surgical titanium; they buy the confidence of an irresistible smile. We produce professional reels, patient stories, and clinic videos that dissolve treatment fears and drive inquiries.",
     points: [
@@ -87,7 +87,7 @@ const modules: Module[] = [
   {
     id: "small-interview-podcast",
     num: "03",
-    badge: "PILLAR 06",
+    badge: "PODCAST",
     badgeClass: "text-purple-600 bg-purple-50 border-purple-200",
     fact: "Doctor-led educational content and trust-building interviews",
     byLine: "Clinical Authority by",
@@ -96,7 +96,7 @@ const modules: Module[] = [
     dockTitle: "Interviews & Micro-Podcasts",
     dockSub: "Captioned • Studio Audio",
     dockCta: "Schedule Doctor Podcast",
-    eyebrow: "PILLAR 06 • EDUCATIONAL DENTAL CONTENT",
+    eyebrow: "EDUCATIONAL DENTAL CONTENT",
     heading: "Podcasts That Convert Hesitation",
     copy: "Patients delay needed dental treatment because of fear of pain and fear of cost. In short interviews and podcasts, your doctors explain treatments with calm, authoritative clarity.",
     points: [
@@ -113,7 +113,7 @@ const modules: Module[] = [
   {
     id: "overviews-of-clinic",
     num: "04",
-    badge: "PILLAR 06",
+    badge: "CLINIC TOUR",
     badgeClass: "text-emerald-600 bg-emerald-50 border-emerald-200",
     fact: "Cinematic clinic overviews, operatory tours & brand assets",
     byLine: "Clinic Films by",
@@ -122,7 +122,7 @@ const modules: Module[] = [
     dockTitle: "Architectural Drone & Gimbal",
     dockSub: "Lounge • Operatory Suites",
     dockCta: "Book Clinic Film",
-    eyebrow: "PILLAR 06 • CLINIC PRESTIGE & BRAND ASSETS",
+    eyebrow: "CLINIC PRESTIGE & BRAND ASSETS",
     heading: "Tours That Justify Premium Fees",
     copy: "Patients who perceive a clinic as pristine and advanced don't haggle on price. Our cinematic overviews highlight your reception, operatory suites, sterilisation and diagnostic technology.",
     points: [
@@ -170,16 +170,16 @@ function MediaFrame({ m, onOpen }: { m: Module; onOpen?: () => void }) {
             Live Agent System
           </span>
           <span className="px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 font-semibold border border-slate-200">
-            Antigravity Architecture
+            Smart AI Engine
           </span>
         </div>
 
-        {/* Center Real Antigravity Icon & Branding */}
+        {/* Center Smart AI Engine Icon & Branding */}
         <div className="relative z-10 flex flex-col items-center justify-center my-auto py-2">
           <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-3xl overflow-hidden shadow-2xl mb-3 group-hover:scale-105 transition-transform duration-300 border-2 border-slate-100 bg-[#081B4E]">
             <Image
               src="/dental/antigravity-engine.png"
-              alt="Antigravity by Google DeepMind"
+              alt="Smart AI Practice Engine"
               width={426}
               height={382}
               priority
@@ -189,14 +189,14 @@ function MediaFrame({ m, onOpen }: { m: Module; onOpen?: () => void }) {
 
           <div className="text-center">
             <div className="text-lg sm:text-xl font-bold tracking-tight text-[#0F172A] flex items-center justify-center gap-1.5">
-              <span className="font-extrabold text-[#0F172A]">Antigravity</span>
-              <span className="font-normal text-slate-500 text-xs sm:text-sm">by Google</span>
+              <span className="font-extrabold text-[#0F172A]">Smart AI</span>
+              <span className="font-normal text-slate-500 text-xs sm:text-sm">Assistant</span>
             </div>
             <div className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.2em] text-[#2D5FC7] font-bold mt-1">
-              AGENTIC CLINICAL MARKETING &amp; RETENTION
+              PATIENT RECALL &amp; CLINIC RETENTION
             </div>
             <p className="mt-2 text-xs text-slate-500 max-w-[270px] mx-auto leading-relaxed">
-              Autonomous AI agent infrastructure orchestrating patient recall pipelines, 5-star Google review triggers, and local dental visibility.
+              Automated workflows orchestrating patient recalls, 5-star review triggers, and local dental visibility.
             </p>
           </div>
         </div>

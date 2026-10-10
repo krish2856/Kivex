@@ -5,14 +5,14 @@ import ScrollVelocity from "@/components/reactbits/ScrollVelocity/ScrollVelocity
 import DecryptedText from "@/components/reactbits/DecryptedText/DecryptedText";
 
 const MARQUEE_ITEMS = [
-  "WEBSITE",
-  "CRM",
-  "SAAS",
-  "ANTIGRAVITY AI",
-  "AUTOMATION",
-  "CLOUD ARCHITECTURE",
+  "WEBSITES",
+  "CUSTOM CRM",
+  "SAAS APPS",
+  "AI AUTOMATION",
+  "WHATSAPP FLOWS",
+  "CLOUD HOSTING",
   "MOBILE APPS",
-  "DIGITAL SYSTEMS",
+  "CUSTOM SOFTWARE",
 ];
 
 export default function ServiceMarqueeBar() {

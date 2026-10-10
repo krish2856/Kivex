@@ -39,7 +39,7 @@ export default function CustomHero() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="mt-4 text-sm sm:text-base md:text-lg text-slate-700 max-w-2xl mx-auto font-normal"
           >
-            Bespoke web applications, high-scale digital platforms, intelligent CRM dashboards, and automated AI workflows engineered specifically for your business operations.
+            Custom web applications, business portals, CRM dashboards, and automated workflows built around your daily operations.
           </motion.p>
         </div>
 

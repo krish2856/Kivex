@@ -104,7 +104,7 @@ export default function SaasHero() {
                     : "text-slate-400 hover:text-white hover:bg-white/5"
                 }`}
               >
-                <span>Antigravity AI</span>
+                <span>Smart AI Assistant</span>
                 <span className="w-1.5 h-1.5 rounded-full bg-[#E8B62A]" />
               </button>
             </div>
@@ -188,7 +188,7 @@ export default function SaasHero() {
                 >
                   <Image
                     src="/dental/antigravity-engine.png"
-                    alt="Antigravity AI Autonomous Operations Engine"
+                    alt="Smart AI Operations Engine"
                     fill
                     priority
                     sizes="(max-width: 1200px) 100vw, 1200px"
@@ -196,7 +196,7 @@ export default function SaasHero() {
                   />
                   <div className="absolute top-4 left-4 z-10 hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/70 backdrop-blur-md border border-white/10 text-white text-xs font-medium">
                     <span className="w-2 h-2 rounded-full bg-[#E8B62A] animate-ping" />
-                    <span>Antigravity AI &bull; Autonomous Operational Agent &bull; 99.4% Accuracy</span>
+                    <span>Smart AI Assistant &bull; Automated Operations &bull; 24/7 Monitoring</span>
                   </div>
                 </motion.div>
               )}

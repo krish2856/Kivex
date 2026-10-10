@@ -132,7 +132,7 @@ export default function RealEstateCrmOperations() {
           {/* Right Column: Editorial Copy */}
           <div className="lg:col-span-5 order-1 lg:order-2 flex flex-col items-start justify-center">
             <span className="text-[11px] font-mono tracking-widest text-[#2D5FC7] uppercase font-bold">
-              PILLAR 02 &bull; COMPLETE BROKERAGE CRM
+              BROKERAGE CRM &amp; OPERATIONS
             </span>
             <h3 className="mt-2 text-2xl sm:text-4xl font-extrabold text-[#0F172A] tracking-tight">
               Centralized Daily Deal Pipeline

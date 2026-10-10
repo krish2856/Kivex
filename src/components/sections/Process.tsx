@@ -156,13 +156,13 @@ export default function Process() {
           {/* Header */}
           <div className="mb-8">
             <h2
-              className="text-3xl xl:text-4xl font-bold tracking-tight"
+              className="text-4xl sm:text-5xl xl:text-6xl font-extrabold tracking-tight"
               style={{ color: "#0A0A0A" }}
             >
               OUR PROCESS
             </h2>
-            <p className="mt-1 text-xs xl:text-sm text-black/60 max-w-lg leading-relaxed">
-              Scroll through to see each stage of our iterative engineering lifecycle.
+            <p className="mt-2 text-sm xl:text-base text-black/60 max-w-lg leading-relaxed">
+              How we take your project from first call to live launch—step by step.
             </p>
           </div>
 
@@ -283,13 +283,13 @@ export default function Process() {
           {/* Header */}
           <div className="mb-8">
             <h2
-              className="text-3xl sm:text-4xl font-bold tracking-tight"
+              className="text-4xl sm:text-5xl font-extrabold tracking-tight"
               style={{ color: "#0A0A0A" }}
             >
               OUR PROCESS
             </h2>
             <p className="mt-2 text-sm text-black/60 leading-relaxed">
-              A structured, iterative lifecycle from initial vision to autonomous scale.
+              How we take your project from first call to live launch—step by step.
             </p>
           </div>
 

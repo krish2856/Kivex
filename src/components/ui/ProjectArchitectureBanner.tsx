@@ -21,7 +21,7 @@ const SOLUTIONS: SolutionCardItem[] = [
   {
     code: "01",
     tag: "HEALTHCARE SYSTEMS",
-    title: "Dental Website",
+    title: "Dental Projects",
     description:
       "Patient-first clinical web platforms with instant appointment booking, treatment showcases, and automated patient reminders.",
     href: "/dental",
@@ -36,7 +36,7 @@ const SOLUTIONS: SolutionCardItem[] = [
   {
     code: "02",
     tag: "PROPERTY PLATFORMS",
-    title: "Real Estate",
+    title: "Real Estate Projects",
     description:
       "High-converting property portals engineered for fast listing discovery, interactive map search, and automated buyer routing.",
     href: "/realestate",
@@ -93,17 +93,17 @@ export default function ProjectArchitectureBanner() {
             <Link
               href="/custom"
               className="group flex flex-col sm:flex-row sm:items-center justify-between gap-4 w-full rounded-2xl border border-black/10 bg-white hover:border-[#2D5FC7]/40 px-6 sm:px-8 py-5 transition-all duration-300 shadow-sm hover:shadow-md"
-              title="Open Custom Systems & Guidelines (/custom)"
+              title="Open Custom Projects (/custom)"
             >
               <div className="flex items-center gap-3.5">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#2D5FC7]" />
                 <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-[#0A0A0A] tracking-tight group-hover:text-[#2D5FC7] transition-colors">
-                  Custom Guidelines, Architecture Specs &amp; Info
+                  Custom Projects
                 </h3>
               </div>
 
               <div className="inline-flex items-center gap-2.5 px-5 py-2.5 sm:px-6 sm:py-3 rounded-xl bg-[#2D5FC7] text-white font-bold text-xs sm:text-sm tracking-tight group-hover:bg-[#0A0A0A] transition-colors duration-300 self-start sm:self-auto shrink-0">
-                <span>Explore Custom Platform</span>
+                <span>Explore Custom Projects</span>
                 <span className="text-base transition-transform duration-300 group-hover:translate-x-1">
                   &rarr;
                 </span>

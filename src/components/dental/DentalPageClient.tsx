@@ -164,7 +164,7 @@ export default function DentalPageClient() {
                   exit={{ opacity: 0, y: -15 }}
                   transition={{ duration: 0.35, ease: "easeOut" }}
                 >
-                  {/* 1. How It's Done: From Clinical Bottlenecks to Financial Return & Direct Clinic Math */}
+                  {/* 1. How It's Done: From Clinical Bottlenecks to Financial Return & Growth Projection */}
                   <DentalProblemSolution />
                   <DentalWebsiteConverts />
                   <DentalCrmOperations />

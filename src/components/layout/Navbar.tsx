@@ -6,31 +6,37 @@ import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { navLinks } from "@/data/navigation";
-import { services } from "@/data/services";
+import { services, type ServiceItem, type ServiceCategory } from "@/data/services";
 import { useLenis } from "@/components/ui/SmoothScroll";
 import { useProjectModal } from "@/context/ProjectModalContext";
 import Logo from "@/components/ui/Logo";
+import ServiceDetailModal from "@/components/ui/ServiceDetailModal";
+
+const categoryColors: Record<string, string> = {
+  web: "#2D5FC7",
+  ai: "#E8B62A",
+  creative: "#C99A1A",
+  marketing: "#4A7AE8",
+  cloud: "#1E3D8A",
+};
 
 const workPlatforms = [
   {
-    title: "Custom Platform",
-    subtitle: "Custom Guidelines, Architecture Specs & Info",
+    title: "Custom Projects",
     href: "/custom",
     badge: "CUSTOM ENGINE",
     badgeColor: "text-[#38BDF8] bg-[#38BDF8]/10 border-[#38BDF8]/20",
     accentHover: "hover:border-[#38BDF8]/50 hover:bg-[#38BDF8]/5",
   },
   {
-    title: "Dental Website",
-    subtitle: "Clinical Operations & Patient Funnel",
+    title: "Dental Projects",
     href: "/dental",
     badge: "HEALTHCARE",
     badgeColor: "text-[#93C5FD] bg-[#93C5FD]/10 border-[#93C5FD]/20",
     accentHover: "hover:border-[#2563EB]/50 hover:bg-[#2563EB]/5",
   },
   {
-    title: "Real Estate",
-    subtitle: "Luxury Portals & Property Engines",
+    title: "Real Estate Projects",
     href: "/realestate",
     badge: "PROPERTY",
     badgeColor: "text-[#FDE68A] bg-[#FDE68A]/10 border-[#FDE68A]/20",
@@ -38,7 +44,6 @@ const workPlatforms = [
   },
   {
     title: "CRM / SaaS",
-    subtitle: "High-Concurrency Platform & Engine",
     href: "/saas",
     badge: "SOFTWARE",
     badgeColor: "text-[#C084FC] bg-[#C084FC]/10 border-[#C084FC]/20",
@@ -56,6 +61,10 @@ export default function Navbar() {
   const [activeSection, setActiveSection] = useState<string>("");
   const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const workTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const [selectedServiceForDetail, setSelectedServiceForDetail] = useState<{
+    category: ServiceCategory;
+    service: ServiceItem;
+  } | null>(null);
 
   const { lenis, scrollTo } = useLenis();
   const { openProjectModal } = useProjectModal();
@@ -243,10 +252,14 @@ export default function Navbar() {
                                         <li key={item.name}>
                                           <button
                                             type="button"
-                                            onClick={(e) => {
-                                              handleNavClick(e, "#services");
+                                            onClick={() => {
+                                              setServicesDropdownOpen(false);
+                                              setSelectedServiceForDetail({
+                                                category: services[0],
+                                                service: item,
+                                              });
                                             }}
-                                            className="w-full text-left text-xs py-1 px-1.5 rounded text-white/70 hover:text-white hover:bg-white/[0.05] transition-colors flex items-center justify-between group"
+                                            className="w-full text-left text-xs py-1 px-1.5 rounded text-white/70 hover:text-white hover:bg-white/[0.05] transition-colors flex items-center justify-between group cursor-pointer"
                                           >
                                             <span className="truncate">{item.name}</span>
                                             <span className="text-[10px] text-white/0 group-hover:text-[#4A7AE8] transition-colors">
@@ -268,10 +281,14 @@ export default function Navbar() {
                                         <li key={item.name}>
                                           <button
                                             type="button"
-                                            onClick={(e) => {
-                                              handleNavClick(e, "#services");
+                                            onClick={() => {
+                                              setServicesDropdownOpen(false);
+                                              setSelectedServiceForDetail({
+                                                category: services[1],
+                                                service: item,
+                                              });
                                             }}
-                                            className="w-full text-left text-xs py-1 px-1.5 rounded text-white/70 hover:text-white hover:bg-white/[0.05] transition-colors flex items-center justify-between group"
+                                            className="w-full text-left text-xs py-1 px-1.5 rounded text-white/70 hover:text-white hover:bg-white/[0.05] transition-colors flex items-center justify-between group cursor-pointer"
                                           >
                                             <span className="truncate">{item.name}</span>
                                             <span className="text-[10px] text-white/0 group-hover:text-[#E8B62A] transition-colors">
@@ -293,10 +310,14 @@ export default function Navbar() {
                                         <li key={item.name}>
                                           <button
                                             type="button"
-                                            onClick={(e) => {
-                                              handleNavClick(e, "#services");
+                                            onClick={() => {
+                                              setServicesDropdownOpen(false);
+                                              setSelectedServiceForDetail({
+                                                category: services[3],
+                                                service: item,
+                                              });
                                             }}
-                                            className="w-full text-left text-xs py-1 px-1.5 rounded text-white/70 hover:text-white hover:bg-white/[0.05] transition-colors flex items-center justify-between group"
+                                            className="w-full text-left text-xs py-1 px-1.5 rounded text-white/70 hover:text-white hover:bg-white/[0.05] transition-colors flex items-center justify-between group cursor-pointer"
                                           >
                                             <span className="truncate">{item.name}</span>
                                             <span className="text-[10px] text-white/0 group-hover:text-[#4A7AE8] transition-colors">
@@ -309,10 +330,14 @@ export default function Navbar() {
                                         <li key={item.name}>
                                           <button
                                             type="button"
-                                            onClick={(e) => {
-                                              handleNavClick(e, "#services");
+                                            onClick={() => {
+                                              setServicesDropdownOpen(false);
+                                              setSelectedServiceForDetail({
+                                                category: services[4],
+                                                service: item,
+                                              });
                                             }}
-                                            className="w-full text-left text-xs py-1 px-1.5 rounded text-white/70 hover:text-white hover:bg-white/[0.05] transition-colors flex items-center justify-between group"
+                                            className="w-full text-left text-xs py-1 px-1.5 rounded text-white/70 hover:text-white hover:bg-white/[0.05] transition-colors flex items-center justify-between group cursor-pointer"
                                           >
                                             <span className="truncate">{item.name}</span>
                                             <span className="text-[10px] text-white/0 group-hover:text-[#4A7AE8] transition-colors">
@@ -408,18 +433,13 @@ export default function Navbar() {
                                         item.accentHover
                                       )}
                                     >
-                                      <div>
-                                        <div className="flex items-center justify-between gap-2">
-                                          <div className="text-sm font-bold text-white group-hover:text-[#4A7AE8] transition-colors">
-                                            {item.title}
-                                          </div>
-                                          <span className="text-xs text-white/40 group-hover:text-white transition-colors">
-                                            ↗
-                                          </span>
+                                      <div className="flex items-center justify-between gap-2">
+                                        <div className="text-sm font-bold text-white group-hover:text-[#4A7AE8] transition-colors">
+                                          {item.title}
                                         </div>
-                                        <p className="text-[11px] text-white/50 mt-1 leading-relaxed line-clamp-2">
-                                          {item.subtitle}
-                                        </p>
+                                        <span className="text-xs text-white/40 group-hover:text-white transition-colors">
+                                          ↗
+                                        </span>
                                       </div>
                                     </Link>
                                   ))}
@@ -586,16 +606,21 @@ export default function Navbar() {
                       style={{ WebkitOverflowScrolling: "touch" }}
                     >
                       <div className="grid grid-cols-2 gap-1.5 text-xs">
-                        {services.flatMap((s) => s.services).map((item) => (
-                          <button
-                            key={item.name}
-                            type="button"
-                            onClick={(e) => handleNavClick(e, "#services")}
-                            className="text-left py-1 text-white/70 hover:text-white truncate"
-                          >
-                            • {item.name}
-                          </button>
-                        ))}
+                        {services
+                          .flatMap((cat) => cat.services.map((item) => ({ cat, item })))
+                          .map(({ cat, item }) => (
+                            <button
+                              key={item.name}
+                              type="button"
+                              onClick={() => {
+                                setMobileOpen(false);
+                                setSelectedServiceForDetail({ category: cat, service: item });
+                              }}
+                              className="text-left py-1 text-white/70 hover:text-white truncate cursor-pointer"
+                            >
+                              • {item.name}
+                            </button>
+                          ))}
                       </div>
                     </div>
                   )}
@@ -646,11 +671,8 @@ export default function Navbar() {
                             onClick={() => setMobileOpen(false)}
                             className="p-2.5 rounded-lg bg-white/[0.03] hover:bg-white/[0.08] border border-white/[0.06] flex items-center justify-between transition-colors"
                           >
-                            <div>
-                              <div className="text-xs font-bold text-white">
-                                {item.title}
-                              </div>
-                              <div className="text-[11px] text-white/50">{item.subtitle}</div>
+                            <div className="text-xs font-bold text-white">
+                              {item.title}
                             </div>
                             <span className="text-xs text-[#38BDF8]">→</span>
                           </Link>
@@ -689,6 +711,24 @@ export default function Navbar() {
           </button>
         </div>
       </div>
+
+      {/* Service Process Detail Modal */}
+      <AnimatePresence>
+        {selectedServiceForDetail && (
+          <ServiceDetailModal
+            category={selectedServiceForDetail.category}
+            service={selectedServiceForDetail.service}
+            categoryColor={
+              categoryColors[selectedServiceForDetail.category.id] || "#2D5FC7"
+            }
+            onClose={() => setSelectedServiceForDetail(null)}
+            onStartProject={(serviceName) => {
+              setSelectedServiceForDetail(null);
+              openProjectModal(serviceName);
+            }}
+          />
+        )}
+      </AnimatePresence>
     </>
   );
 }

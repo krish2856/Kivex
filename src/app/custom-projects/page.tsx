@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import CustomPageClient from "@/components/custom/CustomPageClient";
 
 export const metadata: Metadata = {
-  title: "Custom Web Applications & Intelligent Systems | Kivex Technology",
+  title: "Custom Web Applications & Business Systems | Kivex Technology",
   description:
-    "Digital systems that move businesses forward. Custom high-converting web applications, logistics platforms, financial dashboards, and autonomous AI integrations.",
+    "Digital systems that move businesses forward. Custom web applications, logistics platforms, financial dashboards, and automated AI integrations.",
   openGraph: {
-    title: "Custom Web Applications & Intelligent Systems | Kivex Technology",
+    title: "Custom Web Applications & Business Systems | Kivex Technology",
     description:
-      "Bespoke software development, UI/UX architecture, and AI workflow automation engineered for operational velocity.",
+      "Custom software development, UI/UX design, and workflow automation built for growing teams.",
     url: "https://www.kivextechnology.com/custom-projects",
   },
 };

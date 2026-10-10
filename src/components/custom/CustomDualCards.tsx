@@ -27,8 +27,8 @@ export default function CustomDualCards({
       a: "Yes, 100%. Upon completion, all source code, Figma design files, cloud deployment scripts, and database schemas are transferred directly to your organization with full ownership.",
     },
     {
-      q: "How does the Antigravity AI layer connect to our existing database?",
-      a: "We connect Antigravity AI securely using API keys and scoped database read permissions or webhook events (Make.com, n8n, Supabase, PostgreSQL), ensuring zero unauthorized data leaks.",
+      q: "How do automated workflows connect to our existing database?",
+      a: "We connect workflow automation securely using API keys and scoped database read permissions or webhook events (n8n, Supabase, PostgreSQL), ensuring zero unauthorized data leaks.",
     },
   ];
 

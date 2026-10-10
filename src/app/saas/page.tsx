@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import SaasPageClient from "@/components/saas/SaasPageClient";
 
 export const metadata: Metadata = {
-  title: "SaaS & Custom CRM Systems Engineering | Kivex Technology",
+  title: "SaaS & Custom CRM Systems | Kivex Technology",
   description:
-    "Software that powers enterprise operations. Custom high-concurrency SaaS platforms, multi-tenant database architectures, and intelligent CRM operations engines with 0% per-seat licensing tax.",
+    "Software that powers business operations. Custom SaaS platforms, multi-tenant database systems, and tailored CRM dashboards with zero per-seat fees.",
   openGraph: {
-    title: "SaaS & Custom CRM Systems Engineering | Kivex Technology",
+    title: "SaaS & Custom CRM Systems | Kivex Technology",
     description:
-      "Enterprise SaaS and CRM engines. Multi-tenant database partitioning, real-time event queues, and 100% proprietary code ownership.",
+      "Custom SaaS and CRM platforms with multi-tenant databases, background task queues, and 100% code ownership.",
     url: "https://www.kivextechnology.com/saas",
   },
 };

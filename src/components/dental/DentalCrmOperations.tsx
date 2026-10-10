@@ -43,7 +43,7 @@ export default function DentalCrmOperations() {
                 Dental Prime Studio CRM
               </span>
               <span className="text-[10px] font-mono text-slate-400">
-                Dr. Aditi Rao &bull; Clinical Console
+                Clinical Operations Console
               </span>
             </div>
 
@@ -131,7 +131,7 @@ export default function DentalCrmOperations() {
           {/* Right Column: Editorial Copy */}
           <div className="lg:col-span-5 order-1 lg:order-2 flex flex-col items-start justify-center">
             <span className="text-[11px] font-mono tracking-widest text-[#2D5FC7] uppercase font-bold">
-              PILLAR 02 &bull; COMPLETE DENTAL CRM
+              PRACTICE CRM &amp; OPERATIONS
             </span>
             <h3 className="mt-2 text-2xl sm:text-4xl font-extrabold text-[#0F172A] tracking-tight">
               Centralized Daily Clinic Operations

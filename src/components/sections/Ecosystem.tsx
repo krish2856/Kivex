@@ -26,10 +26,10 @@ const NODES: EcosystemNode[] = [
   {
     id: "ai",
     label: "AI",
-    subtitle: "Neural Agents",
+    subtitle: "Smart Assistants",
     detail:
-      "Custom LLMs, autonomous task agents, and intelligent decision workflows tailored to your business logic.",
-    metric: "24/7 Autonomous Execution",
+      "Custom AI chatbots and workflow assistants trained on your business data.",
+    metric: "24/7 Instant Replies",
     initialOffset: 0,
     icon: (
       <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none">
@@ -43,10 +43,10 @@ const NODES: EcosystemNode[] = [
   {
     id: "web",
     label: "WEB",
-    subtitle: "High-Speed Platforms",
+    subtitle: "Websites & Apps",
     detail:
-      "Next.js web applications and digital flagships engineered for sub-second speed, SEO dominance, and scale.",
-    metric: "99+ Performance Score",
+      "Fast Next.js websites and web portals built for mobile speed, search rankings, and conversions.",
+    metric: "99+ Speed Score",
     initialOffset: 14.28,
     icon: (
       <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none">
@@ -63,9 +63,9 @@ const NODES: EcosystemNode[] = [
   {
     id: "automation",
     label: "AUTOMATION",
-    subtitle: "Autonomous Pipelines",
+    subtitle: "Task Workflows",
     detail:
-      "Zero-touch operational pipelines connecting webhooks, WhatsApp, Slack, billing, and fulfillment.",
+      "Automated workflows connecting your forms, WhatsApp, Slack, billing, and daily operations.",
     metric: "80% Less Manual Work",
     initialOffset: 28.57,
     icon: (
@@ -83,10 +83,10 @@ const NODES: EcosystemNode[] = [
   {
     id: "crm",
     label: "CRM",
-    subtitle: "Operations Hub",
+    subtitle: "Client & Sales Hub",
     detail:
-      "Custom client portals and pipeline management systems with automated lead routing and lifecycle tracking.",
-    metric: "100% Pipeline Visibility",
+      "Custom client portals and sales pipelines with automatic lead assignment and follow-up tracking.",
+    metric: "100% Lead Tracking",
     initialOffset: 42.85,
     icon: (
       <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none">
@@ -106,10 +106,10 @@ const NODES: EcosystemNode[] = [
   {
     id: "cloud",
     label: "CLOUD",
-    subtitle: "Serverless Infra",
+    subtitle: "Cloud & Hosting",
     detail:
-      "Multi-region cloud deployments, isolated databases, and auto-scaling APIs engineered for 99.99% uptime.",
-    metric: "99.99% Uptime SLA",
+      "Secure cloud servers, daily backups, and reliable hosting that keeps your business online.",
+    metric: "99.9% Uptime",
     initialOffset: 57.14,
     icon: (
       <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none">
@@ -126,10 +126,10 @@ const NODES: EcosystemNode[] = [
   {
     id: "data",
     label: "DATA",
-    subtitle: "Real-Time Telemetry",
+    subtitle: "Live Dashboards",
     detail:
-      "Live event streaming, unified SQL/NoSQL data warehouses, and executive analytics dashboards.",
-    metric: "Sub-50ms Query Latency",
+      "Clear business dashboards showing your daily bookings, sales numbers, and team performance.",
+    metric: "Real-Time Reports",
     initialOffset: 71.42,
     icon: (
       <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none">
@@ -148,10 +148,10 @@ const NODES: EcosystemNode[] = [
   {
     id: "marketing",
     label: "MARKETING",
-    subtitle: "Growth Engines",
+    subtitle: "SEO & Growth",
     detail:
-      "Conversion-optimized funnels, programmatic SEO architecture, and automated attribution tracking.",
-    metric: "3.4x Conversion Lift",
+      "Search engine optimization, landing pages, and targeted campaigns that bring qualified leads.",
+    metric: "3.4x Lead Growth",
     initialOffset: 85.71,
     icon: (
       <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none">
@@ -324,12 +324,12 @@ export default function Ecosystem() {
               delay={35}
               animateBy="words"
               direction="top"
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#0A0A0A] justify-center"
+              className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-[#0A0A0A] justify-center"
             />
           </div>
 
           <p className="mt-3 text-sm sm:text-base md:text-lg text-black/60 max-w-xl mx-auto leading-relaxed">
-            Seven interconnected engineering pillars moving around the central Kivex core.
+            Every part of your digital setup—from your website and CRM to automated follow-ups—connected in one place.
           </p>
         </div>
 

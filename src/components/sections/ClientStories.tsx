@@ -26,7 +26,7 @@ interface ClientStory {
 const clientStories: ClientStory[] = [
   {
     quote:
-      "Kivex completely revamped our fleet dispatch and booking infrastructure. Automated milestone alerts and client dashboards cut our daily support calls by 60%. The delivery was on time, communication was seamless, and the software runs with zero downtime.",
+      "Kivex rebuilt our booking system and customer tracking from scratch. Automatic WhatsApp updates for passengers cut our daily phone inquiries by more than half, and our dispatch team saves hours every single day.",
     name: "Varun Joshi",
     role: "Co-Founder & Director",
     company: "Ganga Travels",
@@ -36,17 +36,17 @@ const clientStories: ClientStory[] = [
   },
   {
     quote:
-      "Deploying our high-concurrency bus booking and fleet tracking engine with Kivex was effortless. Even under heavy holiday booking volume, the platform response time remains sub-second. Their engineering depth and proactive support are top-tier.",
+      "During festival rush, our old booking website used to slow down or crash. Since moving to the new platform Kivex built for us, seat selection and ticket booking stay fast and reliable even on our busiest days.",
     name: "Amit",
-    role: "Co-Founders & Directors",
+    role: "Co-Founder & Director",
     company: "NeoBus",
-    impact: "Sub-Second Peak Response",
+    impact: "Zero Rush-Hour Downtime",
     initials: "AP",
     rating: 5,
   },
   {
     quote:
-      "Kivex engineered a custom CRM and property showcase platform that directly accelerated our site visit conversions. The automated WhatsApp lead follow-ups and broker management tools gave our sales team a massive competitive edge.",
+      "Having our property listings, broker tracking, and WhatsApp lead follow-ups in one custom portal made a huge difference for our sales team. We respond to buyer inquiries much faster and book more site visits.",
     name: "Chirag Bhatt",
     role: "Founder",
     company: "Aastha Realty",
@@ -549,8 +549,7 @@ export default function ClientStories() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="mt-4 text-base sm:text-lg text-black/65 max-w-2xl mx-auto leading-relaxed"
           >
-            Real feedback from founders and engineering leaders who rely on Kivex
-            systems for mission-critical operations.
+            Direct feedback from business owners who use Kivex websites, booking systems, and CRMs every day.
           </motion.p>
         </div>
 

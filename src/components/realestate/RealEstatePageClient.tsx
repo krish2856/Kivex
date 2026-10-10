@@ -161,7 +161,7 @@ export default function RealEstatePageClient() {
                   exit={{ opacity: 0, y: -15 }}
                   transition={{ duration: 0.35, ease: "easeOut" }}
                 >
-                  {/* 1. How It's Done: From Brokerage Bottlenecks to Financial Return & Direct Deal Math */}
+                  {/* 1. How It's Done: From Brokerage Bottlenecks to Financial Return & Deal Revenue Projection */}
                   <RealEstateProblemSolution />
                   <RealEstateWebsiteConverts />
                   <RealEstateCrmOperations />

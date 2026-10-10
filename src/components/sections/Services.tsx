@@ -1,13 +1,20 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { services, type ServiceItem, type ServiceCategory } from "@/data/services";
 import { cn } from "@/lib/utils";
 import { useProjectModal } from "@/context/ProjectModalContext";
 import ServiceDetailModal from "@/components/ui/ServiceDetailModal";
 import SpotlightCard from "@/components/reactbits/SpotlightCard/SpotlightCard";
-import ShinyText from "@/components/reactbits/ShinyText/ShinyText";
+import PixelCard from "@/components/reactbits/PixelCard/PixelCard";
+import SplitText from "@/components/reactbits/SplitText/SplitText";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const categoryIcons: Record<string, string> = {
   web: "< >",
@@ -25,6 +32,42 @@ const categoryColors: Record<string, string> = {
   cloud: "#1E3D8A",
 };
 
+function ServiceVectorIcon({ index, color }: { index: number; color: string }) {
+  const icons = [
+    // 0: Architectural Layout / Grid
+    <svg key="0" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="3" y="3" width="7" height="7" rx="1.5" />
+      <rect x="14" y="3" width="7" height="7" rx="1.5" />
+      <rect x="14" y="14" width="7" height="7" rx="1.5" />
+      <rect x="3" y="14" width="7" height="7" rx="1.5" />
+    </svg>,
+    // 1: Code / Terminal Architecture
+    <svg key="1" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="16 18 22 12 16 6" />
+      <polyline points="8 6 2 12 8 18" />
+      <line x1="14" y1="4" x2="10" y2="20" />
+    </svg>,
+    // 2: Precision Target / Conversion
+    <svg key="2" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <polygon points="12 2 2 7 12 12 22 7 12 2" />
+      <polyline points="2 17 12 22 22 17" />
+      <polyline points="2 12 12 17 22 12" />
+    </svg>,
+    // 3: Commerce / Modular Cube
+    <svg key="3" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+      <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+      <line x1="12" y1="22.08" x2="12" y2="12" />
+    </svg>,
+    // 4: Dynamic System / Pulse
+    <svg key="4" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="3" />
+      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+    </svg>,
+  ];
+  return icons[index % icons.length];
+}
+
 function ServiceCard({
   service,
   index,
@@ -36,53 +79,197 @@ function ServiceCard({
   color: string;
   onLearnMore: () => void;
 }) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const progressRef = useRef<HTMLDivElement>(null);
+  const [tilt, setTilt] = useState({ rotateX: 0, rotateY: 0 });
+
+  useEffect(() => {
+    const el = cardRef.current;
+    if (!el) return;
+
+    const isLeftCol = index % 2 === 0;
+
+    gsap.set(el, {
+      opacity: 0,
+      y: 64,
+      x: isLeftCol ? -36 : 36,
+      rotateX: -26,
+      rotateY: isLeftCol ? 12 : -12,
+      scale: 0.88,
+      transformPerspective: 1100,
+      transformOrigin: "center bottom",
+    });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: el,
+        start: "top 90%",
+        end: "bottom 12%",
+        toggleActions: "play none none reverse",
+      },
+    });
+
+    tl.to(el, {
+      opacity: 1,
+      y: 0,
+      x: 0,
+      rotateX: 0,
+      rotateY: 0,
+      scale: 1,
+      duration: 0.85,
+      delay: index * 0.08,
+      ease: "expo.out",
+    });
+
+    if (progressRef.current) {
+      gsap.fromTo(
+        progressRef.current,
+        { scaleX: 0 },
+        {
+          scaleX: 0.35,
+          duration: 0.9,
+          delay: 0.25 + index * 0.08,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 90%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+    }
+
+    return () => {
+      tl.scrollTrigger?.kill();
+      tl.kill();
+    };
+  }, [index]);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    setTilt({
+      rotateX: -y * 7,
+      rotateY: x * 7,
+    });
+  };
+
+  const handleMouseLeave = () => {
+    setTilt({ rotateX: 0, rotateY: 0 });
+  };
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
-      animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-      exit={{ opacity: 0, y: -20, filter: "blur(8px)" }}
-      transition={{
-        delay: index * 0.07,
-        duration: 0.5,
-        ease: [0.22, 1, 0.36, 1],
-      }}
-      className="group relative cursor-pointer"
+    <div
+      ref={cardRef}
+      className="group relative cursor-pointer h-full will-change-transform"
       onClick={onLearnMore}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
     >
-      <SpotlightCard
-        theme="light"
-        spotlightColor={color}
-        className="!p-6 !rounded-2xl border border-black/[0.06] bg-white/60 hover:bg-white hover:shadow-xl hover:shadow-black/5 transition-all duration-300 overflow-hidden"
+      <div
+        className="h-full transition-transform duration-300 ease-out"
+        style={{
+          transform: `perspective(1000px) rotateX(${tilt.rotateX}deg) rotateY(${tilt.rotateY}deg)`,
+        }}
       >
-        <div className="relative z-10">
-          {/* Accent dot */}
-          <div className="flex items-start justify-end mb-2">
-            <div
-              className="w-2 h-2 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-150"
-              style={{ backgroundColor: color }}
-            />
-          </div>
-
-          <h4
-            className="text-base font-bold text-[#0A0A0A] group-hover:translate-x-1 transition-transform duration-300"
+        <PixelCard
+          gap={7}
+          speed={32}
+          colors={`${color},#93C5FD,#E8B62A`}
+          noFocus={true}
+          autoPulseOnScroll={true}
+          pulseDelayMs={200 + index * 110}
+          className="rounded-2xl h-full border border-black/[0.08] bg-white/80 backdrop-blur-md hover:bg-white hover:border-black/15 hover:shadow-[0_22px_48px_-12px_rgba(10,10,10,0.1)] transition-all duration-500"
+        >
+          <SpotlightCard
+            theme="light"
+            spotlightColor={color}
+            className="!p-6 sm:!p-7 !rounded-2xl !border-0 !bg-transparent h-full min-h-[175px] sm:min-h-[195px] flex flex-col justify-between"
           >
-            {service.name}
-          </h4>
+            {/* Top Architectural Bar: Custom Vector Icon + Interactive Action Circle */}
+            <div className="relative z-10 flex items-center justify-between gap-4">
+              <div
+                className="w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:-rotate-3 shadow-sm"
+                style={{
+                  backgroundColor: `${color}12`,
+                  border: `1px solid ${color}28`,
+                }}
+              >
+                <ServiceVectorIcon index={index} color={color} />
+              </div>
 
-          <p className="mt-2 text-sm leading-relaxed text-black/50 group-hover:text-black/75 transition-colors duration-300">
-            {service.description}
-          </p>
+              <div
+                className="w-9 h-9 rounded-full border border-black/[0.08] bg-[#F5EFE5]/80 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:-rotate-45 group-hover:border-transparent"
+                style={{
+                  backgroundColor: tilt.rotateX !== 0 || tilt.rotateY !== 0 ? color : undefined,
+                }}
+              >
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 14 14"
+                  fill="none"
+                  className="transition-colors duration-300"
+                  style={{
+                    color: tilt.rotateX !== 0 || tilt.rotateY !== 0 ? "#FFFFFF" : "#0A0A0A",
+                  }}
+                >
+                  <path
+                    d="M3.5 7H10.5M10.5 7L7 3.5M10.5 7L7 10.5"
+                    stroke="currentColor"
+                    strokeWidth="1.6"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div>
+            </div>
 
-          {/* Bottom accent line */}
-          <div className="mt-4 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
-            <div className="h-[2px] w-0 group-hover:w-8 transition-all duration-500" style={{ backgroundColor: color }} />
-            <span className="text-[10px] font-bold tracking-wider uppercase flex items-center gap-1" style={{ color }}>
-              Learn more →
-            </span>
-          </div>
-        </div>
-      </SpotlightCard>
-    </motion.div>
+            {/* Bottom Title & Animated Progress Sweep */}
+            <div className="relative z-10 mt-7">
+              <div className="group-hover:translate-x-1 transition-transform duration-300">
+                <SplitText
+                  text={service.name}
+                  tag="h4"
+                  textAlign="left"
+                  splitType="words"
+                  delay={40}
+                  duration={0.65}
+                  ease="power3.out"
+                  from={{ opacity: 0, y: 16 }}
+                  to={{ opacity: 1, y: 0 }}
+                  rootMargin="-15px"
+                  className="text-lg sm:text-[21px] font-bold tracking-tight text-[#0A0A0A] leading-snug"
+                />
+              </div>
+
+              {/* Animated Scroll & Hover Progress Sweep */}
+              <div className="mt-4 mb-3 h-[2px] w-full rounded-full bg-black/[0.06] overflow-hidden relative">
+                <div
+                  ref={progressRef}
+                  className="h-full w-full origin-left transition-transform duration-500 group-hover:!scale-x-100"
+                  style={{ backgroundColor: color }}
+                />
+              </div>
+
+              <div className="flex items-center justify-between">
+                <span
+                  className="text-[11px] font-bold tracking-[0.14em] uppercase flex items-center gap-1.5 opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+                  style={{ color }}
+                >
+                  Learn more
+                  <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
+                    →
+                  </span>
+                </span>
+              </div>
+            </div>
+          </SpotlightCard>
+        </PixelCard>
+      </div>
+    </div>
   );
 }
 
@@ -116,16 +303,22 @@ export default function Services() {
       </div>
 
       <div className="mx-auto max-w-7xl px-5 sm:px-6 pt-4 sm:pt-6 md:pt-8 pb-16 sm:pb-20 md:pb-28 lg:pb-32">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#0A0A0A]">
-            WHAT WE BUILD
-          </h2>
-        </motion.div>
+        {/* Header with React Bits SplitText On-Scroll Reveal */}
+        <div>
+          <SplitText
+            text="WHAT WE BUILD"
+            tag="h2"
+            textAlign="left"
+            splitType="chars"
+            delay={28}
+            duration={0.75}
+            ease="power3.out"
+            from={{ opacity: 0, y: 28, rotateX: -40 }}
+            to={{ opacity: 1, y: 0, rotateX: 0 }}
+            rootMargin="-50px"
+            className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-[#0A0A0A]"
+          />
+        </div>
 
         {/* Desktop tabs + content */}
         <div className="mt-14 hidden md:block">
@@ -232,21 +425,30 @@ export default function Services() {
                 </div>
 
                 {/* Right: Service cards grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {activeCategory.services.map((svc, i) => (
-                    <ServiceCard
-                      key={svc.name}
-                      service={svc}
-                      index={i}
-                      color={categoryColors[activeCategory.id]}
-                      onLearnMore={() =>
-                        setSelectedServiceForDetail({
-                          category: activeCategory,
-                          service: svc,
-                        })
-                      }
-                    />
-                  ))}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  {activeCategory.services.map((svc, i) => {
+                    const isLastOdd =
+                      activeCategory.services.length % 2 === 1 &&
+                      i === activeCategory.services.length - 1;
+                    return (
+                      <div
+                        key={svc.name}
+                        className={cn(isLastOdd && "sm:col-span-2")}
+                      >
+                        <ServiceCard
+                          service={svc}
+                          index={i}
+                          color={categoryColors[activeCategory.id]}
+                          onLearnMore={() =>
+                            setSelectedServiceForDetail({
+                              category: activeCategory,
+                              service: svc,
+                            })
+                          }
+                        />
+                      </div>
+                    );
+                  })}
                 </div>
               </motion.div>
             </AnimatePresence>
@@ -328,7 +530,7 @@ export default function Services() {
                   )}
                 >
                   <div className="overflow-hidden">
-                    <div className="border-t border-black/[0.06] px-5 pb-5 pt-4">
+                    <div className="border-t border-black/[0.06] px-4 pb-5 pt-4">
                       <p
                         className="mb-4 text-xs font-semibold uppercase tracking-wider"
                         style={{ color: categoryColors[cat.id] }}
@@ -339,10 +541,10 @@ export default function Services() {
                         {cat.services.map((svc, i) => (
                           <motion.div
                             key={svc.name}
-                            initial={isOpen ? { opacity: 0, x: -10 } : false}
-                            animate={isOpen ? { opacity: 1, x: 0 } : {}}
-                            transition={{ delay: i * 0.05, duration: 0.3 }}
-                            className="flex gap-3 items-start p-2.5 rounded-xl hover:bg-black/[0.03] transition-colors cursor-pointer"
+                            initial={isOpen ? { opacity: 0, y: 16, scale: 0.96 } : false}
+                            animate={isOpen ? { opacity: 1, y: 0, scale: 1 } : {}}
+                            transition={{ delay: i * 0.06, duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                            className="flex gap-3.5 items-center p-4 rounded-xl border border-black/[0.06] bg-[#F5EFE5]/45 active:scale-[0.99] transition-all cursor-pointer"
                             onClick={() =>
                               setSelectedServiceForDetail({
                                 category: cat,
@@ -350,25 +552,25 @@ export default function Services() {
                               })
                             }
                           >
-                            <span
-                              className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full"
-                              style={{ backgroundColor: categoryColors[cat.id] }}
-                            />
-                            <div className="flex-1">
-                              <div className="flex items-center justify-between">
-                                <p className="text-sm font-semibold text-[#0A0A0A]">
-                                  {svc.name}
-                                </p>
-                                <span
-                                  className="text-[10px] font-bold uppercase tracking-wider"
-                                  style={{ color: categoryColors[cat.id] }}
-                                >
-                                  Learn more →
-                                </span>
-                              </div>
-                              <p className="mt-0.5 text-xs leading-relaxed text-black/55">
-                                {svc.description}
+                            <div
+                              className="w-10 h-10 rounded-xl shrink-0 flex items-center justify-center"
+                              style={{
+                                backgroundColor: `${categoryColors[cat.id]}12`,
+                                border: `1px solid ${categoryColors[cat.id]}28`,
+                              }}
+                            >
+                              <ServiceVectorIcon index={i} color={categoryColors[cat.id]} />
+                            </div>
+                            <div className="flex-1 flex items-center justify-between gap-2">
+                              <p className="text-base font-bold text-[#0A0A0A]">
+                                {svc.name}
                               </p>
+                              <span
+                                className="text-[10px] font-bold uppercase tracking-wider shrink-0"
+                                style={{ color: categoryColors[cat.id] }}
+                              >
+                                Learn more →
+                              </span>
                             </div>
                           </motion.div>
                         ))}

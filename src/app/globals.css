@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-@theme {
+@theme inline {
   --color-cream: #F5EFE5;
   --color-cream-dark: #E8E0D0;
   --color-blue: #2D5FC7;
@@ -22,9 +22,23 @@
   --color-gray-800: #262626;
   --color-gray-900: #171717;
 
-  --font-display: "Helvetica Neue", "Arial", sans-serif;
-  --font-body: "Helvetica Neue", "Arial", sans-serif;
-  --font-mono: "SF Mono", "Fira Code", monospace;
+  --font-sans: var(--font-inter), "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: var(--font-inter), "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: var(--font-inter), "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: var(--font-inter), "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+html,
+body,
+*,
+*::before,
+*::after,
+.font-sans,
+.font-mono,
+.font-serif,
+.font-display,
+.font-body {
+  font-family: var(--font-inter), "Inter", -apple-system, BlinkMacSystemFont, sans-serif !important;
 }
 
 @layer base {
@@ -44,7 +58,6 @@
   body {
     background-color: var(--color-cream);
     color: var(--color-dark);
-    font-family: var(--font-body);
     overflow-x: clip;
     min-height: 100vh;
   }
@@ -74,7 +87,6 @@
     cursor: pointer;
     border: none;
     background: none;
-    font-family: inherit;
   }
 }
 

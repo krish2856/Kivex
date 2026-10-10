@@ -22,7 +22,7 @@ const matrixData: MatrixRow[] = [
   {
     challenge: "Repetitive Admin & Business Insights",
     question: "“Can we automate reminders and actually understand our revenue trends without hiring analysts?”",
-    solution: "Make.com automates booking confirmations, reminders, and review requests, while Antigravity AI acts as your business assistant analyzing CRM trends and financial KPIs.",
+    solution: "Automated booking confirmations, WhatsApp reminders, and review requests, paired with smart AI analytics that summarize patient flow and clinic revenue trends.",
   },
 ];
 
@@ -68,7 +68,7 @@ export default function DentalProblemSolution({ embedded = false }: DentalProble
                     {row.challenge}
                   </h3>
                   <span className="text-[10px] font-mono uppercase text-slate-400">
-                    Pillar 0{idx + 1}
+                    0{idx + 1}
                   </span>
                 </div>
 

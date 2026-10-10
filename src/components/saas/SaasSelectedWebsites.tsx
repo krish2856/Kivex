@@ -19,7 +19,7 @@ const saasTemplates: SaasTemplateArchitecture[] = [
     id: "b2b-saas-portal",
     title: "Enterprise Multi-Tenant B2B SaaS",
     categoryTag: "Subscription Platform",
-    badge: "FOUNDATION 01 &bull; MULTI-TENANT",
+    badge: "MULTI-TENANT ARCHITECTURE",
     description:
       "A complete foundation for modern B2B SaaS companies. Pre-configured with tenant organization isolation, Stripe subscription billing, granular team permissions, and transactional notification pipelines.",
     technologies: ["Next.js 15", "PostgreSQL", "Stripe Billing", "BullMQ", "Tailwind CSS"],
@@ -34,7 +34,7 @@ const saasTemplates: SaasTemplateArchitecture[] = [
     id: "logistics-crm-engine",
     title: "Operations & Logistics Fleet CRM",
     categoryTag: "Fleet & Dispatch Software",
-    badge: "FOUNDATION 02 &bull; HIGH CONCURRENCY",
+    badge: "HIGH CONCURRENCY ENGINE",
     description:
       "Engineered for high-velocity dispatch operators. Real-time driver manifests, automated status notifications, vehicle telematics intake, and instantaneous client tracking dashboards.",
     technologies: ["React", "Node.js", "Redis Queues", "WebSockets", "Vercel"],
@@ -49,10 +49,10 @@ const saasTemplates: SaasTemplateArchitecture[] = [
     id: "wealth-analytics-dashboard",
     title: "Wealth & Portfolio Analytics Engine",
     categoryTag: "Fintech & Analytics",
-    badge: "FOUNDATION 03 &bull; REAL-TIME DATA",
+    badge: "REAL-TIME DATA CONSOLE",
     description:
       "Financial intelligence console with interactive expense classification, multi-wallet balance aggregation, vector portfolio graphs, and automated monthly executive statements.",
-    technologies: ["Next.js", "Chart.js", "PostgreSQL", "Client State", "Antigravity AI"],
+    technologies: ["Next.js", "Chart.js", "PostgreSQL", "Client State", "Smart Automation"],
     metrics: [
       { label: "Render Speed", value: "60 FPS" },
       { label: "Sync Latency", value: "< 100ms" },

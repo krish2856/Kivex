@@ -128,7 +128,7 @@ export default function ServiceDetailModal({
                 How We Deliver This Work
               </h4>
               <span className="text-[10px] font-mono text-white/40 uppercase">
-                4-Phase Lifecycle
+                4 Simple Steps
               </span>
             </div>
 
@@ -164,13 +164,13 @@ export default function ServiceDetailModal({
           {/* Deliverables Highlights */}
           <div className="p-3.5 sm:p-4 rounded-xl border border-white/[0.06] bg-[#141414] flex flex-wrap items-center justify-between gap-3 text-xs font-mono text-white/70">
             <div className="flex items-center gap-1.5">
-              <span className="text-[#2D5FC7]">✦</span> Full Source Ownership
+              <span className="text-[#2D5FC7]">✦</span> 100% Custom Work
             </div>
             <div className="flex items-center gap-1.5">
-              <span className="text-[#E8B62A]">⚡</span> Automated CI/CD
+              <span className="text-[#E8B62A]">⚡</span> On-Time Delivery
             </div>
             <div className="flex items-center gap-1.5">
-              <span className="text-[#4A7AE8]">▣</span> 99.9% Production SLA
+              <span className="text-[#4A7AE8]">▣</span> Direct Team Support
             </div>
           </div>
         </div>

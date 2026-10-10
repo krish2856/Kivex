@@ -42,7 +42,7 @@ export default function RealEstateHero() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="mt-4 text-sm sm:text-base md:text-lg text-slate-700 max-w-2xl mx-auto font-normal"
           >
-            Complete digital infrastructure, high-converting property portals, brokerage CRM, Antigravity AI assistant, and Make.com workflows engineered to attract high-net-worth buyers and close deals faster.
+            Custom property showcases, brokerage CRM dashboards, smart AI assistant, and automated booking workflows engineered to convert inquiries and schedule private viewings faster.
           </motion.p>
         </div>
 
@@ -109,7 +109,7 @@ export default function RealEstateHero() {
                       : "text-slate-400 hover:text-white hover:bg-white/5"
                   }`}
                 >
-                  <span>Antigravity AI</span>
+                  <span>Smart AI Assistant</span>
                   <span className="w-1.5 h-1.5 rounded-full bg-[#E8B62A]" />
                 </button>
               </div>
@@ -220,23 +220,23 @@ export default function RealEstateHero() {
                   <div className="relative w-32 h-32 sm:w-44 sm:h-44 rounded-3xl overflow-hidden shadow-2xl mb-5 border-2 border-white/20 bg-[#081B4E] group-hover:scale-105 transition-transform duration-500">
                     <Image
                       src="/dental/antigravity-engine.png"
-                      alt="Antigravity by Google DeepMind"
+                      alt="Smart AI Broker Assistant"
                       fill
                       priority
                       sizes="200px"
                       className="object-cover"
                     />
                   </div>
-                  <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight">Antigravity by Google</h3>
+                  <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight">Smart AI Assistant</h3>
                   <p className="text-xs sm:text-sm text-blue-300 font-mono tracking-widest uppercase mt-1">
-                    AI BROKERAGE ASSISTANT &amp; WORKFLOW INTELLIGENCE
+                    AI BROKERAGE ASSISTANT &amp; WORKFLOW ENGINE
                   </p>
                   <p className="text-xs sm:text-sm text-slate-300 max-w-md text-center mt-3 leading-relaxed">
-                    Reads CRM buyer signals, handles high-intent lead qualification, schedules private showings, and dispatches luxury listings to social channels via Buffer.
+                    Reads CRM buyer signals, handles high-intent lead qualification, schedules private showings, and automatically dispatches luxury listings to social channels.
                   </p>
                   <div className="absolute top-4 left-4 z-10 hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/70 backdrop-blur-md border border-white/10 text-white text-xs font-medium">
                     <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
-                    <span>Antigravity AI Assistant</span>
+                    <span>Smart AI Assistant</span>
                   </div>
                 </motion.div>
               )}

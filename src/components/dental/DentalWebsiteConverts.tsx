@@ -49,7 +49,7 @@ export default function DentalWebsiteConverts({ embedded = false }: DentalWebsit
                 Dental Prime Studio &amp; Clinic
               </span>
               <span className="text-[10px] font-mono text-slate-400">
-                Dr. Aditi Rao
+                Lead Dental Surgeon
               </span>
             </div>
 
@@ -70,10 +70,10 @@ export default function DentalWebsiteConverts({ embedded = false }: DentalWebsit
           {/* Left Column: Clinical Specs & Copy */}
           <div className="lg:col-span-6 flex flex-col items-start justify-center">
             <span className="text-[11px] font-mono tracking-widest text-[#2D5FC7] uppercase font-bold">
-              PILLAR 01 &bull; PREMIUM DENTAL WEBSITE
+              MODERN DENTAL WEBSITE
             </span>
             <h3 className="mt-2 text-2xl sm:text-4xl font-extrabold text-[#0F172A] tracking-tight">
-              High-Velocity Clinical Front Door
+              High-Converting Dental Website
             </h3>
 
             <p className="mt-4 text-sm sm:text-base text-[#475569] leading-relaxed max-w-xl font-normal">

@@ -96,7 +96,7 @@ export default function DentalMarketingAutomation() {
 
               {/* 5. Google / Gemini */}
               <div
-                title="Google Gemini / Antigravity"
+                title="Google Gemini"
                 className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-white/5 hover:bg-white/15 border border-white/10 flex items-center justify-center transition-all hover:scale-110 cursor-pointer shadow-2xs"
               >
                 <svg viewBox="0 0 24 24" className="w-4 h-4 sm:w-4.5 sm:h-4.5" fill="none">
@@ -129,36 +129,36 @@ export default function DentalMarketingAutomation() {
           {/* Left Column: Copy & Specs */}
           <div className="lg:col-span-6 flex flex-col items-start">
             <span className="text-[11px] font-mono tracking-widest text-[#2D5FC7] uppercase font-bold">
-              PILLARS 03, 04 &amp; 05 &bull; AI ASSISTANT &amp; WORKFLOWS
+              AI ASSISTANT &amp; AUTOMATED WORKFLOWS
             </span>
             <h3 className="mt-2 text-2xl sm:text-4xl font-extrabold text-[#0F172A] tracking-tight">
-              AI Business Assistant &amp; Automation
+              AI Practice Assistant &amp; Automation
             </h3>
 
             <p className="mt-4 text-sm sm:text-base text-[#475569] leading-relaxed max-w-xl font-normal">
-              Give your clinic an AI-powered business assistant connected directly to your systems. Using Antigravity as the intelligence layer, Make.com for automated workflows, and Buffer for social publishing—your clinic analyzes CRM data, handles administrative tasks, alerts staff, and schedules content automatically.
+              Give your clinic an AI-powered assistant connected directly to your systems. Using smart AI models for analysis and automated workflows for client messaging—your clinic analyzes patient trends, handles administrative reminders, alerts staff, and queues updates automatically.
             </p>
 
             <div className="mt-8 space-y-3.5 text-xs sm:text-sm text-slate-700 w-full">
               <div className="flex items-start gap-3 p-3.5 rounded-xl bg-white/70 border border-slate-200/80 shadow-2xs">
                 <span className="w-2 h-2 rounded-full bg-[#2D5FC7] shrink-0 mt-1.5" />
                 <div className="flex-1 leading-relaxed">
-                  <span className="font-bold text-slate-900">Antigravity AI Assistant: </span>
+                  <span className="font-bold text-slate-900">Smart AI Assistant: </span>
                   <span className="text-slate-600">Reads CRM data, identifies appointment trends, helps with decisions, and drafts admin emails.</span>
                 </div>
               </div>
               <div className="flex items-start gap-3 p-3.5 rounded-xl bg-white/70 border border-slate-200/80 shadow-2xs">
                 <span className="w-2 h-2 rounded-full bg-[#2D5FC7] shrink-0 mt-1.5" />
                 <div className="flex-1 leading-relaxed">
-                  <span className="font-bold text-slate-900">Make.com Workflows: </span>
+                  <span className="font-bold text-slate-900">Automated Workflows: </span>
                   <span className="text-slate-600">Appointment confirmations, reminders, staff alerts, review requests &amp; follow-up notifications.</span>
                 </div>
               </div>
               <div className="flex items-start gap-3 p-3.5 rounded-xl bg-white/70 border border-slate-200/80 shadow-2xs">
                 <span className="w-2 h-2 rounded-full bg-[#2D5FC7] shrink-0 mt-1.5" />
                 <div className="flex-1 leading-relaxed">
-                  <span className="font-bold text-slate-900">Social Engine + Buffer: </span>
-                  <span className="text-slate-600">Generates captions, educational dental posts &amp; calendars, sending directly to Buffer for publishing.</span>
+                  <span className="font-bold text-slate-900">Social Engine: </span>
+                  <span className="text-slate-600">Generates captions, educational dental posts &amp; calendars, scheduling content automatically.</span>
                 </div>
               </div>
             </div>
@@ -194,7 +194,7 @@ export default function DentalMarketingAutomation() {
                   AI Business Assistant
                 </span>
                 <span className="px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 font-semibold border border-slate-200">
-                  Antigravity Architecture
+                  Smart AI Engine
                 </span>
               </div>
 
@@ -204,7 +204,7 @@ export default function DentalMarketingAutomation() {
                 <div className="relative w-28 h-28 sm:w-36 sm:h-36 rounded-3xl overflow-hidden shadow-2xl mb-4 group-hover:scale-105 transition-transform duration-300 border-2 border-slate-100 bg-[#081B4E]">
                   <Image
                     src="/dental/antigravity-engine.png"
-                    alt="Antigravity by Google DeepMind"
+                    alt="Smart AI Practice Engine"
                     width={426}
                     height={382}
                     priority
@@ -212,17 +212,17 @@ export default function DentalMarketingAutomation() {
                   />
                 </div>
 
-                {/* Typography: Antigravity by Google */}
+                {/* Typography: Smart AI Assistant */}
                 <div className="text-center">
                   <div className="text-xl sm:text-2xl font-bold tracking-tight text-[#0F172A] flex items-center justify-center gap-1.5">
-                    <span className="font-extrabold text-[#0F172A]">Antigravity</span>
-                    <span className="font-normal text-slate-500 text-sm sm:text-base">by Google</span>
+                    <span className="font-extrabold text-[#0F172A]">Smart AI</span>
+                    <span className="font-normal text-slate-500 text-sm sm:text-base">Assistant</span>
                   </div>
                   <div className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.2em] text-[#2D5FC7] font-bold mt-1">
                     AI BUSINESS ASSISTANT &amp; AUTOMATION
                   </div>
                   <p className="mt-2 text-xs text-slate-500 max-w-[270px] mx-auto leading-relaxed">
-                    Connected AI layer reading CRM data, identifying patient trends, automating Make.com workflows, and queueing social posts to Buffer.
+                    Connected AI layer reading CRM data, identifying patient trends, automating appointment follow-ups, and queueing social posts.
                   </p>
                 </div>
               </div>
@@ -231,7 +231,7 @@ export default function DentalMarketingAutomation() {
               <div className="relative z-10 w-full pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] font-mono text-slate-500">
                 <span className="flex items-center gap-1.5 text-slate-700 font-semibold">
                   <span className="w-2 h-2 rounded-full bg-[#2D5FC7]" />
-                  Make.com + Buffer Sync
+                  Automated Reminders &amp; Sync
                 </span>
                 <span className="text-slate-400">100% HIPAA Safe</span>
               </div>

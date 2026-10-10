@@ -22,7 +22,7 @@ const matrixData: MatrixRow[] = [
   {
     challenge: "Repetitive Follow-ups & Deal Intelligence",
     question: "“Can we automate viewing reminders and predict high-intent closings without agent follow-up burnout?”",
-    solution: "Make.com automates instant WhatsApp/SMS booking confirmations and drip campaigns, while Antigravity AI acts as your deal intelligence assistant analyzing buyer intent and pipeline velocity.",
+    solution: "Instant WhatsApp and SMS tour confirmations, paired with smart AI lead qualification that highlights high-intent buyers and deal velocity.",
   },
 ];
 
@@ -67,7 +67,7 @@ export default function RealEstateProblemSolution({ embedded = false }: RealEsta
                     {row.challenge}
                   </h3>
                   <span className="text-[10px] font-mono uppercase text-slate-400">
-                    Pillar 0{idx + 1}
+                    0{idx + 1}
                   </span>
                 </div>
 

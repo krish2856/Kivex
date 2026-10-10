@@ -39,7 +39,7 @@ const technologies: Technology[] = [
           fill="white"
           fontSize="7"
           fontWeight="bold"
-          fontFamily="monospace"
+          fontFamily="var(--font-inter), Inter, sans-serif"
         >
           CORE
         </text>
@@ -253,7 +253,7 @@ const technologies: Technology[] = [
           fill="#232F3E"
           fontSize="13"
           fontWeight="900"
-          fontFamily="system-ui, sans-serif"
+          fontFamily="var(--font-inter), Inter, sans-serif"
           letterSpacing="1"
         >
           aws
@@ -408,7 +408,7 @@ export default function Technologies() {
               delay={40}
               animateBy="words"
               direction="top"
-              className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#0A0A0A] justify-center"
+              className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-[#0A0A0A] justify-center"
             />
           </div>
 

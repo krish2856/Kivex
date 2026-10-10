@@ -41,7 +41,7 @@ export const services: ServiceCategory[] = [
     tagline: "Brand assets and media production that look distinct and professional.",
     services: [
       { name: "Custom Logo & Branding", description: "Vector logos, color palettes, and typography guidelines tailored to your company's market position." },
-      { name: "AI-generated Art", description: "Custom branded imagery, concept art, and high-resolution visuals for campaigns and web headers." },
+      { name: "Custom Brand Visuals", description: "Custom branded imagery, campaign graphics, and high-resolution visuals for web headers and social media." },
       { name: "Promo Videos & Animations", description: "Product demo videos, motion graphics, and animated explainers for launches and social feeds." },
       { name: "Script for Reels & Video", description: "Paced, conversational scripts written for TikTok, Instagram Reels, and YouTube ads." },
       { name: "Marketing Materials", description: "Pitch decks, one-pagers, brochures, and digital banners formatted for both screen and print." },

@@ -320,7 +320,7 @@ export default function Work() {
             delay={35}
             animateBy="words"
             direction="top"
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#F5EFE5]"
+            className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-[#F5EFE5]"
           />
           <p className="mt-3 text-sm sm:text-base md:text-lg max-w-xl leading-relaxed text-[#A3A3A3]">
             Digital systems built for performance, scale, and business impact.
@@ -339,7 +339,7 @@ export default function Work() {
           className="mb-8 sm:mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-white/[0.08]"
         >
           <div>
-            <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-[#F5EFE5]">
+            <h3 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#F5EFE5]">
               Top Projects
             </h3>
             <p className="mt-2 text-xs sm:text-sm text-[#A3A3A3] max-w-lg leading-relaxed">

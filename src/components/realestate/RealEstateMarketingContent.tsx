@@ -37,31 +37,31 @@ const modules: Module[] = [
   {
     id: "automated-social-post",
     num: "01",
-    badge: "PILLAR 04",
+    badge: "AUTOMATION",
     badgeClass: "text-blue-700 bg-blue-50 border-blue-200",
-    fact: "Antigravity intelligence + Buffer automated scheduling across all platforms",
+    fact: "Smart AI intelligence + automated scheduling across all platforms",
     byLine: "Social Automation by",
     title: ["Automated Property Posts", "That Close Deals"],
     dockTag: "AUTO.",
     dockTitle: "Social Media Automation",
-    dockSub: "Antigravity AI • Buffer Publishing",
+    dockSub: "Smart AI Engine • Social Publishing",
     dockCta: "Launch Social Engine",
-    eyebrow: "PILLAR 04 • SOCIAL MEDIA AUTOMATION",
+    eyebrow: "SOCIAL MEDIA AUTOMATION",
     heading: "Automated Content & Publishing System",
-    copy: "We build an automated social media listing distribution system for your brokerage. Antigravity acts as the intelligence layer generating captions, luxury property feature highlights, investment yield analyses, and content calendars, while Buffer handles automated multi-platform scheduling.",
+    copy: "We build an automated social media listing distribution system for your brokerage. The AI layer generates captions, luxury property feature highlights, investment yield analyses, and content calendars, while connected schedulers handle multi-platform publishing.",
     points: [
-      ["AI Content & Captions:", "Antigravity generates listing copy, neighborhood demographic insights, and promotional creatives."],
-      ["Buffer Publishing Workflow:", "Queues and automates posts across Instagram, Facebook, LinkedIn, and YouTube."],
+      ["AI Content & Captions:", "Automated generation of listing copy, neighborhood demographic insights, and promotional creatives."],
+      ["Automated Publishing Workflow:", "Queues and automates posts across Instagram, Facebook, LinkedIn, and YouTube."],
       ["Direct WhatsApp Link:", "Transforms every post into an instant private showing reservation."],
     ],
     cta: "Explore Social Calendar",
     media: "poster",
-    mediaLabel: "Antigravity by Google • AI Engine",
+    mediaLabel: "Smart AI Assistant • Social Engine",
   },
   {
     id: "reels-with-model",
     num: "02",
-    badge: "PILLAR 06",
+    badge: "VIDEO",
     badgeClass: "text-rose-600 bg-rose-50 border-rose-200",
     fact: "High-retention vertical reels, penthouse reveals & architectural showcases",
     byLine: "Cinema Production by",
@@ -70,7 +70,7 @@ const modules: Module[] = [
     dockTitle: "Aspirational Property Reels",
     dockSub: "9:16 Vertical • 4K HDR",
     dockCta: "Schedule Production Shoot",
-    eyebrow: "PILLAR 06 • REELS & PROMOTIONAL CREATIVES",
+    eyebrow: "REELS & PROMOTIONAL CREATIVES",
     heading: "Visuals That Turn Scrollers Into High-Budget Buyers",
     copy: "High-net-worth buyers don't just buy square footage; they buy status, architectural elegance, and lifestyle. We produce high-retention cinematic reels and interior walkthroughs that capture attention and drive private showing requests.",
     points: [
@@ -87,7 +87,7 @@ const modules: Module[] = [
   {
     id: "small-interview-podcast",
     num: "03",
-    badge: "PILLAR 06",
+    badge: "PODCAST",
     badgeClass: "text-purple-600 bg-purple-50 border-purple-200",
     fact: "Broker-led market analysis and developer insight interviews",
     byLine: "Market Authority by",
@@ -96,7 +96,7 @@ const modules: Module[] = [
     dockTitle: "Interviews & Micro-Podcasts",
     dockSub: "Captioned • Studio Audio",
     dockCta: "Schedule Market Podcast",
-    eyebrow: "PILLAR 06 • MARKET AUTHORITY CONTENT",
+    eyebrow: "MARKET AUTHORITY CONTENT",
     heading: "Podcasts That Convert Hesitant Investors",
     copy: "Real estate buyers often delay decisions due to interest rate questions or market uncertainty. In short interviews and podcasts, your lead brokers explain market appreciation, tax incentives, and rental yields with calm, authoritative clarity.",
     points: [
@@ -113,7 +113,7 @@ const modules: Module[] = [
   {
     id: "overviews-of-estate",
     num: "04",
-    badge: "PILLAR 06",
+    badge: "ESTATE FILM",
     badgeClass: "text-emerald-600 bg-emerald-50 border-emerald-200",
     fact: "Cinematic development overviews, penthouse tours & masterplan films",
     byLine: "Estate Films by",
@@ -122,7 +122,7 @@ const modules: Module[] = [
     dockTitle: "Architectural Drone & Gimbal",
     dockSub: "Penthouse • Club Amenities",
     dockCta: "Book Property Film",
-    eyebrow: "PILLAR 06 • PRESTIGE & ASSET FILMS",
+    eyebrow: "PRESTIGE & ASSET FILMS",
     heading: "Films That Justify Record Price Per Sq Ft",
     copy: "Buyers who perceive a residential development as masterfully constructed and exclusive don't hesitate on pricing. Our cinematic overviews highlight your arrival lobbies, panoramic views, private pools, and finish craftsmanship.",
     points: [
@@ -168,7 +168,7 @@ function MediaFrame({ m, onOpen }: { m: Module; onOpen?: () => void }) {
             Live Agent System
           </span>
           <span className="px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 font-semibold border border-slate-200">
-            Antigravity Architecture
+            Smart AI Engine
           </span>
         </div>
 
@@ -176,7 +176,7 @@ function MediaFrame({ m, onOpen }: { m: Module; onOpen?: () => void }) {
           <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-3xl overflow-hidden shadow-2xl mb-3 group-hover:scale-105 transition-transform duration-300 border-2 border-slate-100 bg-[#081B4E]">
             <Image
               src="/dental/antigravity-engine.png"
-              alt="Antigravity by Google DeepMind"
+              alt="Smart AI Broker Engine"
               width={426}
               height={382}
               priority
@@ -186,14 +186,14 @@ function MediaFrame({ m, onOpen }: { m: Module; onOpen?: () => void }) {
 
           <div className="text-center">
             <div className="text-lg sm:text-xl font-bold tracking-tight text-[#0F172A] flex items-center justify-center gap-1.5">
-              <span className="font-extrabold text-[#0F172A]">Antigravity</span>
-              <span className="font-normal text-slate-500 text-xs sm:text-sm">by Google</span>
+              <span className="font-extrabold text-[#0F172A]">Smart AI</span>
+              <span className="font-normal text-slate-500 text-xs sm:text-sm">Assistant</span>
             </div>
             <div className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.2em] text-[#2D5FC7] font-bold mt-1">
-              AGENTIC PROPERTY MARKETING &amp; SYNDICATION
+              AI PROPERTY MARKETING &amp; SYNDICATION
             </div>
             <p className="mt-2 text-xs text-slate-500 max-w-[270px] mx-auto leading-relaxed">
-              Autonomous AI agent infrastructure orchestrating buyer lead qualification, 5-star Google review triggers, and multi-channel listing distribution.
+              Intelligent automation infrastructure orchestrating buyer lead qualification, client review triggers, and multi-channel listing distribution.
             </p>
           </div>
         </div>

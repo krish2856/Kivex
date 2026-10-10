@@ -22,7 +22,7 @@ export default function Introduction() {
         {/* Short 2-line animated introduction above */}
         <div className="max-w-4xl mb-8 sm:mb-10">
           <BlurText
-            text="We engineer custom web applications, client portals, and intelligent automation pipelines built around the exact way your business operates."
+            text="From customer-facing websites to internal CRMs and WhatsApp automation, we build software tailored to how your team actually works."
             delay={30}
             animateBy="words"
             direction="bottom"

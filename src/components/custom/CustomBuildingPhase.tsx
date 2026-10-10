@@ -34,12 +34,12 @@ export default function CustomBuildingPhase() {
 
   const aiFeatures = [
     {
-      title: "Antigravity AI Autonomous Engine",
+      title: "Workflow Automation Engine",
       desc: "Connected intelligence layer analyzing relational database entries, classifying user requests, and triggering background business actions automatically.",
-      badge: "Google DeepMind Engine",
+      badge: "Smart Automation",
     },
     {
-      title: "Make.com & Webhook Workflow Automation",
+      title: "Webhook & Event Pipeline Automation",
       desc: "Eliminates repetitive manual admin work by wiring up instantaneous multi-app pipelines across CRMs, spreadsheets, payment gateways, and databases.",
       badge: "Zero Manual Ops",
     },
@@ -224,11 +224,11 @@ export default function CustomBuildingPhase() {
                     <div className="flex items-center gap-2">
                       <span className="w-2 h-2 rounded-full bg-[#E8B62A] animate-ping" />
                       <span className="text-xs font-mono font-bold text-amber-300">
-                        Antigravity AI Layer
+                        Internal AI Engine
                       </span>
                     </div>
                     <span className="text-[10px] font-mono text-slate-400">
-                      make.com webhook sync
+                      Automated Webhook Sync
                     </span>
                   </div>
 
@@ -236,7 +236,7 @@ export default function CustomBuildingPhase() {
                     <div className="relative w-12 h-12 rounded-xl overflow-hidden shrink-0 bg-white/10">
                       <Image
                         src="/dental/antigravity-engine.png"
-                        alt="Antigravity Engine"
+                        alt="Smart AI Engine"
                         fill
                         className="object-cover"
                       />
@@ -244,7 +244,7 @@ export default function CustomBuildingPhase() {
                     <div>
                       <span className="text-xs font-bold text-white">Autonomous Agent Active</span>
                       <p className="text-[11px] text-slate-300 leading-tight mt-0.5">
-                        Reads CRM events, executes Make.com tasks &amp; triggers WhatsApp API
+                        Reads CRM events, executes background tasks &amp; triggers WhatsApp API
                       </p>
                     </div>
                   </div>
@@ -262,7 +262,7 @@ export default function CustomBuildingPhase() {
                         OpenAI GPT-4o
                       </span>
                       <span className="text-[10px] font-mono px-2.5 py-1 rounded-md bg-white/10 text-[#E8B62A] border border-[#E8B62A]/30">
-                        Make.com
+                        Webhook Queues
                       </span>
                       <span className="text-[10px] font-mono px-2.5 py-1 rounded-md bg-white/10 text-emerald-400 border border-emerald-500/30">
                         WhatsApp API

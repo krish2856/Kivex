@@ -39,7 +39,7 @@ export default function DentalRoiBanner() {
             className="text-3xl sm:text-5xl md:text-6xl lg:text-[56px] xl:text-[64px] font-black text-[#0F172A] tracking-[-0.035em] leading-[1.05] uppercase"
           >
             <span className="block">Financial Return and</span>
-            <span className="block">Direct Clinic <span className="text-[#2D5FC7]">Math</span></span>
+            <span className="block">Projected Practice <span className="text-[#2D5FC7]">Growth</span></span>
           </motion.h2>
         </div>
 
@@ -58,10 +58,10 @@ export default function DentalRoiBanner() {
 
             <div className="flex items-center gap-2 px-2">
               <span className="text-xs font-bold tracking-tight text-white">
-                Practice Yield Model
+                Practice Growth Model
               </span>
               <span className="text-[10px] font-mono text-slate-400">
-                Direct Clinic Math
+                Patient &amp; Revenue Projection
               </span>
             </div>
 
@@ -88,7 +88,7 @@ export default function DentalRoiBanner() {
             {/* Column 1: Financial ROI Title */}
             <div className="md:col-span-3 p-6 sm:p-8 flex flex-col justify-center items-start bg-white">
               <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#2D5FC7] font-bold mb-1">
-                VALUE &bull; METRICS
+                PROJECTED GROWTH
               </span>
               <h3 className="text-2xl sm:text-3xl font-extrabold text-[#0F172A] tracking-tight">
                 Financial ROI
@@ -112,7 +112,7 @@ export default function DentalRoiBanner() {
             {/* Column 3: Direct Math & Revenue Impact */}
             <div className="md:col-span-5 p-6 sm:p-8 flex flex-col justify-center bg-white">
               <p className="text-sm sm:text-base text-[#334155] leading-relaxed font-normal">
-                <strong className="font-bold text-[#0F172A]">Direct math:</strong> If this
+                <strong className="font-bold text-[#0F172A]">Projected impact:</strong> If this
                 saves <span className="font-semibold text-[#2D5FC7]">15 minutes</span> on{" "}
                 <span className="font-semibold text-[#0F172A]">
                   {proceduresPerDay} procedures a day

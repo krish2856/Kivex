@@ -9,8 +9,8 @@ import { cn } from "@/lib/utils";
 
 const AVAILABLE_SERVICES = [
   "Web Development",
-  "AI & Neural Agents",
-  "Intelligent Automation & CRM",
+  "AI & Automation",
+  "Custom CRM & Workflows",
   "Cloud Infrastructure",
   "Custom Logo & Creative",
   "Digital Marketing & SEO",

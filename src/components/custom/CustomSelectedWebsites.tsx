@@ -22,7 +22,7 @@ export default function CustomSelectedWebsites() {
             </h2>
 
             <p className="mt-4 text-sm sm:text-base text-slate-600 max-w-2xl font-normal leading-relaxed">
-              We are actively developing our signature collection of pre-built SaaS, client portal, and logistics starter kits. Launching soon with built-in authentication, Stripe billing, and Antigravity AI workflow hooks.
+              We are actively developing our signature collection of pre-built SaaS, client portal, and logistics starter kits. Launching soon with built-in authentication, Stripe billing, and automated workflow integrations.
             </p>
           </div>
 
