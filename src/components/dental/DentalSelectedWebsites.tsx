@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useProjectModal } from "@/context/ProjectModalContext";
 
@@ -199,6 +200,38 @@ const templateWebsites: TemplateProject[] = [
 
 export default function DentalSelectedWebsites() {
   const { openProjectModal } = useProjectModal();
+  const [allTemplates, setAllTemplates] = useState<TemplateProject[]>(templateWebsites);
+
+  useEffect(() => {
+    fetch("/api/templates?category=DENTAL")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success && data.templates && data.templates.length > 0) {
+          // Map DB templates to TemplateProject structure
+          const formattedDb: TemplateProject[] = data.templates.map((t: any, idx: number) => ({
+            id: `db-${t.id}`,
+            title: t.title,
+            categoryTag: t.tagline || "Dental Practice",
+            badge: t.badge || "DENTAL / FEATURED",
+            featured: true,
+            description: t.description || "",
+            technologies: Array.isArray(t.technologies) ? t.technologies : ["NEXT.JS", "RESPONSIVE UX"],
+            image: t.image_url,
+            gridClass: idx % 2 === 0 ? "col-span-1 lg:col-span-7" : "col-span-1 lg:col-span-5",
+            imageHeight: "h-[280px] sm:h-[340px] md:h-[400px]",
+            url: t.demo_url,
+          }));
+
+          // Avoid duplicates by title or url, prepend DB templates
+          const combined = [
+            ...formattedDb,
+            ...templateWebsites.filter((orig) => !formattedDb.some((db) => db.url === orig.url || db.title === orig.title)),
+          ];
+          setAllTemplates(combined);
+        }
+      })
+      .catch((err) => console.error("Error loading dynamic dental templates:", err));
+  }, []);
 
   return (
     <section id="selected-websites" className="py-14 md:py-16 bg-[#F5EFE5] text-[#0A0A0A]">
@@ -206,8 +239,6 @@ export default function DentalSelectedWebsites() {
         {/* Curated Showcase Top Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 sm:pb-16 border-b border-black/[0.08]">
           <div>
-
-
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-[#0F172A] tracking-[-0.035em] leading-[0.98] uppercase">
               Selected <span className="text-[#2D5FC7]">Websites</span>
             </h2>
@@ -220,7 +251,7 @@ export default function DentalSelectedWebsites() {
 
         {/* The Grid of Website Showcase Cards */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 sm:gap-10 pt-12 sm:pt-16">
-          {templateWebsites.map((template, idx) => (
+          {allTemplates.map((template, idx) => (
             <motion.div
               key={template.id}
               initial={{ opacity: 0, y: 25 }}

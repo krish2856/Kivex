@@ -488,6 +488,18 @@ export default function Navbar() {
                   );
                 })}
                 
+                <Link
+                  href="/client"
+                  className={cn(
+                    "rounded-full px-3.5 lg:px-5 py-2 text-xs lg:text-sm font-semibold transition-all duration-300 shrink-0 cursor-pointer border",
+                    scrolled
+                      ? "border-white/20 text-white hover:bg-white/10"
+                      : "border-black/20 text-slate-800 hover:bg-black/5"
+                  )}
+                >
+                  Login
+                </Link>
+
                 <button
                   type="button"
                   onClick={() => openProjectModal()}
@@ -699,16 +711,32 @@ export default function Navbar() {
             );
           })}
 
-          <button
-            type="button"
-            className="mt-4 w-full rounded-full bg-[#2D5FC7] px-8 py-3.5 text-base font-semibold text-white transition-all duration-500 hover:bg-[#4A7AE8] cursor-pointer"
-            onClick={() => {
-              setMobileOpen(false);
-              openProjectModal();
-            }}
-          >
-            Start a Project
-          </button>
+          <div className="flex flex-col gap-2.5 w-full mt-4">
+            <Link
+              href={process.env.NEXT_PUBLIC_CRM_URL ? `${process.env.NEXT_PUBLIC_CRM_URL}/client` : "/client"}
+              onClick={() => setMobileOpen(false)}
+              className="w-full text-center rounded-full border border-white/20 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-white/10 cursor-pointer"
+            >
+              Login (Client Portal)
+            </Link>
+            <button
+              type="button"
+              className="w-full rounded-full bg-[#2D5FC7] px-8 py-3.5 text-base font-semibold text-white transition-all duration-500 hover:bg-[#4A7AE8] cursor-pointer"
+              onClick={() => {
+                setMobileOpen(false);
+                openProjectModal();
+              }}
+            >
+              Start a Project
+            </button>
+            <Link
+              href={process.env.NEXT_PUBLIC_CRM_URL ? `${process.env.NEXT_PUBLIC_CRM_URL}/crm` : "/crm"}
+              onClick={() => setMobileOpen(false)}
+              className="w-full text-center py-2 text-xs font-mono text-white/50 hover:text-white transition-colors"
+            >
+              KIVEX TECHNOLOGY • Company & Staff Login →
+            </Link>
+          </div>
         </div>
       </div>
 
