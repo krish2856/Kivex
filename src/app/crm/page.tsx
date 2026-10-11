@@ -210,6 +210,15 @@ export default function CompanyCRMPage() {
   const [settingsSavedMsg, setSettingsSavedMsg] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
+  // Change Password Modal & State
+  const [showChangePasswordModal, setShowChangePasswordModal] = useState(false);
+  const [pwdTargetEmail, setPwdTargetEmail] = useState("");
+  const [pwdCurrent, setPwdCurrent] = useState("");
+  const [pwdNew, setPwdNew] = useState("");
+  const [pwdConfirm, setPwdConfirm] = useState("");
+  const [pwdLoading, setPwdLoading] = useState(false);
+  const [pwdMsg, setPwdMsg] = useState<{ type: "success" | "error"; text: string } | null>(null);
+
   // Load Session & Set KIVEX TECHNOLOGY Page Title
   useEffect(() => {
     if (typeof document !== "undefined") {
@@ -540,11 +549,53 @@ export default function CompanyCRMPage() {
       });
       const data = await res.json();
       if (data.success) {
-        setSettingsSavedMsg("Enterprise Settings, Banking & Google OAuth Client ID updated in Neon DB!");
+        setSettingsSavedMsg("Enterprise Settings, Banking & Gateway updated successfully!");
         setTimeout(() => setSettingsSavedMsg(""), 4000);
       }
     } catch (err) {
       console.error(err);
+    }
+  };
+
+  // Change Password Handler
+  const handleChangePassword = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (pwdNew !== pwdConfirm) {
+      setPwdMsg({ type: "error", text: "New password and Confirm password do not match!" });
+      return;
+    }
+    if (pwdNew.length < 6) {
+      setPwdMsg({ type: "error", text: "New password must be at least 6 characters long." });
+      return;
+    }
+    setPwdLoading(true);
+    setPwdMsg(null);
+    try {
+      const emailToUpdate = pwdTargetEmail || currentUser?.email || "admin@kivex.com";
+      const res = await fetch("/api/crm/change-password", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: emailToUpdate,
+          oldPassword: pwdCurrent,
+          newPassword: pwdNew,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Failed to update password");
+      setPwdMsg({ type: "success", text: "Password updated successfully!" });
+      setPwdCurrent("");
+      setPwdNew("");
+      setPwdConfirm("");
+      setTimeout(() => {
+        setShowChangePasswordModal(false);
+        setPwdTargetEmail("");
+        setPwdMsg(null);
+      }, 1500);
+    } catch (err: any) {
+      setPwdMsg({ type: "error", text: err.message || "Failed to update password" });
+    } finally {
+      setPwdLoading(false);
     }
   };
 
@@ -936,12 +987,12 @@ export default function CompanyCRMPage() {
             <Link href="/">
               <Logo className="h-8 w-auto" />
             </Link>
-            <div className="mt-3 flex items-center justify-between">
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#2D5FC7]/20 text-[#60A5FA] border border-[#2D5FC7]/30">
-                {currentUser.branch_code || "KIVEX_01002856"}
+            <div className="mt-2.5 flex items-center justify-between">
+              <span className="text-xs font-semibold text-white/90 truncate max-w-[130px]">
+                {currentUser.name || "Kivex Admin"}
               </span>
-              <span className="text-[10px] font-mono font-bold text-[#E8B62A]">
-                {currentUser.role}
+              <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                Online
               </span>
             </div>
           </div>
@@ -1088,10 +1139,10 @@ export default function CompanyCRMPage() {
         </div>
 
         {/* Profile Card & Logout */}
-        <div className="p-4 border-t border-white/[0.08]">
+        <div className="p-4 border-t border-white/[0.08] space-y-2.5">
           <div className="flex items-center justify-between">
-            <div>
-              <div className="text-xs font-bold text-white">{currentUser.name}</div>
+            <div className="min-w-0">
+              <div className="text-xs font-bold text-white truncate">{currentUser.name}</div>
               <div className="text-[11px] text-white/50 truncate max-w-[140px]">{currentUser.email}</div>
             </div>
             <button
@@ -1104,6 +1155,16 @@ export default function CompanyCRMPage() {
               </svg>
             </button>
           </div>
+          <button
+            onClick={() => {
+              setPwdTargetEmail(currentUser.email || "");
+              setShowChangePasswordModal(true);
+            }}
+            className="w-full flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-lg bg-white/[0.06] hover:bg-white/10 text-[11px] font-semibold text-white/80 hover:text-white transition-all cursor-pointer"
+          >
+            <span>🔑</span>
+            <span>Change Password</span>
+          </button>
         </div>
       </aside>
 
@@ -1114,14 +1175,24 @@ export default function CompanyCRMPage() {
             <Link href="/">
               <Logo className="h-6 w-auto" />
             </Link>
-            <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-[#2D5FC7] text-white">
-              {currentUser.role}
+            <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-white/10 text-white">
+              Admin
             </span>
           </div>
           <div className="flex items-center gap-2">
             <button
+              onClick={() => {
+                setPwdTargetEmail(currentUser.email || "");
+                setShowChangePasswordModal(true);
+              }}
+              className="px-2 py-1 rounded-lg bg-white/10 text-[11px] font-semibold text-white cursor-pointer"
+              title="Change Password"
+            >
+              🔑 Pwd
+            </button>
+            <button
               onClick={() => fetchAllCRMData()}
-              className="px-2.5 py-1 rounded-lg bg-white/10 text-[11px] font-semibold text-white cursor-pointer"
+              className="px-2 py-1 rounded-lg bg-white/10 text-[11px] font-semibold text-white cursor-pointer"
             >
               ⟳ Sync
             </button>
@@ -1244,9 +1315,9 @@ export default function CompanyCRMPage() {
               {activeTab === "settings" && "Company & Payment Settings"}
               {activeTab === "staff" && "Staff Accounts & Access Rights"}
             </h2>
-            <span className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-[11px] font-mono font-semibold">
+            <span className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-[11px] font-semibold">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              Neon DB Live
+              System Active
             </span>
           </div>
 
@@ -1658,7 +1729,7 @@ export default function CompanyCRMPage() {
 
               {payments.length === 0 ? (
                 <div className="py-12 text-center text-xs text-slate-400">
-                  No payment transactions on record in Neon DB.
+                  No payment transactions on record.
                 </div>
               ) : (
                 <div className="overflow-x-auto">
@@ -2116,7 +2187,7 @@ export default function CompanyCRMPage() {
               <div className="mb-6">
                 <h3 className="text-base font-bold text-[#0A0A0A]">Company Profile, Banking & Gateway Settings</h3>
                 <p className="text-xs text-[#525252]">
-                  Configure your company identity, official UPI handle, QR Code, bank account, and branch credentials. Changes save directly to Neon DB and update the client portal in real time.
+                  Configure your company identity, official UPI handle, QR Code, bank account, and branch credentials. Changes save in real-time and update the client portal.
                 </p>
               </div>
 
@@ -2315,12 +2386,34 @@ export default function CompanyCRMPage() {
                   </div>
                 </div>
 
+                {/* 5. Administrator Password & Security */}
+                <div className="border-t border-slate-200 pt-5">
+                  <div className="flex items-center justify-between mb-2">
+                    <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-[#2D5FC7]">
+                      5. Administrator Password &amp; Account Security
+                    </h4>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setPwdTargetEmail(currentUser.email || "");
+                        setShowChangePasswordModal(true);
+                      }}
+                      className="px-3.5 py-1.5 rounded-lg bg-[#2D5FC7] hover:bg-[#1E3D8A] text-white text-xs font-bold cursor-pointer transition-all"
+                    >
+                      🔑 Change Password Now
+                    </button>
+                  </div>
+                  <p className="text-[11px] text-slate-500">
+                    Change your admin credentials anytime. All changes take effect immediately across all sessions.
+                  </p>
+                </div>
+
                 <div className="pt-4 border-t border-slate-200 flex justify-end">
                   <button
                     type="submit"
                     className="px-6 py-2.5 rounded-full bg-[#2D5FC7] hover:bg-[#1E3D8A] text-white text-xs font-bold transition-all shadow-md cursor-pointer"
                   >
-                    Save Enterprise Settings to Neon DB ✓
+                    Save Enterprise Settings ✓
                   </button>
                 </div>
               </form>
@@ -2383,11 +2476,20 @@ export default function CompanyCRMPage() {
                         <td className="py-3.5 px-4 font-mono text-slate-500">
                           {new Date(st.created_at).toLocaleDateString()}
                         </td>
-                        <td className="py-3.5 px-4 text-right">
+                        <td className="py-3.5 px-4 text-right space-x-3">
+                          <button
+                            onClick={() => {
+                              setPwdTargetEmail(st.email);
+                              setShowChangePasswordModal(true);
+                            }}
+                            className="text-[#2D5FC7] hover:underline text-xs font-semibold cursor-pointer"
+                          >
+                            🔑 Change Password
+                          </button>
                           {st.role !== "SUPER_ADMIN" && (
                             <button
                               onClick={() => handleDeleteStaff(st.id)}
-                              className="text-red-500 hover:text-red-700 text-xs font-semibold"
+                              className="text-red-500 hover:text-red-700 text-xs font-semibold cursor-pointer"
                             >
                               Remove ✕
                             </button>
@@ -2648,7 +2750,7 @@ export default function CompanyCRMPage() {
                   type="submit"
                   className="px-5 py-2 rounded-lg bg-[#2D5FC7] hover:bg-[#1E3D8A] text-white font-bold shadow-xs cursor-pointer"
                 >
-                  Save Project to Neon DB →
+                  Save Project →
                 </button>
               </div>
             </form>
@@ -2957,7 +3059,7 @@ export default function CompanyCRMPage() {
             <div className="flex justify-between items-start mb-4">
               <div>
                 <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-mono font-bold mb-1.5">
-                  ● PORTAL UNLOCKED & APPROVED IN NEON DB
+                  ● PORTAL UNLOCKED &amp; APPROVED
                 </span>
                 <h3 className="text-base sm:text-lg font-extrabold text-[#0A0A0A]">
                   Send Project Approval Message to {approvalModalInquiry.name}
@@ -3073,6 +3175,119 @@ export default function CompanyCRMPage() {
                 </button>
               </div>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* MODAL: Change Account Password */}
+      {showChangePasswordModal && (
+        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+          <div className="max-w-md w-full bg-white rounded-3xl p-6 sm:p-7 text-left shadow-2xl border border-black/10">
+            <div className="flex justify-between items-center mb-4">
+              <div className="flex items-center gap-2.5">
+                <div className="w-9 h-9 rounded-xl bg-[#2D5FC7]/10 flex items-center justify-center text-base">
+                  🔑
+                </div>
+                <div>
+                  <h3 className="text-base font-extrabold text-[#0A0A0A]">
+                    Change Account Password
+                  </h3>
+                  <p className="text-[11px] text-slate-500">
+                    {pwdTargetEmail ? `Updating password for ${pwdTargetEmail}` : "Set a new secure password for this account"}
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={() => {
+                  setShowChangePasswordModal(false);
+                  setPwdTargetEmail("");
+                  setPwdMsg(null);
+                }}
+                className="text-slate-400 hover:text-black text-xl cursor-pointer"
+              >
+                ✕
+              </button>
+            </div>
+
+            {pwdMsg && (
+              <div
+                className={cn(
+                  "p-3 rounded-xl text-xs font-semibold mb-4",
+                  pwdMsg.type === "success"
+                    ? "bg-emerald-50 text-emerald-800 border border-emerald-200"
+                    : "bg-red-50 text-red-800 border border-red-200"
+                )}
+              >
+                {pwdMsg.type === "success" ? "✓" : "⚠️"} {pwdMsg.text}
+              </div>
+            )}
+
+            <form onSubmit={handleChangePassword} className="space-y-3.5 text-xs">
+              {!pwdTargetEmail && (
+                <div>
+                  <label className="block text-slate-700 font-semibold mb-1">
+                    Current Password *
+                  </label>
+                  <input
+                    type="password"
+                    required
+                    placeholder="Enter current password"
+                    value={pwdCurrent}
+                    onChange={(e) => setPwdCurrent(e.target.value)}
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-[#FAF7F2] border border-black/[0.12] text-sm text-[#0A0A0A] focus:outline-none focus:border-[#2D5FC7] focus:bg-white"
+                  />
+                </div>
+              )}
+
+              <div>
+                <label className="block text-slate-700 font-semibold mb-1">
+                  New Password * (min 6 characters)
+                </label>
+                <input
+                  type="password"
+                  required
+                  placeholder="Enter new strong password"
+                  value={pwdNew}
+                  onChange={(e) => setPwdNew(e.target.value)}
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#FAF7F2] border border-black/[0.12] text-sm text-[#0A0A0A] focus:outline-none focus:border-[#2D5FC7] focus:bg-white"
+                />
+              </div>
+
+              <div>
+                <label className="block text-slate-700 font-semibold mb-1">
+                  Confirm New Password *
+                </label>
+                <input
+                  type="password"
+                  required
+                  placeholder="Re-type new password"
+                  value={pwdConfirm}
+                  onChange={(e) => setPwdConfirm(e.target.value)}
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#FAF7F2] border border-black/[0.12] text-sm text-[#0A0A0A] focus:outline-none focus:border-[#2D5FC7] focus:bg-white"
+                />
+              </div>
+
+              <div className="pt-2 flex justify-end gap-2 border-t border-slate-100">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setShowChangePasswordModal(false);
+                    setPwdTargetEmail("");
+                    setPwdMsg(null);
+                  }}
+                  className="px-4 py-2 rounded-xl bg-slate-100 text-slate-600 hover:text-black font-semibold cursor-pointer"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  disabled={pwdLoading}
+                  className="px-5 py-2 rounded-xl bg-[#2D5FC7] hover:bg-[#1E3D8A] text-white font-bold transition-all shadow-sm cursor-pointer disabled:opacity-50"
+                >
+                  {pwdLoading ? "Updating..." : "Update Password →"}
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       )}

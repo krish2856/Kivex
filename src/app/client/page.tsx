@@ -579,7 +579,7 @@ export default function ClientPortalPage() {
               </div>
 
               <div className="mt-6 pt-5 border-t border-slate-100 text-[11px] text-slate-400">
-                Your Google authentication is logged in real time on Kivex CRM & Neon Cloud.
+                Your Google authentication is securely verified in real-time.
               </div>
             </div>
           </div>
@@ -971,7 +971,7 @@ export default function ClientPortalPage() {
 
             {loadingProjects ? (
               <div className="text-center py-16 text-slate-400 text-sm">
-                Synchronizing projects with Neon Cloud...
+                Synchronizing projects...
               </div>
             ) : projects.length === 0 ? (
               <div className="rounded-3xl border border-black/[0.08] bg-white p-12 text-center shadow-xs">
@@ -1333,7 +1333,7 @@ export default function ClientPortalPage() {
           <div className="rounded-3xl bg-white border border-black/[0.08] p-6 sm:p-8 shadow-xs">
             <div className="mb-6">
               <h2 className="text-lg font-bold text-[#0A0A0A]">Submitted Transactions</h2>
-              <p className="text-xs text-slate-500">Real-time verification status synchronized with Neon DB</p>
+              <p className="text-xs text-slate-500">Real-time settlement status &amp; transaction verification</p>
             </div>
 
             {payments.length === 0 ? (

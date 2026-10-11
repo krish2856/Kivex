@@ -58,6 +58,13 @@ export async function initDatabase() {
     ALTER TABLE users ADD COLUMN IF NOT EXISTS last_login TIMESTAMPTZ DEFAULT NOW();
   `;
 
+  // Seed default super admin user if not exists
+  await sql`
+    INSERT INTO users (name, email, password_hash, role, branch_code)
+    VALUES ('Kivex Super Admin', 'admin@kivex.com', 'admin123', 'SUPER_ADMIN', 'KIVEX_01002856')
+    ON CONFLICT (email) DO NOTHING;
+  `;
+
   // 3. Projects Table
   await sql`
     CREATE TABLE IF NOT EXISTS projects (

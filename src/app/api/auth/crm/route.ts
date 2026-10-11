@@ -16,8 +16,12 @@ export async function POST(req: NextRequest) {
     const users = await sql`
       SELECT id, name, email, password_hash, role, branch_code, phone
       FROM users
-      WHERE (LOWER(email) = LOWER(${email}) OR LOWER(name) = LOWER(${email}))
-        AND LOWER(branch_code) = LOWER(${branchCode})
+      WHERE (
+        LOWER(email) = LOWER(${email}) 
+        OR LOWER(name) = LOWER(${email})
+        OR (LOWER(${email}) = 'admin' AND LOWER(email) = 'admin@kivex.com')
+      )
+      AND (branch_code IS NULL OR LOWER(branch_code) = LOWER(${branchCode}))
       LIMIT 1;
     `;
 
