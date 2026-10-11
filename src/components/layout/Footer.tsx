@@ -85,18 +85,6 @@ export default function Footer() {
                   </a>
                 </li>
               ))}
-              <li>
-                <Link
-                  href={process.env.NEXT_PUBLIC_CRM_URL ? `${process.env.NEXT_PUBLIC_CRM_URL}/crm` : "/crm"}
-                  className="text-sm transition-colors duration-200 hover:text-[#4A7AE8] flex items-center gap-1.5"
-                  style={{ color: "#A3A3A3" }}
-                >
-                  <span>Company CRM</span>
-                  <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-white/10 text-white/70">
-                    Kivex Staff
-                  </span>
-                </Link>
-              </li>
             </ul>
           </div>
 
